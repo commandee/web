@@ -1,0 +1,41 @@
+<nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href=""></a>Download</li>
+        <li><a href=""></a>Sobre</li>
+        <li><a href=""></a>Login</li>
+    </ul>
+</nav>
+
+<style>
+    nav {
+        background-color: #a289d1;
+        color: #ffffff;
+        height: 50px;
+        padding: 10px;
+    }
+
+     nav ul {
+        list-style-type: none; 
+        margin: 0; 
+        padding: 0; 
+        display: flex; 
+        justify-content: flex-end;
+    }
+
+    nav li {
+        margin: 0 10px;
+        position: relative;
+    }
+
+    nav li::before{
+        content: "|";
+        position: absolute;
+        left: -10px;
+    }
+
+    a {
+        color: #fff; 
+        text-decoration: none; 
+    }
+</style>
