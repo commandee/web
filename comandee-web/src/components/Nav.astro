@@ -1,24 +1,32 @@
+
 <nav>
+    <div class="nav-logo"><a href="/">Logo</a></div>
     <ul>
         <li><a href="/">Home</a></li>
-        <li><a href=""></a>Download</li>
-        <li><a href=""></a>Sobre</li>
-        <li><a href=""></a>Login</li>
+        <li><a href="">Download</a></li>
+        <li><a href="">Sobre</a></li>
+        <li><a href="">Login</a></li>
     </ul>
 </nav>
 
 <style>
+    :root{
+    --roxo: #4c1b49;
+    --lilas: #a289d1;
+    --branco: #ffffff;
+    }
+
     nav {
-        background-color: #a289d1;
-        color: #ffffff;
-        height: 50px;
-        padding: 10px;
+        background-color: var(--lilas);
+        color: var(--branco);
+        padding: 1rem;
+        display : flex;
+        justify-content: space-between;
+
     }
 
      nav ul {
-        list-style-type: none; 
-        margin: 0; 
-        padding: 0; 
+        list-style: none; 
         display: flex; 
         justify-content: flex-end;
     }
@@ -35,7 +43,30 @@
     }
 
     a {
-        color: #fff; 
+        color: var(--branco); 
         text-decoration: none; 
+        text-transform: uppercase;
+    }
+
+    a:active {
+        color: var(--roxo);
+    }
+
+    a :hover{
+        color: var(--branco);
+    }
+
+    .nav-logo{
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--branco);
+    }
+
+    @media (max-width: 768px) { 
+        nav {
+            display: none;
+        }
     }
 </style>
