@@ -1,0 +1,67 @@
+---
+const { title } = Astro.props;
+---
+
+<li>
+    <div>
+        <div class="baller"></div>
+
+        <div>
+            <h2>{title}</h2>
+
+            <small>
+                <time datetime="2021-03-01">Março 2021</time>
+            </small>
+        </div>
+    </div>
+    <figure>
+        <img src="/clock.svg" />
+        <figcaption>Horario</figcaption>
+    </figure>
+</li>
+
+<style>
+    li {
+        background-color: var(--branco);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 1rem;
+        padding-inline: 1rem;
+        padding-block: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    li > a {
+        width: 100%;
+        text-decoration: none;
+        line-height: 1.4;
+        padding: 1rem 1.3rem;
+        border-radius: 0.35rem;
+        color: var(--roxo);
+        background-color: var(--branco);
+        opacity: 0.8;
+    }
+
+    li > div{
+        width: 40%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    h2 {
+        margin: 0;
+        font-size: 1.25rem;
+        transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .baller{
+        height: 2rem;
+        aspect-ratio: 1/1;
+        margin-inline: 1rem;
+        background-color: var(--verde);
+        border-radius: 50%;
+
+    }
+</style>

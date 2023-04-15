@@ -9,7 +9,7 @@ export interface Props {
 const { title } = Astro.props;
 ---
 
-<Layout title="A">
+<Layout title={title}>
     <Nav/>
     <h1>{title}</h1>
     <slot/>

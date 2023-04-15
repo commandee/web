@@ -1,18 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import NavPed from "../components/NavPed.astro";
-import CardPed from "../components/CardPed.astro";
+import NavPed from "../components/pedidos/NavPed.astro";
+import CardPed from "../components/pedidos/CardPed.astro";
 ---
 
 <Layout title="Lista de Pedidos">
     <NavPed />
 
     <main>
-        <h3>Pedidos</h3>
+        
         <ul role="list">
             <CardPed title="Pedido 1" />
-
-            <CardPed title="Pedido 1" />
+            <CardPed title="Pedido 2" />
         </ul>
     </main>
 </Layout>
