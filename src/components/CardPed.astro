@@ -1,0 +1,42 @@
+---
+const { title, body } = Astro.props;
+---
+
+<li>
+    <h2>
+        {title}
+    </h2>
+    {body}
+</li>
+
+<style>
+    li {
+        list-style: none;
+        display: flex;
+        padding: 1.5rem;
+        margin: 0.8rem 0;
+        background-color: var(--branco);
+        border-radius: 0.6rem;
+        background-position: 100%;
+        transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+            0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    }
+
+    li > a {
+		width: 100%;
+		text-decoration: none;
+		line-height: 1.4;
+		padding: 1rem 1.3rem;
+		border-radius: 0.35rem;
+		color: var(--roxo);
+		background-color: var(--branco);
+		opacity: 0.8;
+	}
+
+    h2 {
+		margin: 0;
+		font-size: 1.25rem;
+		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+</style>

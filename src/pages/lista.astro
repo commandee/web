@@ -1,0 +1,41 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavPed from "../components/NavPed.astro";
+import CardPed from "../components/CardPed.astro";
+---
+
+<Layout title="Lista de Pedidos">
+    <NavPed />
+
+    <main>
+        <h3>Pedidos</h3>
+        <ul role="list">
+            <CardPed title="Pedido 1" />
+
+            <CardPed title="Pedido 1" />
+        </ul>
+    </main>
+</Layout>
+
+<style>
+
+    main{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem;
+    }
+    ul {
+        display: list-item;
+        grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+        gap: 2rem;
+        padding: 0;
+    }
+
+    h3 {
+        justify-self: center;
+        font-size: 3rem;
+        font-weight: 800;
+        margin: 0;
+    }
+</style>
