@@ -1,67 +1,103 @@
 ---
-const { title } = Astro.props;
+import type { Pedido } from "../../types";
+import { urgenciaColor, rtFormatter } from "../../types";
+
+export interface Props {
+  pedido: Pedido;
+}
+
+const { pedido } = Astro.props;
+
+const color = urgenciaColor.get(pedido.urgencia);
+
+const timeSince = (pedido.horario.getTime() - Date.now()) / 1000;
+
+
+let horario: string;
+
+if (timeSince > -60) {
+  horario = "agora";
+} else if (timeSince > -(60 * 60)) {
+  horario = rtFormatter.format(Math.floor(timeSince / 60), "minute");
+} else if (timeSince > -(60 * 60 * 24)) {
+  horario = rtFormatter.format(Math.floor(timeSince / 3600), "hour");
+} else {
+  horario = rtFormatter.format(Math.floor(timeSince / 86400), "day");
+}
+
 ---
 
 <li>
-    <div>
-        <div class="baller"></div>
+  <div class="baller" style={{ backgroundColor: color }}></div>
 
-        <div>
-            <h2>{title}</h2>
+  <div>
+    <h2>{pedido.prato}</h2>
 
-            <small>
-                <time datetime="2021-03-01">Março 2021</time>
-            </small>
-        </div>
-    </div>
-    <figure>
-        <img src="/clock.svg" />
-        <figcaption>Horario</figcaption>
-    </figure>
+    {
+      pedido.anotacoes && (
+        <figure class="anotacoes">
+          <img src="/pencil.svg" />
+          <figcaption>{pedido.anotacoes}</figcaption>
+        </figure>
+      )
+    }
+  </div>
+
+  <figure class="horario">
+    <img src="/calendar-week.svg" />
+    <figcaption>{horario}</figcaption>
+  </figure>
 </li>
 
 <style>
-    li {
-        background-color: var(--branco);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-radius: 1rem;
-        padding-inline: 1rem;
-        padding-block: 1rem;
-        margin-bottom: 1rem;
-    }
+  li {
+    background-color: var(--branco);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 1rem;
+    padding-inline: 2rem;
+    padding-block: 1.2rem;
+  }
 
-    li > a {
-        width: 100%;
-        text-decoration: none;
-        line-height: 1.4;
-        padding: 1rem 1.3rem;
-        border-radius: 0.35rem;
-        color: var(--roxo);
-        background-color: var(--branco);
-        opacity: 0.8;
-    }
+  figure {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1ch;
+    margin-left: auto;
+    opacity: 0.5;
+  }
 
-    li > div{
-        width: 40%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
+  .anotacoes {
+    font-style: italic;
+  }
 
-    h2 {
-        margin: 0;
-        font-size: 1.25rem;
-        transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    }
+  .horario {
+    min-width: 12%;
+  }
+  
+  li > a {
+    width: 100%;
+    text-decoration: none;
+    line-height: 1.4;
+    padding: 1rem 1.3rem;
+    border-radius: 0.35rem;
+    color: var(--roxo);
+    background-color: var(--branco);
+    opacity: 0.8;
+  }
 
-    .baller{
-        height: 2rem;
-        aspect-ratio: 1/1;
-        margin-inline: 1rem;
-        background-color: var(--verde);
-        border-radius: 50%;
+  h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
 
-    }
+  .baller {
+    height: 2rem;
+    aspect-ratio: 1 / 1;
+    margin-right: 1rem;
+    background-color: var(--verde);
+    border-radius: 50%;
+  }
 </style>

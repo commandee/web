@@ -1,29 +1,33 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import NavPed from "../components/pedidos/NavPed.astro";
-import CardPed from "../components/pedidos/CardPed.astro";
+import ListaPed from "../components/pedidos/ListaPed.astro";
+
+import { pedidos } from "../types";
 ---
 
 <Layout title="Lista de Pedidos">
     <NavPed />
 
     <main>
-        
-        <ul role="list">
-            <CardPed title="Pedido 1" />
-            <CardPed title="Pedido 2" />
-        </ul>
+        <ListaPed pedidos={pedidos} />
     </main>
 </Layout>
 
-<style>
 
-    main{
+
+<style>
+    :global(body) {
+        font-family: "Quicksand", sans-serif;
+    }
+
+    main {
         display: grid;
         grid-template-columns: 1fr;
         gap: 2rem;
         padding: 2rem;
     }
+    
     ul {
         display: list-item;
         grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));

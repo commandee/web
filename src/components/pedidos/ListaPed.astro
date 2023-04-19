@@ -1,0 +1,23 @@
+---
+import CardPed from "./CardPed.astro";
+import type { Pedido } from "../../types";
+
+export interface Props {
+  pedidos: Pedido[];
+}
+
+const { pedidos } = Astro.props;
+---
+
+<ul>
+  {pedidos.map((ped) => <CardPed pedido={ped} />)}
+</ul>
+
+<style>
+    ul {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1rem;
+        list-style: none;
+    }
+</style>
