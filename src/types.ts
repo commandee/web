@@ -19,24 +19,29 @@ export const urgenciaColor: Map<Urgencia, string> = new Map([
 export const pedidos: Pedido[] = [
     {
         prato: "Lasanha",
-        horario: new Date("2023-04-15 23:21-03:00"),
+        horario: new Date("2023-04-26 23:21-03:00"),
         anotacoes: "sem cebola",
         urgencia: "pouco urgente",
     },
     {
         prato: "Macarrão",
-        horario: new Date("2023-04-15 20:00-03:00"),
+        horario: new Date("2023-04-26 10:00-03:00"),
         urgencia: "urgente",
     },
     {
         prato: "Pizza",
-        horario: new Date("2023-04-15 12:00-03:00"),
+        horario: new Date("2023-04-26 11:15-03:00"),
         anotacoes: "bacon extra",
-        urgencia: "muito urgente",
+        urgencia: "urgente",
     },
     {
         prato: "Hambúrguer",
         horario: new Date("2023-04-15 23:00-03:00"),
         urgencia: "pouco urgente",
+    },
+    {
+        prato: "Sopa",
+        horario: new Date("2023-04-15 23:00-03:00"),
+        urgencia: "pouco urgente"
     }
 ];
