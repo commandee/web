@@ -4,12 +4,13 @@ import LayoutNav from '../layouts/LayoutNav.astro';
 
 <LayoutNav title="Commandee"> <!--Título da guia da página -->
 	<main>
+		<!-- Fazer isso aqui virar um componente -->
 		 <section>
 			<div class="home-container">
 				<div class="coluna-esquerda">
-					<h1><u>Comman</u>dee</h1>
-					<p>Sua comanda digital confiável, rápida e segura.</p>
-					<button class="bg-purple-400 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-full">Conheça</button>
+					<h1 class="text-orange-500 text-5xl font-bold"><u>Comman</u>dee</h1>
+					<p class="text-2xl">Sua comanda digital confiável, rápida e segura.</p>
+					<button class="bg-purple-400 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-full">Conheça agora</button>
 				</div>
 				<div class="coluna-direita">
 					<img src="/imagemComidaHome1.png" alt="ilustração">
@@ -26,7 +27,7 @@ import LayoutNav from '../layouts/LayoutNav.astro';
 		padding: 1.5rem;
 	}
 	img{
-		width: 100%;
+		width: auto;
 		height: 100%;
 	}
 
@@ -34,7 +35,7 @@ import LayoutNav from '../layouts/LayoutNav.astro';
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		height: 95vh;
-		padding: 0; /* Remove o preenchimento de dentro do container*/
+		padding: 0; 
 		text-align: center;
 	}
 
@@ -49,9 +50,7 @@ import LayoutNav from '../layouts/LayoutNav.astro';
 	
 	.coluna-esquerda h1{
 		margin-bottom: 1rem;
-		font-size:3rem;
-		font-weight: bold;
-		color: var(--laranja);
+
 	}
 
 	.coluna-esquerda p {
@@ -71,6 +70,15 @@ import LayoutNav from '../layouts/LayoutNav.astro';
 	@media screen and (max-width: 768px){
 		.home-container{
 			grid-template-columns: 1fr;
+		}
+
+		.coluna-esquerda{
+			align-items: center;
+		}
+
+		.coluna-direita{
+			margin-top:1rem;
+			display:block;
 		}
 	}
 	

@@ -21,10 +21,16 @@ const { format } = Astro.props;
     }
 
     figcaption {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         font-weight: bold;
         text-transform: uppercase;
         text-decoration: none;
-        color: var(--roxo);
+        color: var(--lilas);
+    }
+
+    @media screen and (max-width: 768px) {
+        figcaption {
+            font-size: 1.2rem;
+        }
     }
 </style>
