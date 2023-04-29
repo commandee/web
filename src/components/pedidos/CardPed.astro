@@ -1,16 +1,18 @@
 ---
-import type { Pedido } from "../../types";
-import { urgenciaColor, rtFormatter } from "../../types";
+import type { Item, Order } from "@prisma/client";
+import { priorityColors } from "../../model/pedido";
 
 export interface Props {
-  pedido: Pedido;
+  pedido: Order & { item: Item };
 }
+
+const rt = new Intl.RelativeTimeFormat("pt-BR", { numeric: "auto" });
 
 const { pedido } = Astro.props;
 
-const color = urgenciaColor.get(pedido.urgencia);
+const color = priorityColors.get(pedido.priority);
 
-const timeSince = (pedido.horario.getTime() - Date.now()) / 1000;
+const timeSince = (pedido.createdAt.getTime() - Date.now()) / 1000;
 
 
 let horario: string;
@@ -18,11 +20,11 @@ let horario: string;
 if (timeSince > -60) {
   horario = "agora";
 } else if (timeSince > -(60 * 60)) {
-  horario = rtFormatter.format(Math.floor(timeSince / 60), "minute");
+  horario = rt.format(Math.floor(timeSince / 60), "minute");
 } else if (timeSince > -(60 * 60 * 24)) {
-  horario = rtFormatter.format(Math.floor(timeSince / 3600), "hour");
+  horario = rt.format(Math.floor(timeSince / 3600), "hour");
 } else {
-  horario = rtFormatter.format(Math.floor(timeSince / 86400), "day");
+  horario = rt.format(Math.floor(timeSince / 86400), "day");
 }
 
 ---
@@ -31,12 +33,12 @@ if (timeSince > -60) {
   <div class="left">
     <div class="baller" style={{ backgroundColor: color }}></div>
     <div>
-      <h2>{pedido.prato}</h2>
+      <h2>{pedido.item.name}</h2>
       {
-        pedido.anotacoes && (
+        pedido.annotations && (
           <figure class="anotacoes">
             <img src="/pencil.svg" />
-            <figcaption>{pedido.anotacoes}</figcaption>
+            <figcaption>{pedido.annotations}</figcaption>
           </figure>
         )
       }

@@ -3,7 +3,13 @@ import Layout from "../layouts/Layout.astro";
 import NavPed from "../components/pedidos/NavPed.astro";
 import ListaPed from "../components/pedidos/ListaPed.astro";
 
-import { pedidos } from "../types";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
+
+const pedidos = await prisma.order.findMany({
+    include: { item: true }
+});
 ---
 
 <Layout title="Lista de Pedidos">

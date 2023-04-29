@@ -1,9 +1,9 @@
 ---
+import type { Item, Order } from "@prisma/client";
 import CardPed from "./CardPed.astro";
-import type { Pedido } from "../../types";
 
 export interface Props {
-  pedidos: Pedido[];
+  pedidos: Array<Order & { item: Item }>;
 }
 
 const { pedidos } = Astro.props;
