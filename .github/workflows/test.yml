@@ -1,0 +1,22 @@
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - main
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Lint
+        run: npm run lint --if-present || exit 1
+      - name: Test
+        run: npm run test --if-present || exit 1

@@ -12,6 +12,13 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier --write .",
+    "prisma": "prisma",
+    "prisma:gen": "npm run prisma generate",
+    "prisma:push": "npm run prisma db push",
+    "run:dev": "npm run astro dev",
     "run:prod": "npm run astro build && node dist/"
   },
   "dependencies": {
@@ -24,7 +31,11 @@
   },
   "devDependencies": {
     "@types/node": "^18.16.1",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
     "dotenv": "^16.0.3",
+    "eslint": "^8.39.0",
+    "prettier": "^2.8.8",
     "prisma": "^4.13.0"
   }
 }
