@@ -1,19 +1,35 @@
 import type { APIRoute } from "astro";
-import { pedidos } from "../../../../types";
+import { Priority, PrismaClient } from "@prisma/client";
+import { z } from "zod";
 
-export const get: APIRoute = ({ params }) => {
-    const urgencia = params.urgencia;
+export const get: APIRoute = async ({ params }) => {
+    const prisma = new PrismaClient;
+    const urgencia = z.nativeEnum(Priority).safeParse(params.urgencia);
 
-    if (!urgencia)
-        return new Response("Bad request", {
-            status: 400, statusText: "Bad request"
+    if (urgencia.success) {
+        const pedidos = await prisma.order.findMany({
+            where: {
+                priority: urgencia.data
+            },
+            include: {
+                item: true
+            }
+        })
+
+        return new Response(JSON.stringify(pedidos), {
+            status: 200,
+            statusText: "OK",
+            headers: {
+                "content-type": "application/json; charset=UTF-8",
+            },
         });
-
-    return new Response(JSON.stringify(pedidos.filter(pedido => pedido.urgencia === urgencia)), {
-        status: 200,
-        headers: {
-            "content-type": "application/json; charset=UTF-8",
-        },
-    });
+    } else {
+        return new Response(JSON.stringify(urgencia.error), {
+            status: 400,
+            statusText: "Bad Request",
+            headers: {
+                "content-type": "application/json; charset=UTF-8",
+            },
+        });
+    }
 }
-

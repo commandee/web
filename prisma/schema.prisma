@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Commanda {
+  id           Int        @id @default(autoincrement())
+  costumer     String
+  table        Int
+  createdAt    DateTime   @default(now())
+  closedAt     DateTime?
+  orders       Order[]
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  restaurantId String
+
+  @@index(restaurantId)
+}
+
+// Prato
+model Item {
+  id           Int        @id @default(autoincrement())
+  name         String
+  price        Float
+  orders       Order[]
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  restaurantId String
+
+  @@unique([name, restaurantId])
+  @@index(name)
+  @@index(restaurantId)
+}
+
+model Order {
+  id          Int      @id @default(autoincrement())
+  item        Item     @relation(fields: [itemId], references: [id])
+  command     Commanda @relation(fields: [commandId], references: [id])
+  quantity    Int
+  priority    Priority
+  annotations String?
+  createdAt   DateTime @default(now())
+  itemId      Int
+  commandId   Int
+
+  @@index(itemId)
+  @@index(commandId)
+}
+
+enum Priority {
+  low
+  medium
+  high
+}
+
+model Restaurant {
+  id        String     @id @default(cuid())
+  name      String     @unique
+  commands  Commanda[]
+  ownedBy   Employee[] @relation("ownership")
+  employees Employee[] @relation("employment")
+  menu      Item[]
+
+  @@index(name)
+}
+
+model Employee {
+  id        String       @id @default(cuid())
+  username  String       @unique
+  email     String       @unique
+  password  String
+  name      String
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  owns      Restaurant[] @relation("ownership")
+  worksAt   Restaurant[] @relation("employment")
+
+  @@index(name)
+  @@index(email)
+}
