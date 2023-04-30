@@ -16,18 +16,25 @@ export const get: APIRoute = async({ params }) => {
     });
   }
 
-  const pedidos = await prisma.order.findMany({
-    where: { priority: urgencia.data },
-    include: {
-      item: true
-    }
-  });
+  try {
+    const pedidos = await prisma.order.findMany({
+      where: { priority: urgencia.data },
+      include: {
+        item: true
+      }
+    });
 
-  return new Response(JSON.stringify(pedidos), {
-    status: 200,
-    statusText: "OK",
-    headers: { "content-type": "application/json; charset=UTF-8" }
-  });
+    return new Response(JSON.stringify(pedidos), {
+      status: 200,
+      statusText: "OK",
+      headers: { "content-type": "application/json; charset=UTF-8" }
+    });
+  } catch {
+    return new Response("Erro ao buscar pedidos", {
+      status: 500,
+      statusText: "Internal Server Error"
+    });
+  }
 };
 
 export function getStaticPaths() {
