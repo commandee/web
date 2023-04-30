@@ -3,7 +3,9 @@ import { Priority, PrismaClient } from "@prisma/client";
 import { z } from "zod";
 
 const toConnect = z
-  .number().int().positive()
+  .number()
+  .int()
+  .positive()
   .transform((value) => ({ connect: { id: value } }));
 
 const orderSchema = z.object({
@@ -14,17 +16,17 @@ const orderSchema = z.object({
     .transform((value) => value || null)
     .nullable(),
   item: toConnect,
-  command: toConnect,
+  command: toConnect
 });
 
-export const post: APIRoute = async ({ request }) => {
+export const post: APIRoute = async({ request }) => {
   const order = orderSchema.safeParse(await request.json());
   const prisma = new PrismaClient();
 
   if (!order.success) {
     return new Response("Pedido inválido", {
       status: 400,
-      statusText: "Bad Request",
+      statusText: "Bad Request"
     });
   }
 
@@ -33,12 +35,12 @@ export const post: APIRoute = async ({ request }) => {
 
     return new Response("Pedido adicionado", {
       status: 201,
-      statusText: "Created",
+      statusText: "Created"
     });
   } catch (error) {
     return new Response("Erro ao adicionar pedido", {
       status: 500,
-      statusText: "Internal Server Error",
+      statusText: "Internal Server Error"
     });
   }
 };

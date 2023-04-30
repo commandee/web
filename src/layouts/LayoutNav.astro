@@ -1,17 +1,15 @@
 ---
-import Nav from "../components/Nav.astro";
-import Layout from "./Layout.astro";
+import Nav from '../components/Nav.astro';
+import Layout from './Layout.astro';
 
 export interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
 ---
 
 <Layout title={title}>
-    <Nav/>
-    <slot/>
+  <Nav />
+  <slot />
 </Layout>
-    
-    

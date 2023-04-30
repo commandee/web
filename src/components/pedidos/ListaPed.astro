@@ -1,6 +1,6 @@
 ---
-import type { Item, Order } from "@prisma/client";
-import CardPed from "./CardPed.astro";
+import type { Item, Order } from '@prisma/client';
+import CardPed from './CardPed.astro';
 
 export interface Props {
   pedidos: Array<Order & { item: Item }>;
@@ -14,10 +14,10 @@ const { pedidos } = Astro.props;
 </ul>
 
 <style>
-    ul {
-        display: flex;
-        flex-direction: column;
-        row-gap: 1rem;
-        list-style: none;
-    }
+  ul {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    list-style: none;
+  }
 </style>
