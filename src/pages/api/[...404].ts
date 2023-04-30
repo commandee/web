@@ -1,7 +1,4 @@
 import type { APIRoute } from "astro";
+import { responses } from "../../server/api";
 
-export const get: APIRoute = () =>
-  new Response("Not found", {
-    status: 404,
-    statusText: "Not found"
-  });
+export const all: APIRoute = () => responses.notFound();

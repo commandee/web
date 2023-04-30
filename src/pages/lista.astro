@@ -2,10 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import NavPed from '../components/pedidos/NavPed.astro';
 import ListaPed from '../components/pedidos/ListaPed.astro';
-
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import prisma from '../server/client';
 
 const pedidos = await prisma.order.findMany({
   include: { item: true }
