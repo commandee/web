@@ -1,36 +1,36 @@
 ---
 export interface Props {
-    format: "image" | "text" | "full";
+  format: 'image' | 'text' | 'full';
 }
 
 const { format } = Astro.props;
 ---
 
 <figure>
-    { (format === "full" || format === "image") && <img src="/logo.svg" /> }
-    { (format === "full" || format === "text")  && <figcaption>LOGO</figcaption> }
+  {(format === 'full' || format === 'image') && <img src="/logo.svg" />}
+  {(format === 'full' || format === 'text') && <figcaption>LOGO</figcaption>}
 </figure>
 
 <style>
-    figure {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-    }
+  figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
 
+  figcaption {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--lilas);
+  }
+
+  @media screen and (max-width: 768px) {
     figcaption {
-        font-size: 1.5rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        text-decoration: none;
-        color: var(--lilas);
+      font-size: 1.2rem;
     }
-
-    @media screen and (max-width: 768px) {
-        figcaption {
-            font-size: 1.2rem;
-        }
-    }
+  }
 </style>

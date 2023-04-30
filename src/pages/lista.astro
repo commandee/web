@@ -1,50 +1,48 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import NavPed from "../components/pedidos/NavPed.astro";
-import ListaPed from "../components/pedidos/ListaPed.astro";
+import Layout from '../layouts/Layout.astro';
+import NavPed from '../components/pedidos/NavPed.astro';
+import ListaPed from '../components/pedidos/ListaPed.astro';
 
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
 const pedidos = await prisma.order.findMany({
-    include: { item: true }
+  include: { item: true }
 });
 ---
 
 <Layout title="Lista de Pedidos">
-    <NavPed />
+  <NavPed />
 
-    <main>
-        <ListaPed pedidos={pedidos} />
-    </main>
+  <main>
+    <ListaPed pedidos={pedidos} />
+  </main>
 </Layout>
 
-
-
 <style>
-    :global(body) {
-        font-family: "Quicksand", sans-serif;
-    }
+  :global(body) {
+    font-family: 'Quicksand', sans-serif;
+  }
 
-    main {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 2rem;
-    }
-    
-    ul {
-        display: list-item;
-        grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-        gap: 2rem;
-        padding: 0;
-    }
+  main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem;
+  }
 
-    h3 {
-        justify-self: center;
-        font-size: 3rem;
-        font-weight: 800;
-        margin: 0;
-    }
+  ul {
+    display: list-item;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    gap: 2rem;
+    padding: 0;
+  }
+
+  h3 {
+    justify-self: center;
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0;
+  }
 </style>
