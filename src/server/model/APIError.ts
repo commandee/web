@@ -6,7 +6,10 @@ type Cause =
   | "server"
   | "validation"
   | "token-expired"
-  | "token-invalid";
+  | "token-invalid"
+  | "token-not-found"
+  | "token-empty"
+  | string;
 
 export default class APIError extends Error {
   statusCode: number;

@@ -156,22 +156,21 @@ export const tokenLogin = {
     return tokenGenerator({ username });
   },
 
-  async verify(token: AuthToken): Promise<string | APIError> {
+  async verify(token: AuthToken): Promise<boolean | APIError> {
     const decoded = await tokenLogin.decode(token);
     if (decoded instanceof APIError) return decoded;
 
     try {
       const user = await prisma.employee.findUnique({
-        where: { username: decoded },
-        select: { username: true }
+        where: { username: decoded }, select: {}
       });
-      if (!user)
+      if (user === null)
         return new APIError("User not found", {
           cause: "username",
           statusCode: 404
         });
 
-      return user.username;
+      return true;
     } catch (error) {
       return new APIError("Error while validating token", {
         cause: "server",
@@ -193,7 +192,6 @@ export const tokenLogin = {
           cause: "username",
           statusCode: 404
         });
-
       return user;
     } catch (error) {
       return new APIError("Error while validating token", {

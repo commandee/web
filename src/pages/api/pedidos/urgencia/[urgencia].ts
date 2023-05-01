@@ -25,9 +25,3 @@ export const get: APIRoute = async({ params }) => {
     return responses.internalServerError("Erro ao buscar pedidos");
   }
 };
-
-export function getStaticPaths() {
-  return Object.values(Priority)
-    .map((priority) =>
-      ({ params: { urgencia: priority } }));
-}

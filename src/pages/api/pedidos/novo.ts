@@ -2,7 +2,7 @@ import type { APIRoute } from "astro";
 import { Priority } from "@prisma/client";
 import { z } from "zod";
 import prisma from "../../../server/client";
-import { parseJson, responses } from "../../../server/api";
+import { bodyParser, responses } from "../../../server/api";
 
 const toConnect = z
   .number()
@@ -23,10 +23,9 @@ const schema = z.object({
 });
 
 export const post: APIRoute = async({ request }) => {
-  const order = schema.safeParse(await parseJson(request));
+  const order = schema.safeParse(await bodyParser.any(request));
 
-  if (!order.success)
-    return responses.badRequest(order.error.message);
+  if (!order.success) return responses.badRequest(order.error.message);
 
   try {
     const resOrder = await prisma.order.create({ data: order.data });

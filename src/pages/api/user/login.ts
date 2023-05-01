@@ -1,16 +1,15 @@
 import type { APIRoute } from "astro";
-import { parseJson, responses } from "../../../server/api";
+import { bodyParser, responses } from "../../../server/api";
 import { AuthData, tokenLogin } from "../../../server/login";
 import APIError from "../../../server/model/APIError";
 
-export const post: APIRoute = async({ request }) => {
-  const loginInfo = await parseJson(request);
+export const post: APIRoute = async ({ request }) => {
+  const loginInfo = await bodyParser.any(request);
 
   try {
     const token = await tokenLogin.generate(loginInfo as AuthData);
 
-    if (!(token instanceof APIError))
-      return responses.setToken(token);
+    if (!(token instanceof APIError)) return responses.setToken(token);
 
     return token.toResponse();
   } catch (error) {
@@ -18,5 +17,4 @@ export const post: APIRoute = async({ request }) => {
   }
 };
 
-export const get: APIRoute = async() =>
-  responses.methodNotAllowed("Use POST to authenticate");
+export const get: APIRoute = async () => responses.methodNotAllowed("Use POST to authenticate");
