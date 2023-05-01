@@ -1,26 +1,12 @@
 import type { APIRoute } from "astro";
-import { PrismaClient } from "@prisma/client";
+import prisma from "../../../server/client";
+import { responses } from "../../../server/api";
 
 export const get: APIRoute = async() => {
-  const prisma = new PrismaClient();
-
   try {
     const pedidos = await prisma.order.findMany();
-
-    return new Response(JSON.stringify(pedidos), {
-      status: 200,
-      statusText: "OK",
-      headers: {
-        "content-type": "application/json; charset=UTF-8"
-      }
-    });
+    return responses.ok(pedidos);
   } catch (error) {
-    return new Response(JSON.stringify(error), {
-      status: 500,
-      statusText: "Internal Server Error",
-      headers: {
-        "content-type": "application/json; charset=UTF-8"
-      }
-    });
+    return responses.internalServerError("Erro ao buscar pedidos");
   }
 };

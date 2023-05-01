@@ -1,6 +1,8 @@
 import type { APIRoute } from "astro";
-import { Priority, PrismaClient } from "@prisma/client";
+import { Priority } from "@prisma/client";
 import { z } from "zod";
+import prisma from "../../../server/client";
+import { bodyParser, responses } from "../../../server/api";
 
 const toConnect = z
   .number()
@@ -8,11 +10,12 @@ const toConnect = z
   .positive()
   .transform((value) => ({ connect: { id: value } }));
 
-const orderSchema = z.object({
+const schema = z.object({
   quantity: z.number().int().positive(),
   priority: z.nativeEnum(Priority),
   annotations: z
     .string()
+    .trim()
     .transform((value) => value || null)
     .nullable(),
   item: toConnect,
@@ -20,27 +23,14 @@ const orderSchema = z.object({
 });
 
 export const post: APIRoute = async({ request }) => {
-  const order = orderSchema.safeParse(await request.json());
-  const prisma = new PrismaClient();
+  const order = schema.safeParse(await bodyParser.any(request));
 
-  if (!order.success) {
-    return new Response("Pedido inválido", {
-      status: 400,
-      statusText: "Bad Request"
-    });
-  }
+  if (!order.success) return responses.badRequest(order.error.message);
 
   try {
-    await prisma.order.create({ data: order.data });
-
-    return new Response("Pedido adicionado", {
-      status: 201,
-      statusText: "Created"
-    });
+    const resOrder = await prisma.order.create({ data: order.data });
+    return responses.created(resOrder);
   } catch (error) {
-    return new Response("Erro ao adicionar pedido", {
-      status: 500,
-      statusText: "Internal Server Error"
-    });
+    return responses.internalServerError("Erro ao adicionar pedido");
   }
 };
