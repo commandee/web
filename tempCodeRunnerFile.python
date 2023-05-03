@@ -1,0 +1,8 @@
+porcentagem = input("Digite a porcentagem: ")
+nota_do_grupo = 10
+tamanho_do_grupo = 4
+
+nota_parcial = tamanho_do_grupo * nota_do_grupo * (porcentagem / 100)
+nota = min(10, nota_parcial)
+
+print("Nota: ", nota)

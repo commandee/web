@@ -2,6 +2,7 @@ import type { Employee } from "@prisma/client";
 import { AuthToken, tokenLogin } from "./login";
 import type { AstroCookies } from "astro";
 import APIError from "./model/APIError";
+import { jwtEnv } from "../enviroment";
 
 export const bodyParser = {
   async json(request: Request): Promise<unknown | APIError> {
@@ -144,7 +145,7 @@ export const responses = {
       statusText: "OK",
       headers: {
         "content-type": "text/plain; charset=UTF-8",
-        "set-cookie": `token=${token}; HttpOnly; Secure; SameSite=Strict`
+        "set-cookie": `token=${token}; HttpOnly; Secure; SameSite=Strict; Max-Age=${jwtEnv.expiresIn}`
       }
     });
   },
