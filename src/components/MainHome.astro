@@ -1,0 +1,80 @@
+<main>
+    <!-- Fazer isso aqui virar um componente -->
+    <section>
+      <div class="home-container">
+        <div class="coluna-esquerda">
+          <h1 class="text-orange-500 text-5xl font-bold"><u>Comman</u>dee</h1>
+          <p class="text-2xl">
+            Sua comanda digital confiável, rápida e segura.
+          </p>
+          <button
+            class="bg-purple-400 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-full"
+            >Conheça agora </button
+          >
+        </div>
+        <div class="coluna-direita">
+          <img src="/imagemComidaHome.png" alt="ilustração" />
+        </div>
+      </div>
+    </section>
+  </main>
+  
+<style>
+  main {
+    margin: 0;
+    padding: 1.5rem;
+  }
+  img {
+    width: auto;
+    height: 100%;
+  }
+
+  .home-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 95vh;
+    padding: 0;
+    text-align: center;
+  }
+
+  .coluna-esquerda {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0rem 2rem;
+  }
+
+  .coluna-esquerda h1 {
+    margin-bottom: 1rem;
+  }
+
+  .coluna-esquerda p {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .coluna-direita {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem 2rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    .home-container {
+      grid-template-columns: 1fr;
+    }
+
+    .coluna-esquerda {
+      align-items: center;
+    }
+
+    .coluna-direita {
+      margin-top: 1rem;
+      display: block;
+    }
+  }
+</style>

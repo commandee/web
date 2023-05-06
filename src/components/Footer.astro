@@ -2,9 +2,9 @@
 ---
 
 <footer>
- <section>
+  <section>
     <div>
-      <h3 class="font-bold text-3xl">Commandee</h3>
+      <h3>Commandee</h3>
       <ul>
         <li><a href="">Cadastrar</a></li>
         <li><a href="">Login</a></li>
@@ -15,47 +15,115 @@
     </div>
 
     <div>
-      <h3 class="font-bold text-3xl">Nossa Equipe</h3>
+      <h3>Nossa Equipe</h3>
       <ul>
-        <li><a>Contato</a></li>
-        <li><a>Sobre nós</a></li>
+        <li><a href="">Contato</a></li>
+        <li><a href="">Sobre nós</a></li>
       </ul>
     </div>
 
     <div>
-      <h3 class="font-bold text-3xl">Mídias Sociais</h3>
-      <span>icone twitter</span>
-      <span>icone instagram</span>
-      <span>icone linkedIn</span>
-      <span>icone github</span>
+      <h3>Mídias Sociais</h3>
+      <div>
+        <span>
+          <img src="/twitter-icon.svg" alt="Twitter" />
+          <img src="/linkedin-icon.svg" alt="LinkedIn" />
+          <img src="/github-icon.svg" alt="GitHuh" />
+        </span>
+      </div>
     </div>
+
     <div>
       <img src="/imagemComidaFooter.png" alt="ilustração" width="400px" />
     </div>
-</section>
-  <div>
+  </section>
+
+  <div class="column-footer">
     <span>© 2023 COMMANDEE INC.</span>
-    <span>Termos e Condições</span>
-    <span>Política de Privacidade</span>
+    <span><a href="">Termos e Condições</a></span>
+    <span><a href="">Política de Privacidade</a></span>
   </div>
 </footer>
 
 <style>
   footer {
-    
     position: relative;
     background-color: var(--branco);
     color: var(--roxo);
-    padding: 2rem;
+    padding: 3rem;
+    margin-top: auto;
 
     display: grid;
-    grid-template-columns: 20% auto;
-    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr minmax() 1fr 1fr;
+    grid-template-rows: 1fr auto;
   }
 
-  h3 {
+  section div {
+    margin-bottom: 2rem;
+    font-size: 1.3rem;
+  }
+  footer h3 {
+    font-size: 2rem;
+    font-weight: bold;
   }
 
-  footer div {
+  section ul {
+    list-style: disc;
+    padding-left: 2rem;
+
+  }
+
+  footer section {
+    grid-column: 1/5;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr auto;
+  }
+
+  a:hover {
+    color: var(--laranja);
+    font-weight: bold;
+  }
+
+  span {
+    display: flex;
+    justify-content: start;
+  }
+
+  .column-footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media screen and (max-width: 768px) {
+    footer section {
+      display: block;
+    }
+
+    footer h3 {
+      font-size: 1.2rem;
+    }
+
+    section div {
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    div span{
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .column-footer {
+      font-size: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    img {
+      width: auto;
+    }
   }
 </style>
