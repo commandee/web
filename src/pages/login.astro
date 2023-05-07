@@ -1,0 +1,118 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<style>
+  input {
+    background-color: #f8f0e0;
+    width: 100%;
+    height: 30px;
+    margin-top: 5px;
+    border-radius: 10px;
+  }
+
+  img {
+    width: 50%;
+    height: auto;
+  }
+
+  .home-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 95vh;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .coluna-esquerda {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0rem 2rem;
+  }
+
+  .coluna-esquerda h1 {
+    margin-bottom: 1rem;
+  }
+
+  .coluna-esquerda p {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .coluna-direita {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem 2rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    .home-container {
+      grid-template-columns: 1fr;
+    }
+
+    .coluna-esquerda {
+      align-items: center;
+    }
+
+    .coluna-direita {
+      margin-top: 1rem;
+      display: block;
+    }
+  }
+</style>
+
+<Layout title="Login">
+  <div class="home-container">
+    <form>
+      <div style="text-align: left;" class="coluna-esquerda">
+        <h1 class="text-3xl font-bold">Acesse sua conta</h1>
+        <br /><br />
+        <table width="100%">
+          <button
+            class="bg-purple-400 hover:bg-purple-600 text-white font-medium py-2 px-3 rounded-full"
+          >
+            Fazer login com o google
+          </button>
+
+          <button
+            class="bg-purple-400 hover:bg-purple-600 text-white font-medium py-2 px-3 rounded-full"
+          >
+            Twiter
+          </button>
+
+          <br /><br />
+
+          <tr>
+            <td><hr /></td>
+            <td style="width:1px; padding: 0 10px; white-space: nowrap;">OU</td>
+            <td><hr /></td>
+          </tr>
+        </table>
+
+        <label for="user">Usuário:</label><br />
+        <input type="text" id="user" placeholder="usuário" required />
+        <br /><br />
+
+        <div style="text-align: right;"><a href="">Esqueceu a senha?</a></div>
+        <label for="password">Senha:</label><br />
+        <input type="password" id="password" placeholder="Senha" required />
+        <br /><br />
+
+        <button
+          class="bg-orange-400 hover:bg-purple-600 text-white font-medium py-2 px-3 rounded-full"
+          type="submit"
+          name="btnCadastrar"
+          value="Cadastrar">Cadastrar</button
+        >
+      </div>
+    </form>
+
+    <div class="coluna-direita">
+      <img src="/imagemComidaLogin.png" alt="ilustração" />
+    </div>
+  </div>
+</Layout>
