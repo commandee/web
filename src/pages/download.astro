@@ -2,6 +2,85 @@
 import LayoutNav from '../layouts/LayoutNav.astro'
 ---
 
+<style>
+  
+    img {
+      width: 70%;
+      height: auto;
+    }
+  
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 2rem;
+      text-align: center;
+    }
+  
+    .coluna-esquerda {
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0rem 2rem;
+    }
+
+    .coluna-direita{
+      align-self: center;
+    }
+  
+    .coluna-direita h1 {
+      margin-bottom: 1rem;
+    }
+  
+    .coluna-esquerda {
+      display: flex;
+      align-self: center;
+      align-items: center;
+      padding: 0rem 2rem;
+    }
+  
+    @media screen and (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+  
+      .coluna-direita {
+        align-items: center;
+      }
+  
+      .coluna-esquerda {
+        margin-bottom: 2rem;
+        margin-left: 6rem;
+        display: block;
+      }
+    }
+  </style>
+
 <LayoutNav title="Download - Commandee">
+
+    <div class="container">
+
+        <div style="text-align: left;" class="coluna-esquerda">
+            <img src="/imagemComidaDonwload.png" alt="ilustração" />
+        </div>
+
+        <div class="coluna-direita">
+          
+            <h1 class="text-5xl font-bold">Baixe o</h1>
+            <h1 class="text-5xl font-bold">Commandee</h1>
+            <h1 class="text-5xl font-bold">agora</h1>
+
+            <br>
+
+            <button
+          class="bg-orange-400 hover:bg-purple-600 text-white font-medium py-2 px-3 rounded-full w-80 text-lg"
+          name="btnbaixar">Baixar</button>
+
+            <br><br>
+
+          <span>Version 1.1</span>
+
+         </div>
+
+    </div>
     
 </LayoutNav>
