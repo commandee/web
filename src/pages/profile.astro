@@ -20,24 +20,15 @@ import Layout from "../layouts/Layout.astro";
   }
 
   /* Inicio Style container */
-  img {
-    width: 70%;
-    height: auto;
-  }
 
   .container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 5fr 7fr;
     padding: 2rem;
     text-align: center;
   }
 
-  .coluna-esquerda {
-    flex-direction: column;
-    justify-content: center;
-    padding: 0rem 2rem;
-  }
-
+ 
   .coluna-direita {
     align-self: center;
   }
@@ -47,10 +38,9 @@ import Layout from "../layouts/Layout.astro";
   }
 
   .coluna-esquerda {
-    display: flex;
-    align-self: center;
     align-items: center;
     padding: 0rem 2rem;
+    flex-direction: column;
   }
 
   @media screen and (max-width: 768px) {
@@ -63,9 +53,7 @@ import Layout from "../layouts/Layout.astro";
     }
 
     .coluna-esquerda {
-      margin-bottom: 2rem;
-      margin-left: 6rem;
-      display: block;
+      align-items: center;
     }
   }
   /* Final Style container */
@@ -74,18 +62,62 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="Profile">
   <div class="container">
     <div class="coluna-esquerda">
-      <img src="/profile-icon.svg" class="filter-color h-32"/>
-      <span>User@3452</span>
-    </div>
+
+          <!-- Inicio Header SideNav -->
+          <div class="flex items-center justify-center border-b">
+            <div>
+              <img src="/profile-icon.svg" class="filter-color h-32"/>
+              <span>User@3452</span>
+            </div>
+          </div>
+          <!-- final Header SideNav -->
+          <!-- Início Body SideNav -->
+          <div class="overflow-y-auto overflow-x-hidden flex-grow">
+            <ul class="flex flex-col py-4 space-y-1">
+              
+              <!-- Informações do Usuário -->
+              <li>
+                <a href="#" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
+                  <span class="inline-flex justify-center items-center ml-4">
+                    <img src="/profile-icon2.svg" class="w-5 h-5 filter-color">
+                  </span>
+                  <span class="ml-2 text-sm tracking-wide truncate">Informações do Usuário</span>
+                </a>
+              </li>
+              
+              <!-- Seu Restaurante-->
+              <li>
+                <a href="#" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
+                  <span class="inline-flex justify-center items-center ml-4">
+                    <img src="/fork-n-knife-icon.svg" class="w-5 h-5 filter-color">
+                  </span>
+                  <span class="ml-2 text-sm tracking-wide truncate">Seu Restaurante</span>
+                </a>
+              </li>
+      
+              <!-- Logout -->
+              <li>
+                <a href="#" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
+                  <span class="inline-flex justify-center items-center ml-4">
+                    <img src="/logout-icon.svg" class="w-6 h-6 filter-color">
+                  </span>
+                  <span class="ml-2 text-lg font-bold tracking-wide truncate">Logout</span>
+                </a>
+              </li>
+      
+            </ul>
+          </div>
+          <!-- Final Body SideNav-->
+        </div>
+ 
 
     <div class="coluna-direita">
+      <div>
+      <!-- Inicio Primeiro Card -->
       <div
-        class="block bg-purple-300 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] rounded-3xl"
-      >
+        class="block bg-purple-300 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] rounded-3xl">
         <div
-          class="text-xl border-b-2 text-left px-6 py-3 bg-purple-400 border-neutral-500 rounded-3xl"
-        >
-          <!--dark:bg-neutral-700-->
+          class="text-xl border-b-2 text-left px-6 py-3 bg-purple-400 border-neutral-500 rounded-3xl">
           Perfil
         </div>
         <div class="p-6 bg-purple-300">
@@ -109,13 +141,12 @@ import Layout from "../layouts/Layout.astro";
           </table>
         </div>
       </div>
+      <!-- Final Primeiro Card -->
+      <!-- Inicio Segundo Card -->
       <div
-        class="block bg-purple-300 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] rounded-b-3xl"
-      >
+        class="block bg-purple-300 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] rounded-b-3xl">
         <div
-          class="text-xl border-b-2 text-left px-6 py-3 bg-purple-400 border-neutral-500 rounded-3xl"
-        >
-          <!--dark:bg-neutral-700-->
+          class="text-xl border-b-2 text-left px-6 py-3 bg-purple-400 border-neutral-500 rounded-3xl">
           Email
         </div>
         <div class="p-6">
@@ -126,15 +157,17 @@ import Layout from "../layouts/Layout.astro";
             </tr>
           </table>
           <br /><br />
-          <div class="text-right">
-            <button
-              class="bg-orange-400 hover:bg-purple-600 text-white font-medium py-2 px-3 rounded-full"
-              name="btnAltDados">Alterar Dados</button
-            >
-          </div>
-        </div>
+            <div class="text-right">
+              <button
+                class="bg-orange-400 hover:bg-purple-600 text-white font-medium py-2 px-3 rounded-full"
+                name="btnAltDados">Alterar Dados</button>
+             </div>
+         </div>
       </div>
+      <!-- Final Segundo Card -->
     </div>
+    <!-- Final Coluna Direita-->
+
   </div>
 </Layout>
 
