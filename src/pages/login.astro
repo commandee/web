@@ -11,7 +11,12 @@ import Layout from "../layouts/Layout.astro";
     border-radius: 10px;
   }
 
-  img {
+  td {
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+}
+
+  .img1 {
     width: 50%;
     height: auto;
   }
@@ -71,20 +76,25 @@ import Layout from "../layouts/Layout.astro";
       <div style="text-align: left;" class="coluna-esquerda">
         <h1 class="text-3xl font-bold">Acesse sua conta</h1>
         <br /><br />
-        <table width="100%">
-          <button
-            class="bg-purple-400 hover:bg-purple-600 text-white font-medium py-2 px-3 rounded-full"
-          >
+
+        <table>
+          <tr>
+            <td>
+              <button
+            class="bg-purple-400 hover:bg-purple-600 text-white font-medium py-3 px-3 rounded-full">
             Fazer login com o google
+            </button>
+            </td>
+            <td>
+              <button
+            class="bg-purple-400 hover:bg-purple-600 border-none justify-center rounded-full">
+           <img src="/twitter-icon.svg" alt="ilustração" />
           </button>
+            </td>
+          </tr>
+        </table>
 
-          <button
-            class="bg-purple-400 hover:bg-purple-600 text-white font-medium py-2 px-3 rounded-full"
-          >
-            Twiter
-          </button>
-
-          <br /><br />
+        <table width="100%">
 
           <tr>
             <td><hr /></td>
@@ -112,7 +122,7 @@ import Layout from "../layouts/Layout.astro";
     </form>
 
     <div class="coluna-direita">
-      <img src="/imagemComidaLogin.png" alt="ilustração" />
+      <img src="/imagemComidaLogin.png" alt="ilustração" class="img1" />
     </div>
   </div>
 </Layout>
