@@ -1,0 +1,46 @@
+---
+import LayoutNav from '../layouts/LayoutNav.astro'
+---
+
+<style>
+    span{
+        color: #A289D1;
+    }
+    .filter-color{
+        filter: invert(14%) sepia(17%) saturate(4332%) hue-rotate(267deg) brightness(95%) contrast(97%);
+    }
+
+
+</style>
+
+<LayoutNav title="contato">
+    <div class="text-center p-8">
+
+        <p class="p-2 text-3xl">Contate-nos</p>
+
+        <div class="p-2 flex justify-center">
+            <img src="/letter-icon.svg" alt="placeholder" class="filter-color h-20"/>
+        </div>
+
+        <span class="p-2 text-base">Email</span>
+
+        <p class="p-2 text-lg">ComandeeContact@comndee.com</p>
+        <span class="p-2 text-base">Working Time: 8am ~ 6pm (UTC-3) Monday to Friday</span>
+        <p class="p-2">Telefone: 19 99999-9999</p>
+
+        <div class="p-2 text-sm flex justify-center">
+            
+            <table>
+                <tr>
+                    <td>
+                        <button class="p-4" name="btnTwitter"><img src="/twitter_icon2.svg" class="filter-color h-14"></img></button>
+                        <button class="p-4" name="btnInstagram"><img src="/instagram-icon2.svg" class="filter-color h-14"></img></button>
+                        <button class="p-4" name="btnLinkedin"><img src="/linkedin-icon2.svg" class="filter-color h-14"></img></button>
+                        <button class="p-4" name="btnGithub"><img src="/github-icon2.svg" class="filter-color h-14"></img></button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</LayoutNav>
