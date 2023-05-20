@@ -12,9 +12,9 @@ export const post: APIRoute = async({ request }) => {
 
     return responses.setTokenCreated(createdEmployee.token, createdEmployee);
   } catch (error) {
-    return responses.internalServerError("Erro durante a criação do funcionário");
+    return responses.internalServerError();
   }
 };
 
-export const get: APIRoute = async () =>
+export const get: APIRoute = async() =>
   responses.methodNotAllowed("Use POST to create a new employee");

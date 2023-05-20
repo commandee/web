@@ -1,33 +1,29 @@
-import jwt from "jsonwebtoken";
 import APIError from "./model/APIError";
-import { jwtEnv } from "../enviroment";
 import { AuthData, userLogin } from "./password";
 import type { AstroCookies } from "astro";
+import { sign, verify } from "./jwt";
+import { TokenExpiredError } from "jsonwebtoken";
 
 export type JWTPayload = { username: string };
 
-function signToken(payload: JWTPayload) {
-  return jwt.sign(payload, jwtEnv.secret, { expiresIn: jwtEnv.expiresIn });
-}
-
 export async function genToken(authData: AuthData) {
   const username = await userLogin(authData);
-  return signToken(username);
+  return sign(username);
 }
 
-export function getLogin(token: string): JWTPayload {
+export function getUsername(token: string): JWTPayload {
   try {
-    const payload = jwt.verify(token, jwtEnv.secret) as JWTPayload;
+    const payload = verify(token);
     return payload;
   } catch (error) {
-    if (error instanceof jwt.TokenExpiredError)
-      throw new APIError("Token expired", { cause: "token", statusCode: 403 });
+    if (error instanceof TokenExpiredError)
+      throw new APIError("Token expired", { cause: "token-expired", statusCode: 403 });
 
-    throw new APIError("Invalid token", { cause: "token", statusCode: 401 });
+    throw new APIError("Invalid token", { cause: "token-invalid", statusCode: 401 });
   }
 }
 
-export function verifyToken(token: string): void { getLogin(token); }
+export function verifyToken(token: string): void { getUsername(token); }
 
 function extractToken(cookies: AstroCookies): string {
   if (!cookies?.has("token"))
@@ -47,5 +43,5 @@ export function checkAuth(cookies: AstroCookies): void {
 
 export function getAuth(cookies: AstroCookies): JWTPayload {
   const token = extractToken(cookies);
-  return getLogin(token);
+  return getUsername(token);
 }

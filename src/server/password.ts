@@ -6,27 +6,18 @@ import type { JWTPayload } from "./token";
 
 export type AuthData = {
   password: string;
-  username?: string;
-  email?: string;
-}
-
-export const authSchema = z.object({
-  password: z.string(),
-  username: z.string().optional(),
-  email: z.string().email().optional()
-}).refine((data) => data.username || data.email);
+} & ({ username: string } | { email: string } | { username: string; email: string });
 
 function parseAuth(auth: AuthData): [password: string, userInfo: { username: string } | { email: string }] {
-  const data = authSchema.safeParse(auth);
-  if (!data.success)
-    throw new APIError(data.error.message, { cause: "validation", statusCode: 400 });
+  if ("username" in auth) {
+    return [ auth.password, { username: auth.username }];
+  }
 
-  const { password, username, email } = data.data;
+  const email = z.string().email().safeParse(auth.email);
+  if (!email.success)
+    throw new APIError(email.error.message, { cause: "validation", statusCode: 400 });
 
-  if (username) return [ password, { username }];
-  if (email) return [ password, { email }];
-
-  throw new APIError("You must provide an username or an email", { cause: "validation", statusCode: 400 });
+  return [ auth.password, { email: email.data }];
 }
 
 export async function userLogin(auth: AuthData): Promise<JWTPayload> {

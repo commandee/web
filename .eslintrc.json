@@ -23,7 +23,6 @@
     "arrow-parens": ["warn", "always"],
     "comma-dangle": ["warn", "never"],
     "handle-callback-err": "error",
-    "curly": ["warn", "multi", "consistent"],
     "yoda": ["warn", "never"],
     "no-var": "error",
     "semi-spacing": ["warn", {"before": false, "after": true}],

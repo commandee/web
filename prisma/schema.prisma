@@ -62,10 +62,13 @@ enum Priority {
 model Restaurant {
   id        String     @id @default(cuid())
   name      String     @unique
+  address   String
   commands  Commanda[]
-  ownedBy   Employee[] @relation("ownership")
+  owners    Employee[] @relation("ownership")
   employees Employee[] @relation("employment")
   menu      Item[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
 
   @@index(name)
 }

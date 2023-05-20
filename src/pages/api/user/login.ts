@@ -1,19 +1,29 @@
 import type { APIRoute } from "astro";
 import { bodyParser, responses } from "../../../server/api";
-import { AuthData, tokenLogin } from "../../../server/login";
+import { genToken } from "../../../server/token";
+import type { AuthData } from "../../../server/password";
+import { expiresIn } from "../../../server/jwt";
 import APIError from "../../../server/model/APIError";
 
-export const post: APIRoute = async ({ request }) => {
+export const post: APIRoute = async({ request, cookies }) => {
   const loginInfo = await bodyParser.any(request);
 
   try {
-    const token = await tokenLogin.generate(loginInfo as AuthData);
+    const token = await genToken(loginInfo as AuthData);
 
-    if (!(token instanceof APIError)) return responses.setToken(token);
+    cookies.set("token", token, {
+      maxAge: expiresIn,
+      httpOnly: true,
+      secure: true,
+      sameSite: "strict"
+    });
 
-    return token.toResponse();
+    return responses.ok("You are logged in");
   } catch (error) {
-    return responses.internalServerError("Erro durante a autenticação");
+    if (error instanceof APIError)
+      return error.toResponse();
+
+    return responses.internalServerError();
   }
 };
 
