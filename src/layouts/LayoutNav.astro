@@ -1,7 +1,6 @@
 ---
 import Nav from '../components/Nav.astro';
 import Layout from './Layout.astro';
-import Footer from '../components/Footer.astro';
 
 
 export interface Props {
@@ -13,6 +12,29 @@ const { title } = Astro.props;
 
 <Layout title={title}>
   <Nav />
-  <slot />
-  <Footer />
+  <main>
+    <slot />
+  </main>
+  <footer>
+    pezinho
+  </footer>
 </Layout>
+
+<style is:global>
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1;
+  }
+
+  footer {
+    background-color: darkslategray;
+    color: white;
+    display: grid;
+    place-items: center;
+    padding-block: 1rem;
+  }
+</style>
