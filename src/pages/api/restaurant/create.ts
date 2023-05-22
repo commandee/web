@@ -1,9 +1,9 @@
 import type { APIRoute } from "astro";
-import { bodyParser, responses } from "../../../server/api";
+import { parseBody, responses } from "../../../server/api";
 import { z } from "zod";
-import { getAuth } from "../../../server/token";
+import { getAuth } from "../../../server/auth/cookies";
 import APIError from "../../../server/model/APIError";
-import { createRestaurant } from "../../../server/restaurant";
+import { createRestaurant } from "../../../server/model/restaurant";
 
 const schema = z.object({
   name: z.string(),
@@ -13,17 +13,13 @@ const schema = z.object({
 export const post: APIRoute = async({ request, cookies }) => {
   try {
     const { username } = getAuth(cookies);
-    const restaurant = schema.safeParse(await bodyParser.any(request));
+    const restaurant = await parseBody(request, schema);
 
-    if (!restaurant.success)
-      return responses.badRequest(restaurant.error.message);
-
-    await createRestaurant(username, restaurant.data);
+    await createRestaurant(username, restaurant);
 
     return responses.created("Restaraunt created successfully");
   } catch (error) {
-    if (error instanceof APIError)
-      return error.toResponse();
+    if (error instanceof APIError) return error.toResponse();
     return responses.internalServerError();
   }
 };

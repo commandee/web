@@ -1,22 +1,24 @@
 import type { APIRoute } from "astro";
-import { checkAuth } from "../../../server/token";
+import { delToken } from "../../../server/auth/cookies";
 import APIError from "../../../server/model/APIError";
 import { responses } from "../../../server/api";
 
 export const get: APIRoute = async({ cookies }) => {
   try {
-    cookies.delete("token");
-    checkAuth(cookies);
-
+    delToken(cookies);
     return responses.ok("Logged out successfully");
   } catch (error) {
     if (error instanceof APIError) {
       switch (error.cause) {
-        case "token-expired":
-          return responses.ok("Expired token was deleted");
+        case "token-empty":
+        case "token-not-found":
+          return responses.badRequest("You are not logged in");
 
         case "token-invalid":
-          return responses.ok("Invalid token was deleted");
+          return responses.badRequest("Invalid session");
+
+        case "token-expired":
+          return responses.badRequest("Session expired");
 
         default:
           return error.toResponse();
