@@ -9,7 +9,10 @@ type Cause =
   | "token-invalid"
   | "token-not-found"
   | "token-empty"
-  | string;
+  | "invalid-json"
+  | "invalid-form"
+  | "invalid-text"
+  | "invalid-content-type";
 
 export default class APIError extends Error {
   statusCode: number;

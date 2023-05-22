@@ -1,10 +1,10 @@
 import type { Restaurant } from "@prisma/client";
-import prisma from "./client";
-import APIError from "./model/APIError";
+import prisma from "../client";
+import APIError from "./APIError";
 
-type RestaurantInfo = Omit<Restaurant, "id" | "createdAt" | "updatedAt">;
+type RestaurantDTO = Omit<Restaurant, "id" | "createdAt" | "updatedAt">;
 
-export async function createRestaurant(owner: string, resInfo: RestaurantInfo) {
+export async function createRestaurant(owner: string, resInfo: RestaurantDTO) {
   try {
     prisma.restaurant.create({
       data: {
@@ -36,7 +36,7 @@ export async function ownsRestaurant(user: string, restaurant: string): Promise<
   });
 
   if (!res)
-    throw new APIError("Restaurant not found", { cause: "restaurant", statusCode: 404 });
+    throw new APIError("Restaurant not found", { cause: "username", statusCode: 404 });
 
   return !!res.owners.find((owner) => owner.username === user);
 }
@@ -53,18 +53,32 @@ export async function addOwner(owner: string, newOwner: string, restaurant: stri
 
   try {
     prisma.restaurant.update({
-      where: {
-        name: restaurant
-      },
+      where: { name: restaurant },
       data: {
-        owners: {
-          connect: {
-            username: newOwner
-          }
-        }
+        owners: { connect: { username: newOwner } }
       }
     });
   } catch (error) {
     throw new APIError("Error while adding new owner", { cause: "server", statusCode: 500 });
   }
+}
+
+export async function getRestaurant(name: string) {
+  const restaurant = await prisma.restaurant.findUnique({
+    where: {
+      name
+    },
+    include: {
+      owners: {
+        select: {
+          username: true
+        }
+      }
+    }
+  });
+
+  if (!restaurant)
+    throw new APIError("Restaurant not found", { cause: "username", statusCode: 404 });
+
+  return restaurant;
 }
