@@ -10,7 +10,7 @@ const schema = z.object({
   username: z.string()
 });
 
-export const put: APIRoute = async ({ cookies, request, params }) => {
+export const put: APIRoute = async({ cookies, request, params }) => {
   try {
     assertParam(params, "restaurant");
 

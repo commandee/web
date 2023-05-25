@@ -6,7 +6,6 @@ import APIError from "../../../../server/model/APIError";
 
 export const get: APIRoute = async({ cookies, params }) => {
   try {
-    console.count("user");
     assertParam(params, "user");
 
     const { username: auth } = getAuth(cookies);

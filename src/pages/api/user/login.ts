@@ -32,7 +32,6 @@ const schema = z
 
 export const post: APIRoute = async({ request, cookies }) => {
   try {
-    console.count("login");
     const login = await parseBody(request, schema);
     await setAuth(cookies, login);
 

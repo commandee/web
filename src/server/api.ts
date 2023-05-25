@@ -17,7 +17,7 @@ const bodyParser = {
       const body = (await request.formData()).entries();
       const bodyObj: Record<string, unknown> = {};
 
-      for (const [key, value] of body) bodyObj[key] = value.valueOf();
+      for (const [ key, value ] of body) bodyObj[key] = value.valueOf();
 
       if (Object.keys(bodyObj).length === 0) throw undefined;
 

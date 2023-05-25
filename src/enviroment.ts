@@ -4,11 +4,11 @@ import { exit } from "process";
 config();
 
 function envAssert<T extends object, K extends keyof T>(obj: T, key: K): asserts obj is T & Record<K, string> {
-  if (!(key in obj)) {
-    console.error(`Required environment variable '${String(key)}' was not provided`);
-    exit(1);
-  }
+  if (key in obj) return;
 
+  // eslint-disable-next-line no-console
+  console.error(`Required environment variable '${String(key)}' was not provided`);
+  exit(1);
 }
 
 envAssert(process.env, "DATABASE_URL");

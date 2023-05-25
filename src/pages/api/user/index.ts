@@ -3,7 +3,7 @@ import prisma from "../../../server/client";
 import { responses } from "../../../server/api";
 import APIError from "../../../server/model/APIError";
 
-export const get: APIRoute = async () => {
+export const get: APIRoute = async() => {
   if (process.env.NODE_ENV !== "development")
     return responses.notFound();
 

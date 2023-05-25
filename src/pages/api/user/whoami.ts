@@ -6,7 +6,6 @@ import { getEmployee } from "../../../server/model/employee";
 
 export const get: APIRoute = async({ cookies }) => {
   try {
-    console.count("whoami");
     const { username } = getAuth(cookies);
 
     const user = await getEmployee({ username });
