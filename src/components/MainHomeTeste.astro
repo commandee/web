@@ -1,0 +1,93 @@
+<main>
+  <article>
+    <h1>Sua comanda digital rápida e confiável</h1>
+   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi eius ea iste magnam tenetur veniam dolor perferendis dolore corrupti.
+    <br />
+    <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full"
+      >Conheça</button
+    >
+  </article>
+
+  <picture>
+    <img src="/home-illustration.svg" />
+  </picture>
+</main>
+
+
+
+<style>
+  body {
+    box-sizing: border-box;
+    overflow: hidden;
+    background-size: cover;
+    background-image: url("/background.svg");
+    background-repeat: no-repeat;
+  }
+
+  main {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+  }
+
+  article {
+    width: 35vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  article > h1 {
+    color: rebeccapurple;
+    font-weight: bold;
+    font-size: 3rem;
+  }
+
+  article > button {
+    box-shadow: 0px 5px 15px rgb(147, 123, 171);
+    margin: 10px;
+  }
+
+  picture {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  picture > img {
+    width: 85%;
+    height: auto;
+  }
+
+  @media only screen and (max-width: 768px) {
+    main {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    article,
+    picture {
+      width: 80%;
+      height: auto;
+      text-align: center;
+    }
+
+    article>h1{
+      font-size: 2rem;
+    }
+
+    picture > img {
+      width: 50vh;
+      justify-content: center;
+    }
+  }
+</style>
