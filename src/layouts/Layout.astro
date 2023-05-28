@@ -39,11 +39,17 @@ const { title } = Astro.props;
     --amarelo: #e9bf6a;
     --branco: #ffffff;*/
 
-    --texto: #0b2028;
-    --background: #f3f9fc;
+    --textodark: #0b2028;
+    --textolight: #f3f9fc;
+    --background: #ffffff;
     --primary: #7149c6;
     --secondary: #e3dbf5;
     --accent: #fc2947;
+  }
+
+  ::selection{
+    background: var(--accent);
+    color: var(--textolight);
   }
 
   html {

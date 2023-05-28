@@ -1,7 +1,6 @@
 <nav>
-  <div class="logo-nav">Logo</div>
+  <div class="logo-nav"><a href="/">Commandee</a></div>
   <ul>
-    <li><a href="/">Home</a></li>
     <li><a href="/download">Download</a></li>
     <li><a href="/lista">Lista</a></li>
     <li><a href="/contato">Contato</a></li>
@@ -20,14 +19,17 @@
 </nav>
 <style>
   nav {
-    position: fixed;
+    position: sticky;
     height: 3rem;
-    background-color: transparent;
-    color: var(--texto);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
+
+    background-color: rgba(255, 255, 255, 0.6);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+
   }
 
   .logo-nav {
@@ -66,6 +68,7 @@
 
   nav li:hover::before {
     width: 100%;
+    color: var(--accent) !important;
   }
 
   a {
