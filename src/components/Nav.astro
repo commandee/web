@@ -1,22 +1,25 @@
+
 <nav>
   <div class="logo-nav"><a href="/">Commandee</a></div>
   <ul>
-    <li><a href="/download">Download</a></li>
+    <li><a href="/sobre">Sobre</a></li>
     <li><a href="/lista">Lista</a></li>
     <li><a href="/contato">Contato</a></li>
+    <li><a href="/download">Download</a></li>
     <li><a href="/profile">Perfil</a></li> <!-- lembrar de apagar depois -->
   </ul>
 
   <!-- sessão de login e cadastro da navbar-->
   <ul>
     <li><a href="/login">Login</a></li>
-    <button class="bg-rose-500 hover:bg-rose-700 text-white font-medium py-2 px-3 rounded-full">Cadastro</button>
+    <button class="bg-rose-500 hover:bg-rose-700 text-white font-medium py-2 px-3 rounded-full">Cadastre-se</button>
   </ul>
 
   <div class="menu-hamburguer">
     <div class="hamburguer"></div>
   </div>
 </nav>
+
 <style>
   nav {
     position: sticky;
@@ -25,8 +28,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: transparent;
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
 
@@ -36,7 +38,6 @@
     color: var(--primary);
     font-size: 1.5rem;
     font-weight: bold;
-    text-transform: uppercase;
     text-decoration: none;
     flex-grow: 1;
   }
@@ -46,6 +47,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    gap: 10px;
   }
 
   nav li {
@@ -73,7 +75,6 @@
 
   a {
     text-decoration: none;
-    text-transform: uppercase;
   }
 
   @media (max-width: 768px) {

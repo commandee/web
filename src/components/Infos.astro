@@ -1,49 +1,57 @@
 <!-- REFAZER E COLOCAR TRANSIÇÕES -->
 <section>
-  <div>
-    <h1>Autenticidade</h1>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo consectetur tenetur nisi quod quas maxime in odio nostrum voluptatum voluptas eligendi labore id exercitationem velit natus rem, culpa suscipit distinctio!</p>
-  </div>
+  <article>
+    <div>
+      <h1>Autenticidade</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam recusandae eius suscipit
+        reprehenderit nostrum repudiandae molestias, expedita quae natus nobis quod atque velit
+        necessitatibus sed! Maiores tenetur facilis ad voluptas natus cupiditate commodi quia
+        accusamus aliquam. Beatae error expedita sapiente.
+      </p>
+    </div>
+    <aside>
+      <img src="/ilustracao-info-garcom.svg" alt="ilustração garçons" />
+    </aside>
+  </article>
 
-  <div>
-    <h1>Confiabilidade</h1>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore odio consectetur aliquid aperiam saepe esse ipsum eaque voluptatem architecto consequuntur dolorem illo dicta veritatis suscipit dolorum, voluptas, laudantium sunt officiis.</p>
-  </div>
-  <div>
-    <h1>Dinamicidade</h1>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint, totam delectus. Earum inventore in ratione magnam quae necessitatibus corrupti sed unde temporibus perspiciatis. Rerum ratione qui repudiandae eveniet illum dignissimos!</p>
-  </div>
+  <article>
+    <aside>
+      <img src="" alt="" />
+    </aside>
+    <div>
+      <h1>Confiabilidade</h1>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore odio consectetur aliquid
+        aperiam saepe esse ipsum eaque voluptatem architecto consequuntur dolorem illo dicta
+        veritatis suscipit dolorum, voluptas, laudantium sunt officiis.
+      </p>
+    </div>
+  </article>
+
+  <article>
+    <div>
+      <h1>Dinamicidade</h1>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint, totam delectus. Earum
+        inventore in ratione magnam quae necessitatibus corrupti sed unde temporibus perspiciatis.
+        Rerum ratione qui repudiandae eveniet illum dignissimos!
+      </p>
+    </div>
+    <aside>
+      <img src="/ilustracao-info-relogio.svg" alt="ilustração relógio">
+    </aside>
+  </article>
 </section>
 
 <style>
-  section {
-    padding: 10px;
-    color: var(--textodark);
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    font-size: 1rem;
+  body{
+    box-sizing: border-box;
   }
 
-    section	h1 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        font-weight: bolder;
-    }
-    section div {
-        width: 100%;
-        padding: 1rem;
-        border-radius: 10px;
-    }
 
-  @media screen and (max-width: 768px) {
-    section {
-      flex-direction: column;
-      font-size: 0.8rem;
-    }
-
-    section h1{
-      font-size: 1.2rem;
-    }
-  }
+article img {
+  width: 50%;
+  height: 50%;
+}
 </style>
