@@ -1,0 +1,25 @@
+---
+export interface Props {
+  titulo: string;
+}
+
+const { titulo } = Astro.props;
+---
+
+<h1>
+  {titulo}
+</h1>
+
+<style>
+  h1 {
+    text-align: center;
+    background: -webkit-linear-gradient(left, var(--primary), var(--accent));
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    font-size: 2.5rem !important;
+    margin-bottom: 1rem !important;
+    font-weight: bolder !important;
+  }
+</style>

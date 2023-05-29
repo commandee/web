@@ -3,35 +3,28 @@ import LayoutNav from "../layouts/LayoutNav.astro";
 import MainHome from "../components/MainHome.astro";
 import Help from "../components/Help.astro";
 import CardInfo from "../components/CardInfo.astro";
+import Titulo from "../components/Titulo.astro";
 ---
 
 <LayoutNav title="Commandee">
   <MainHome />
-  <section>
-    <h1>Nosso Serviço</h1>
+  <section id="sobre">
+    <Titulo titulo="Sobre o Commandee" />
     <article>
-      <CardInfo title="Agilidade" body="lorem20" alt="ilustracao" />
-      <CardInfo title="Simplicidade" body="lorem20" alt="ilustracao" />
-      <CardInfo title="Dinamicidade" body="lorem20" alt="ilustracao" />
+      <CardInfo title="Agilidade" body="Algum texto muito legala qui que eu não sei o que colocar então vai ficar assim lalalalal" alt="ilustracao" imagem="/ilustracao-info-relogio.svg" />
+      <CardInfo title="Simplicidade" body="Algum texto muito legala qui que eu não sei o que colocar então vai ficar assim lalalalal" alt="ilustracao" imagem="/ilustracao-info-garcom.svg"/>
+      <CardInfo title="Dinamicidade" body="Algum texto muito legala qui que eu não sei o que colocar então vai ficar assim lalalalal" alt="ilustracao" imagem="/ilustracao-info-celular.svg" />
     </article>
+    <Help />
   </section>
-  <Help />
+
 </LayoutNav>
 
 <style>
   section {
     background-color: var(--background);
-    padding: 2rem;
-
     flex-wrap: wrap;
-  }
-
-  section h1 {
-    text-align: center;
-    font-size: 2rem;
-    color: var(--primary);
-    margin-bottom: 2rem;
-    font-weight: bolder;
+    padding: 2rem;
   }
 
   section article{

@@ -3,12 +3,13 @@ export interface Props{
   title: string;
   body: string;
   alt: string;
+  imagem: string;
 }
 
-const { title, body, alt} = Astro.props;
+const { title, body, alt, imagem} = Astro.props;
 ---
 <section>
-  <img src="" alt={alt}>
+  <img src={imagem} alt={alt}>
   <article>
     <h4>{title}</h4>
     <p>{body}</p>
@@ -33,6 +34,12 @@ const { title, body, alt} = Astro.props;
     text-align: center;
   }
 
+  section img{
+    width: 80%;
+    height: 80%;
+    border-radius: 10px 10px 0 0;
+  }
+
   section article h4{
     font-size: 1.3rem;
     font-weight: bolder;
@@ -42,6 +49,7 @@ const { title, body, alt} = Astro.props;
 
   section article p{
     font-size: 1rem;
+    margin: 1rem;
     color: var(--textodark);
   }
 
