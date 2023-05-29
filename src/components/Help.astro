@@ -2,8 +2,8 @@
   <article>
     Contato
     <h1>Precisando de Ajuda?</h1>
-    <p>Entre em contato com nossa equipe</p>
-    <button class="bg-neutral-100 hover:bg-neutral-400 text-black py-2 px-3 rounded-full">Entre em contato</button>
+    <p>Entre em contato clicando abaixo:</p>
+    <button class="bg-neutral-100 hover:bg-neutral-400 text-blue-950 py-2 px-3 m-2 rounded-full">Entre em contato</button>
   </article>
 </div>
 <style>
@@ -11,9 +11,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  article {
     padding: 2rem;
+  }
+
+  div article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+    height: 25vh;
     text-align: center;
     background-color: var(--accent);
     backdrop-filter: blur(8px);
@@ -23,7 +30,6 @@
   }
 
   article h1 {
-    color: ;
     font-weight: bolder;
     font-size: 2rem;
   }
@@ -39,5 +45,26 @@
 
   p a:hover {
     color: var(--textodark);
+  }
+
+  article button{
+    color: var(--textodark);
+  }
+
+  @media only screen and (max-width: 768px){
+    article{
+      padding: 1rem;
+    }
+    article h1{
+      font-size: 1.5rem;
+    }
+    article p{
+      font-size: 0.8rem;
+    }
+
+    div article{
+      width: 80vw;
+      height: 20vh;
+    }
   }
 </style>

@@ -1,0 +1,53 @@
+---
+export interface Props{
+  title: string;
+  body: string;
+  alt: string;
+}
+
+const { title, body, alt} = Astro.props;
+---
+<section>
+  <img src="" alt={alt}>
+  <article>
+    <h4>{title}</h4>
+    <p>{body}</p>
+  </article>
+</section>
+
+<style>
+  section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25vw;
+    margin: 2rem auto;
+    border-radius: 10px;
+    background-color: var(--background);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+
+  section article{
+    padding: 1rem;
+    text-align: center;
+  }
+
+  section article h4{
+    font-size: 1.3rem;
+    font-weight: bolder;
+    color: var(--textodark);
+    margin-bottom: 1rem;
+  }
+
+  section article p{
+    font-size: 1rem;
+    color: var(--textodark);
+  }
+
+  @media only screen and (max-width: 768px){
+    section {
+      width: 80vw;
+    }
+  }
+</style>
