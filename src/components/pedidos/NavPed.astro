@@ -11,25 +11,18 @@ import Logo from '../Logo.astro';
 
 <style>
   nav {
-    height: 50px;
+    height: 3rem;
     background-color: #fff;
     padding: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  .nav-logo {
-    color: var(--lilas);
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-decoration: none;
-  }
 
   nav ul {
     display: flex;
     list-style: none;
-    color: var(--laranja);
+    color: var(--accent);
     font-weight: bold;
     font-size: 1rem;
     align-items: center;
@@ -43,5 +36,8 @@ import Logo from '../Logo.astro';
   }
 
   @media screen and (max-width: 768px) {
+    ul li{
+      display: none;
+    }
   }
 </style>

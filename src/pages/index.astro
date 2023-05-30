@@ -8,33 +8,61 @@ import Titulo from "../components/Titulo.astro";
 
 <LayoutNav title="Commandee">
   <MainHome />
-  <section id="sobre">
-    <Titulo titulo="Sobre o Commandee" />
-    <article>
-      <CardInfo title="Agilidade" body="Algum texto muito legala qui que eu não sei o que colocar então vai ficar assim lalalalal" alt="ilustracao" imagem="/ilustracao-info-relogio.svg" />
-      <CardInfo title="Simplicidade" body="Algum texto muito legala qui que eu não sei o que colocar então vai ficar assim lalalalal" alt="ilustracao" imagem="/ilustracao-info-garcom.svg"/>
-      <CardInfo title="Dinamicidade" body="Algum texto muito legala qui que eu não sei o que colocar então vai ficar assim lalalalal" alt="ilustracao" imagem="/ilustracao-info-celular.svg" />
-    </article>
-    <Help />
-  </section>
+  <main>
+    <section>
+      <Titulo titulo="Sobre o Commandee" />
+      <article>
+        <CardInfo
+          title="Agilidade"
+          body="Algum texto muito legala qui que eu não sei o que colocar então vai ficar assim lalalalal"
+          alt="ilustracao"
+          imagem="/ilustracao-info-relogio.svg"
+        />
+        <CardInfo
+          title="Simplicidade"
+          body="Algum texto muito legala qui que eu não sei o que colocar então vai ficar assim lalalalal"
+          alt="ilustracao"
+          imagem="/ilustracao-info-garcom.svg"
+        />
+        <CardInfo
+          title="Dinamicidade"
+          body="Algum texto muito legala qui que eu não sei o que colocar então vai ficar assim lalalalal"
+          alt="ilustracao"
+          imagem="/ilustracao-info-celular.svg"
+        />
+      </article>
+    </section>
 
+    <section>
+      <Titulo titulo="Nossa Equipe" />
+      <!--Card Time -->
+    </section>
+
+    <section>
+      <Help />
+    </section>
+  </main>
 </LayoutNav>
 
 <style>
-  section {
+  main {
     background-color: var(--background);
-    flex-wrap: wrap;
-    padding: 2rem;
   }
 
-  section article{
+  section {
+    flex-wrap: wrap;
+    padding: 2rem;
+    margin-bottom: 5rem;
+  }
+
+  section article {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  @media only screen and (max-width: 768px){
-    section article{
+  @media only screen and (max-width: 768px) {
+    section article {
       flex-direction: column;
     }
   }

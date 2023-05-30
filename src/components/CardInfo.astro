@@ -8,16 +8,16 @@ export interface Props{
 
 const { title, body, alt, imagem} = Astro.props;
 ---
-<section>
+<article>
   <img src={imagem} alt={alt}>
-  <article>
+  <div>
     <h4>{title}</h4>
     <p>{body}</p>
-  </article>
-</section>
+  </div>
+</article>
 
 <style>
-  section{
+  article{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,10 +26,15 @@ const { title, body, alt, imagem} = Astro.props;
     margin: 2rem auto;
     border-radius: 10px;
     background-color: var(--background);
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
   }
 
-  section article{
+  article:hover{
+    scale: 1.01;
+    transition: 0.1s;
+  }
+
+  article div{
     padding: 1rem;
     text-align: center;
   }
@@ -40,21 +45,21 @@ const { title, body, alt, imagem} = Astro.props;
     border-radius: 10px 10px 0 0;
   }
 
-  section article h4{
+  article div h4{
     font-size: 1.3rem;
     font-weight: bolder;
     color: var(--textodark);
     margin-bottom: 1rem;
   }
 
-  section article p{
+  article div p{
     font-size: 1rem;
     margin: 1rem;
     color: var(--textodark);
   }
 
   @media only screen and (max-width: 768px){
-    section {
+    article {
       width: 80vw;
     }
   }

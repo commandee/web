@@ -8,7 +8,7 @@ const { format } = Astro.props;
 
 <figure>
   {(format === 'full' || format === 'image') && <img src="/logo.svg" />}
-  {(format === 'full' || format === 'text') && <figcaption>LOGO</figcaption>}
+  {(format === 'full' || format === 'text') && <figcaption>Commandee</figcaption>}
 </figure>
 
 <style>
@@ -23,9 +23,9 @@ const { format } = Astro.props;
   figcaption {
     font-size: 1.5rem;
     font-weight: bold;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     text-decoration: none;
-    color: var(--lilas);
+    color: var(--primary);
   }
 
   @media screen and (max-width: 768px) {
