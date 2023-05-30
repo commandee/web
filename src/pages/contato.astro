@@ -1,9 +1,12 @@
 ---
 import LayoutNav from '../layouts/LayoutNav.astro'
-import Contato from '../components/Contato.astro'
+import CardContato from '../components/contato/CardContato.astro'
+import LoginContato from '../components/contato/LoginContato.astro';
 ---
 <LayoutNav title="Contate-nos">
-  <Contato />
+  <CardContato>
+    <LoginContato />
+  </CardContato>
 
 </LayoutNav>
 

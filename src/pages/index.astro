@@ -1,7 +1,7 @@
 ---
 import LayoutNav from "../layouts/LayoutNav.astro";
 import MainHome from "../components/MainHome.astro";
-import Help from "../components/Help.astro";
+import CardAjuda from "../components/CardAjuda.astro";
 import CardInfo from "../components/CardInfo.astro";
 import Titulo from "../components/Titulo.astro";
 ---
@@ -39,7 +39,7 @@ import Titulo from "../components/Titulo.astro";
     </section>
 
     <section>
-      <Help />
+      <CardAjuda />
     </section>
   </main>
 </LayoutNav>
@@ -51,7 +51,7 @@ import Titulo from "../components/Titulo.astro";
 
   section {
     flex-wrap: wrap;
-    padding: 2rem;
+    padding: 1.5rem;
     margin-bottom: 5rem;
   }
 
@@ -62,6 +62,10 @@ import Titulo from "../components/Titulo.astro";
   }
 
   @media only screen and (max-width: 768px) {
+    section{
+      margin-bottom: 1rem;
+    }
+
     section article {
       flex-direction: column;
     }

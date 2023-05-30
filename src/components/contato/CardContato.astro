@@ -1,19 +1,7 @@
 <main>
-  <section>
-    <article>
-      <form action="">
-        <h1>Contate-nos!!</h1>
-
-        <input type="text" placeholder="Enter your name" />
-        <input type="email" placeholder="Enter your email" />
-        <textarea name="" id="" cols="30" rows="10" placeholder="Spill the tea"></textarea>
-        <input type="submit" />
-      </form>
-    </article>
-    <aside>
-      <img src="/assets/images/404.svg" alt="ilustração" />
-    </aside>
-  </section>
+  <div>
+   <slot />
+  </div>
 </main>
 
 <style>
@@ -27,23 +15,29 @@
   main {
     min-height: calc(100vh - 80px);
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
-  section {
+  div {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
     background-color: var(--background);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+    border-radius: 20px;
+    width: 80%;
+    height: auto;
+    padding: 2rem;
+    margin: 1rem;
   }
 
-  section article form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+  @media (max-width: 768px) {
+    div {
+      flex-direction: column;
+      margin: 2rem;
+    }
+
   }
 </style>
