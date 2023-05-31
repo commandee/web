@@ -1,12 +1,78 @@
 ---
-import LayoutNav from '../layouts/LayoutNav.astro'
-import CardContato from '../components/contato/CardContato.astro'
-import LoginContato from '../components/contato/LoginContato.astro';
+import LayoutNav from "../layouts/LayoutNav.astro";
+import CardContato from "../components/contato/CardContato.astro";
+import LoginContato from "../components/contato/LoginContato.astro";
 ---
-<LayoutNav title="Contate-nos">
+
+<LayoutNav title="Contate-nos!">
   <CardContato>
     <LoginContato />
+    <aside>
+      <picture>
+        <img src="ilustracao-contato.svg" alt="" />
+      </picture>
+      <article>
+        <span><img src="icon-location.svg" alt="" /> Cotil - UNICAMP</span>
+        <span><img src="icon-telephone.svg" alt="" /> 19 99999-9999</span>
+        <span><img src="icon-email.svg" alt="" /> commandee@gmail.com</span>
+      </article>
+    </aside>
   </CardContato>
-
 </LayoutNav>
 
+<style>
+  body {
+    background: var(--background)
+      url("data:image/svg+xml,%3Csvg width='615' height='554' xmlns='http://www.w3.org/2000/svg'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath d='M463.283 528.726c45.144 0 95.716 8.237 151.717 24.712V0H41.584C28.58 76.038-4.694 126.702.957 203.448c16.342 221.959 215.179 325.278 462.326 325.278z' fill='%23DACFF2'/%3E %3Cpath d='M382.319 485.092c54.57 14.534 187.124 6.139 232.681-13.977V0H122.36c-16.232 41.585 18.088 107.04 18.088 154.372 0 203.855 45.087 278.309 241.87 330.72z' fill='%23cdbfed'/%3E %3Cpath d='M443.883 440.71c54.208 0 128.702-54.567 171.117-81.896V0H231.198c-21.166 38.7-14.497 103.867-14.497 151.086 0 150.221 76.96 289.624 227.182 289.624z' fill='%23C0AFE9'/%3E %3C/g%3E %3C/svg%3E")
+      top right no-repeat fixed;
+    box-sizing: border-box;
+  }
+  aside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem;
+    width: 55%;
+  }
+
+  aside picture {
+    width: 70%;
+    height: auto;
+  }
+
+  aside article {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  aside span {
+    color: var(--color-text);
+    margin: 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.2em;
+    font-weight: 500;
+  }
+
+  aside span img {
+    margin-right: 1rem;
+    width: 1.5rem;
+  }
+  @media screen and (max-width: 768px) {
+    aside {
+      width: 100%;
+    }
+
+    aside picture {
+      width: 70vw;
+    }
+
+    aside span {
+      font-weight: 600;
+      font-size: 1em;
+    }
+  }
+</style>

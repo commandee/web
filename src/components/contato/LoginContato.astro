@@ -2,39 +2,71 @@
 import Titulo from '../Titulo.astro'
 ---
 
-<form action="">
+<form action="post">
   <Titulo titulo="Entre em Contato!!!"/>
+  <span>Como podemos ajudar?</span>
   <fieldset>
-    <label for="name">Name:</label>
-    <input type="text" name="name" id="name" />
+    <input type="text" name="name" id="name" autocomplete="name" placeholder="Nome completo" required/>
   </fieldset>
   <fieldset>
-    <label for="email">Email:</label>
-    <input type="email" name="email" id="name" />
+    <input type="email" name="email" id="email" autocomplete="email" placeholder="Seu email" required/>
   </fieldset>
   <fieldset>
-    <textarea name="description" id="description" cols="50" rows="4" placeholder="Spill the tea"
+    <textarea name="description" id="description" cols="50" rows="10" placeholder="Spill the tea"
     ></textarea>
   </fieldset>
-  <button>Submit</button>
-</form>
+  <button class="bg-rose-500 hover:bg-rose-700 text-white font-bold py-3 px-1 rounded "
+  >Envie</button
+></form>
 
 <style>
   form {
-    background-color: var(--accent);
+    border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 40%;
+    padding: 1rem;
   }
 
-  form h1{
-    color: var(--primary);
-    font-size: 2rem;
+  form span{
+    font-size: 1rem;
     margin-bottom: 1rem;
   }
 
-  textarea{
+  fieldset{
+    width: 100%;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  fieldset input, fieldset textarea{
+    width: 100%;
+    font-size: 1rem;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 1rem;
+    background-color: var(--secondary);
     resize: none;
+  }
+
+  button{
+    width: 100%;
+  }
+
+  span{
+    font-weight: 500;
+  }
+
+
+  @media only screen and (max-width: 768px){
+    form{
+      width: 100%;
+    }
   }
 </style>
