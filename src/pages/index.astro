@@ -3,6 +3,7 @@ import LayoutNav from "../layouts/LayoutNav.astro";
 import MainHome from "../components/MainHome.astro";
 import CardAjuda from "../components/CardAjuda.astro";
 import CardInfo from "../components/CardInfo.astro";
+import CardTime from "../components/CardTime.astro";
 import Titulo from "../components/Titulo.astro";
 ---
 
@@ -11,7 +12,7 @@ import Titulo from "../components/Titulo.astro";
   <main>
     <section>
       <Titulo titulo="Sobre o Commandee" />
-      <article>
+      <div>
         <CardInfo
           title="Agilidade"
           body="Algum texto muito legala qui que eu não sei o que colocar então vai ficar assim lalalalal"
@@ -30,12 +31,17 @@ import Titulo from "../components/Titulo.astro";
           alt="ilustracao"
           imagem="/ilustracao-info-celular.svg"
         />
-      </article>
+      </div>
     </section>
 
     <section>
       <Titulo titulo="Nossa Equipe" />
-      <!--Card Time -->
+      <div>
+        <CardTime imagem="" integrante="Isabela Silvestre Rodrigues" funcao="frontend developer" />
+        <CardTime imagem="" integrante="Isabela Silvestre Rodrigues" funcao="frontend developer" />
+        <CardTime imagem="" integrante="Isabela Silvestre Rodrigues" funcao="frontend developer" />
+        <CardTime imagem="" integrante="Isabela Silvestre Rodrigues" funcao="frontend developer" />
+      </div>
     </section>
 
     <section>
@@ -55,18 +61,18 @@ import Titulo from "../components/Titulo.astro";
     margin-bottom: 5rem;
   }
 
-  section article {
+  section div {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
   @media only screen and (max-width: 768px) {
-    section{
+    section {
       margin-bottom: 1rem;
     }
 
-    section article {
+    section div {
       flex-direction: column;
     }
   }

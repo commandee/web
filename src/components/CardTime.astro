@@ -1,0 +1,46 @@
+---
+export interface Props {
+  imagem: string;
+  integrante: string;
+  funcao: string;
+}
+
+const { imagem, integrante, funcao } = Astro.props;
+---
+
+<article>
+  <img src={imagem} alt="" />
+  <div class="">
+    <h3>{integrante}</h3>
+    <p>{funcao}</p>
+  </div>
+</article>
+
+<style>
+  article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20vw;
+    margin: 2rem auto;
+    border-radius: 10px;
+    background-color: var(--secondary);
+  }
+
+  article img {
+    border-radius: 50%;
+
+  }
+
+  article div h3 {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
+
+  @media only screen and (max-width: 768px) {
+    article {
+      width: 80vw;
+    }
+  }
+</style>
