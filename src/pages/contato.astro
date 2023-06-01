@@ -1,10 +1,10 @@
 ---
-import LayoutNav from "../layouts/LayoutNav.astro";
+import LayoutFull from "../layouts/LayoutFull.astro";
 import CardContato from "../components/contato/CardContato.astro";
 import LoginContato from "../components/contato/LoginContato.astro";
 ---
 
-<LayoutNav title="Contate-nos!">
+<LayoutFull title="Contate-nos!">
   <CardContato>
     <LoginContato />
     <aside>
@@ -18,7 +18,7 @@ import LoginContato from "../components/contato/LoginContato.astro";
       </article>
     </aside>
   </CardContato>
-</LayoutNav>
+</LayoutFull>
 
 <style>
   body {
