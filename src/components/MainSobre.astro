@@ -1,0 +1,83 @@
+---
+export interface Props{
+  img: string;
+  title: string;
+  description: string;
+}
+
+const {img, title, description} = Astro.props;
+---
+
+<section>
+  <picture>
+    <img src={img} alt="ilustração garçom">
+  </picture>
+
+  <article>
+    <h2>{title}</h2>
+    <p>{description}</p>
+  </article>
+</section>
+
+<style>
+
+  section{
+    width: 100%;
+    min-height: 90vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    color: var(--textodark);
+  }
+
+  picture {
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  picture img {
+    max-width: 100%;
+    width: 500px;
+    height: auto;
+  }
+
+  article {
+    width: 35vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+  }
+
+  article h2{
+    font-size: var(--textoTitulo);
+    font-weight: 700;
+    text-align: center;
+  }
+
+@media (max-width: 768px) {
+  section {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 2rem;
+    min-height: 80vh;
+  }
+
+  picture {
+    width: 85%;
+  }
+
+  article {
+    width: 85%;
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+}
+</style>

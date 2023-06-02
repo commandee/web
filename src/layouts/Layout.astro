@@ -12,6 +12,7 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"> <!--Biblioteca de icones -->
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
@@ -31,20 +32,18 @@ const { title } = Astro.props;
   }
 
   :root {
-
-    /*--roxo: #4c1b49;
-    --lilas: #9c80c2;
-    --verde: #568d33;
-    --laranja: #ff5e1e;
-    --amarelo: #e9bf6a;
-    --branco: #ffffff;*/
-
     --textodark: #0b2028;
     --textolight: #f3f9fc;
     --background: #ffffff;
     --primary: #7149c6;
     --secondary: #e3dbf5;
     --accent: #fc2947;
+
+    --textoGrande: 3rem;
+    --textoTitulo: 2.25rem;
+    --texto: 1rem;
+
+    --gradient: -webkit-linear-gradient(left, var(--primary),var(--accent));
   }
 
 

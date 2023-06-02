@@ -1,5 +1,24 @@
 ---
 import LayoutFull from '../layouts/LayoutFull.astro'
+import MainSobre from '../components/MainSobre.astro'
+import CardAjuda from '../components/CardAjuda.astro';
 ---
 
-<LayoutFull title="Sobre nós!"></LayoutFull>
+<LayoutFull title="Sobre nós!">
+  <MainSobre img="/ilustracao-info-garcom.svg" title="O que é o Commandee?" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid sed modi, tempore repudiandae sapiente non maiores quaerat, amet reiciendis sit nostrum repellendus! Id neque quasi alias et, eos numquam quibusdam!"/>
+
+  <!-- Inverter o lado -->
+  <MainSobre img="/ilustracao-info-relogio.svg" title="Lorem Ipsum" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid sed modi, tempore repudiandae sapiente non maiores quaerat, amet reiciendis sit nostrum repellendus! Id neque quasi alias et, eos numquam quibusdam!"/>
+
+  <MainSobre img="/ilustracao-info-celular.svg" title="Lorem Ipsum" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid sed modi, tempore repudiandae sapiente non maiores quaerat, amet reiciendis sit nostrum repellendus! Id neque quasi alias et, eos numquam quibusdam!"/>
+  <CardAjuda />
+</LayoutFull>
+
+<style>
+  header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+</style>

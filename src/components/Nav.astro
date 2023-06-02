@@ -1,24 +1,17 @@
 
 <nav>
-  <div class="logo-nav"><a href="/">Commandee</a></div>
+    <a href="/" class="logo-nav">Commandee</a>
+    <div class="bx bx-menu" id="icone-menu"></div>
   <ul>
-    <li><a href="/">Home</a></li>
     <li><a href="/sobre">Sobre</a></li>
-    <li><a href="/lista">Lista</a></li>
+    <!--<li><a href="/lista">Lista</a></li>-->
     <li><a href="/contato">Contato</a></li>
     <li><a href="/download">Download</a></li>
     <li><a href="/profile">Perfil</a></li> <!-- lembrar de apagar depois -->
-  </ul>
-
-  <!-- sessão de login e cadastro da navbar-->
-  <ul>
     <li><a href="/login">Login</a></li>
     <button class="bg-rose-500 hover:bg-rose-700 text-white font-medium py-2 px-3 rounded-full">Cadastre-se</button>
   </ul>
 
-  <div class="menu-hamburguer">
-    <div class="hamburguer"></div>
-  </div>
 </nav>
 
 <style>
@@ -33,21 +26,28 @@
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     z-index: 1;
-
   }
+
+  nav a {
+    text-decoration: none;
+  }
+
 
   .logo-nav {
     color: var(--primary);
     font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
-    flex-grow: 1;
+  }
+
+  #icone-menu {
+    display: none;
+    color: var(--textodark);
   }
 
   nav ul {
     list-style: none;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
     gap: 10px;
   }
@@ -75,9 +75,6 @@
     color: var(--accent) !important;
   }
 
-  a {
-    text-decoration: none;
-  }
 
   @media (max-width: 768px) {
     nav {
@@ -90,6 +87,12 @@
 
     .logo-nav {
       font-size: 1.2rem;
+    }
+
+    #icone-menu {
+      display: block;
+      font-size: 1.5rem;
+      cursor: pointer;
     }
     nav ul {
       display: none;
