@@ -29,8 +29,10 @@ const {img, title, description} = Astro.props;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 15px;
+    gap: 1rem;
+    text-align: center;
     color: var(--textodark);
+    font-size: var(--texto);
   }
 
   picture {
@@ -67,7 +69,7 @@ const {img, title, description} = Astro.props;
     justify-content: flex-start;
     align-items: center;
     margin-top: 2rem;
-    min-height: 80vh;
+    min-height: 75vh;
   }
 
   picture {
@@ -76,8 +78,7 @@ const {img, title, description} = Astro.props;
 
   article {
     width: 85%;
-    margin-top: 1.5rem;
-    text-align: center;
+    margin-top: 1rem;
   }
 }
 </style>

@@ -9,7 +9,9 @@ const { imagem, integrante, funcao } = Astro.props;
 ---
 
 <article>
-  <img src={imagem} alt="integrante da equipe" />
+  <picture>
+    <img src={imagem} alt="integrante da equipe" />
+  </picture>
   <div>
     <h3>{integrante}</h3>
     <p>{funcao}</p>
@@ -21,45 +23,52 @@ const { imagem, integrante, funcao } = Astro.props;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 40vw;
-    margin-top: 2rem;
-    padding: 2rem;
+    width: 20vw;
+    height: auto;
+    max-height: 75vh;
+    padding: 0.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 4rem;
     border-radius: 10px;
     color: var(--textodark);
-  }
-
-  article:hover {
-    scale: 1.1;
-    transition: 0.5s;
     box-shadow: 0 0 10px var(--secondary);
+    transition: all ease-in-out 200ms;
+
   }
 
-  article img {
-    border-radius: 50%;
-    width: 40%;
-    border: 2px solid var(--primary);
-    margin-bottom: 1rem;
+  article:hover{
+    box-shadow: 0 0 10px var(--secondary);
+    scale: 1.1;
+  }
+
+  article picture img {
+    width: auto;
+    height: 20%;
   }
 
   article div {
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
     padding: 1rem;
     border-radius: 30px;
   }
 
 
   article div h3 {
-    font-size: 1.2rem;
+    color: var(--accent);
+    font-size: 1.4rem;
     font-weight: bold;
   }
 
   @media only screen and (max-width: 768px) {
     article {
       width: 80vw;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
     }
 
     article img{

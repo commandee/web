@@ -11,7 +11,6 @@
     justify-content: center;
     align-items: center;
     padding: 2rem;
-    margin-top: rem;
   }
 
   div article {
@@ -19,7 +18,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 30vw;
+    min-width: 30vw;
     height: 25vh;
     text-align: center;
     background-color: var(--accent);
@@ -31,7 +30,8 @@
 
   article h1 {
     font-weight: bolder;
-    font-size: 2rem;
+    font-size: var(--textoTitulo);
+    padding: 0.8rem;
   }
 
   article p {
@@ -54,6 +54,7 @@
   @media only screen and (max-width: 768px){
     article{
       padding: 1rem;
+      margin-top: 2rem;
     }
     article h1{
       font-size: 1.5rem;
@@ -63,8 +64,8 @@
     }
 
     div article{
-      width: 80vw;
-      height: 35vh;
+      min-width: 80vw;
+      height: 25vh;
     }
   }
 </style>

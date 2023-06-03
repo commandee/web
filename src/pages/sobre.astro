@@ -1,7 +1,8 @@
 ---
 import LayoutFull from '../layouts/LayoutFull.astro'
-import MainSobre from '../components/MainSobre.astro'
+import MainSobre from '../components/Sobre.astro'
 import CardAjuda from '../components/CardAjuda.astro';
+import CardTime from '../components/CardTime.astro';
 ---
 
 <LayoutFull title="Sobre nós!">
@@ -11,6 +12,16 @@ import CardAjuda from '../components/CardAjuda.astro';
   <MainSobre img="/ilustracao-info-relogio.svg" title="Lorem Ipsum" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid sed modi, tempore repudiandae sapiente non maiores quaerat, amet reiciendis sit nostrum repellendus! Id neque quasi alias et, eos numquam quibusdam!"/>
 
   <MainSobre img="/ilustracao-info-celular.svg" title="Lorem Ipsum" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid sed modi, tempore repudiandae sapiente non maiores quaerat, amet reiciendis sit nostrum repellendus! Id neque quasi alias et, eos numquam quibusdam!"/>
+  <section>
+    <h1 class="tituloGradiente">Nosso Time:</h1>
+  </section>
+
+  <section>
+    <CardTime imagem='https://avatars.githubusercontent.com/u/99834738?v=4' integrante='Silver' funcao='    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque commodi laudantium atque excepturi et fugiat, illum odio quis iusto nam eaque reprehenderit earum dolor consectetur iure saepe explicabo dolorum! Eum.' />
+    <CardTime imagem='https://avatars.githubusercontent.com/u/99834864?v=4' integrante='Meida' funcao='    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque commodi laudantium atque excepturi et fugiat, illum odio quis iusto nam eaque reprehenderit earum dolor consectetur iure saepe explicabo dolorum! Eum.' />
+    <CardTime imagem='https://avatars.githubusercontent.com/u/102124577?v=4' integrante='Nacrai' funcao='Exorcizo te, creatura salis. Adjuro te, maledicte diabole. Adjuro te, serpens, discedas ab hoc virgo. Exorcizo te per Deum vivum, phantasma. En nomine Jesu Christi, qui venturus est judicare vivos et mortuos. Et nomine Patri et Fili et Spiritu Sancti.' />
+    <CardTime imagem='https://avatars.githubusercontent.com/u/102191135?v=4' integrante='Renato.' funcao='    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque commodi laudantium atque excepturi et fugiat, illum odio quis iusto nam eaque reprehenderit earum dolor consectetur iure saepe explicabo dolorum! Eum.'/>
+  </section>
   <CardAjuda />
 </LayoutFull>
 
@@ -20,5 +31,21 @@ import CardAjuda from '../components/CardAjuda.astro';
     align-items: center;
     justify-content: center;
     margin-top: 1rem;
+  }
+
+  section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 2rem;
+  }
+
+  @media only screen and (max-width: 768px){
+    
+    section{
+      flex-direction: column;
+      gap: 1rem;
+    }
   }
 </style>
