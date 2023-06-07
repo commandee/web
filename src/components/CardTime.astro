@@ -23,12 +23,7 @@ const { imagem, integrante, funcao } = Astro.props;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 20vw;
-    height: auto;
     max-height: 75vh;
-    padding: 0.5rem;
-    margin-top: 1.5rem;
-    margin-bottom: 4rem;
     border-radius: 10px;
     color: var(--textodark);
     box-shadow: 0 0 10px var(--secondary);
@@ -57,7 +52,6 @@ const { imagem, integrante, funcao } = Astro.props;
     border-radius: 30px;
   }
 
-
   article div h3 {
     color: var(--accent);
     font-size: 1.4rem;
@@ -67,8 +61,6 @@ const { imagem, integrante, funcao } = Astro.props;
   @media only screen and (max-width: 768px) {
     article {
       width: 80vw;
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
     }
 
     article img{

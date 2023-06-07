@@ -1,0 +1,48 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+
+const { title, backgroundColor, backgroundImage } = Astro.props;
+---
+
+<Layout title={title}>
+  <Nav />
+  <aside class="background"></aside>
+  <div>
+    <aside>
+      <slot name="sidebar">
+        <p>Default sidebar content</p>
+      </slot>
+    </aside>
+    <main>
+      <slot />
+    </main>
+  </div>
+</Layout>
+
+<style define:vars={{ backgroundColor: backgroundColor || "inherit", backgroundImage: backgroundImage || "" }}>
+  :global(body) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 50vw;
+    z-index: -100;
+    background: var(--backgroundColor);
+    background-image: url(https://picsum.photos/800);
+    background-repeat: no-repeat;
+  }
+
+  div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex: 1;
+    place-items: center;
+  }
+
+</style>

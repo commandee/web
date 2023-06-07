@@ -1,11 +1,17 @@
+---
+import SideMenu from "./SideMenu.astro";
+
+---
+
 
 <nav>
-    <a href="/" class="logo-nav">Commandee</a>
-    <div class="bx bx-menu" id="icone-menu"></div>
+  <a href="/" class="logo-nav">Commandee</a>
+  <div class="bx bx-menu" id="icone-menu" />
+  <SideMenu id="side-panel" />
   <ul>
-    <li><a href="/sobre">Sobre</a></li>
     <!--<li><a href="/lista">Lista</a></li>-->
     <li><a href="/contato">Contato</a></li>
+    <li><a href="/sobre">Sobre</a></li>
     <li><a href="/download">Download</a></li>
     <li><a href="/profile">Perfil</a></li> <!-- lembrar de apagar depois -->
     <li><a href="/login">Login</a></li>
@@ -13,6 +19,15 @@
   </ul>
 
 </nav>
+
+<script lang="ts">
+  const icone = document.getElementById('icone-menu');
+  const menu  = document.getElementById('side-panel');
+
+  icone.addEventListener('click', () => {
+    menu.showModal();
+  });
+</script>
 
 <style>
   nav {

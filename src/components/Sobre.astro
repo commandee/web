@@ -2,28 +2,36 @@
 export interface Props{
   img: string;
   title: string;
-  description: string;
+  reverse: boolean;
 }
 
-const {img, title, description} = Astro.props;
+const {img, title, reverse = true} = Astro.props;
 ---
 
 <section>
-  <picture>
-    <img src={img} alt="ilustração garçom">
-  </picture>
+  { reverse ?
+    <picture>
+      <img src={img} alt="ilustração garçom">
+    </picture>
 
-  <article>
-    <h2>{title}</h2>
-    <p>{description}</p>
-  </article>
+    <article>
+      <h2>{title}</h2>
+      <slot />
+    </article>
+  :
+    <article>
+      <h2>{title}</h2>
+      <slot />
+    </article>
+
+    <picture>
+      <img src={img} alt="ilustração garçom">
+    </picture>
+  }
 </section>
 
 <style>
-
-  section{
-    width: 100%;
-    min-height: 90vh;
+  section {
     margin: 0;
     padding: 0;
     display: flex;

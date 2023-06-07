@@ -1,23 +1,20 @@
 ---
 import FormLogin from "../components/FormLogin.astro";
-import LayoutNav from "../layouts/LayoutNav.astro";
+import LayoutLateral from "../layouts/LayoutLateral.astro";
 ---
 
-<LayoutNav title="Login">
-  <div class="grid">
-    <aside></aside>
-
-    <main>
-      <div>
-        <h1>Acesse sua conta!</h1>
-        <div><FormLogin client:load /></div>
-      </div>
-    </main>
-  </div>
-</LayoutNav>
+<LayoutLateral title="Login" backgroundImage="https://picsum.photos/200">
+  <FormLogin />
+</LayoutLateral>
 
 <style lang="scss">
   @use "../style/utils.scss";
+
+  aside {
+    background-color: aliceblue;
+    height: 100%;
+    width: 100%;
+  }
 
   @media (max-width: 750px) {
     div.grid {
@@ -37,54 +34,6 @@ import LayoutNav from "../layouts/LayoutNav.astro";
       div {
         align-items: center;
         justify-content: center;
-      }
-    }
-  }
-
-  div.grid {
-    display: grid;
-    grid: {
-      template-rows: 1fr;
-      template-columns: 0.9fr 1fr;
-    }
-
-    width: 100vw;
-    min-height: 100vh;
-
-    > * {
-      width: 100%;
-      min-height: inherit;
-    }
-
-    aside {
-      background: {
-        image: url("https://picsum.photos/800");
-        repeat: no-repeat;
-        size: cover;
-      }
-    }
-
-    main {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      h1 {
-        padding-left: 3ch;
-        margin-bottom: 2rem;
-      }
-
-      > div {
-        display: flex;
-        flex-direction: column;
-      }
-
-      div > div {
-        flex: 1 1;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        width: 100%;
       }
     }
   }
