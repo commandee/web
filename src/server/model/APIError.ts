@@ -18,7 +18,10 @@ export default class APIError extends Error {
   statusCode: number;
   override cause: Cause;
 
-  constructor(message: string, { cause, statusCode }: { cause: Cause; statusCode: number }) {
+  constructor(
+    message: string,
+    { cause, statusCode }: { cause: Cause; statusCode: number }
+  ) {
     super(message);
     this.statusCode = statusCode;
     this.cause = cause;

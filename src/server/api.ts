@@ -8,7 +8,10 @@ const bodyParser = {
       const body = await request.json();
       return body;
     } catch (error) {
-      throw new APIError("Invalid JSON", { cause: "invalid-json", statusCode: 400 });
+      return new APIError("Invalid JSON", {
+        cause: "invalid-json",
+        statusCode: 400
+      });
     }
   },
 
@@ -17,13 +20,14 @@ const bodyParser = {
       const body = (await request.formData()).entries();
       const bodyObj: Record<string, unknown> = {};
 
-      for (const [ key, value ] of body) bodyObj[key] = value.valueOf();
-
-      if (Object.keys(bodyObj).length === 0) throw undefined;
+      for (const [key, value] of body) bodyObj[key] = value;
 
       return bodyObj;
     } catch (error) {
-      throw new APIError("Invalid form data", { cause: "invalid-form", statusCode: 400 });
+      return new APIError("Invalid form data", {
+        cause: "invalid-form-data",
+        statusCode: 400
+      });
     }
   },
 
@@ -32,7 +36,10 @@ const bodyParser = {
       const body = await request.text();
       return body;
     } catch (error) {
-      throw new APIError("Invalid text", { cause: "invalid-text", statusCode: 400 });
+      return new APIError("Invalid text", {
+        cause: "invalid-text",
+        statusCode: 400
+      });
     }
   },
 
