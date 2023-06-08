@@ -8,7 +8,7 @@ const bodyParser = {
       const body = await request.json();
       return body;
     } catch (error) {
-      return new APIError("Invalid JSON", {
+      throw new APIError("Invalid JSON", {
         cause: "invalid-json",
         statusCode: 400
       });
@@ -24,8 +24,8 @@ const bodyParser = {
 
       return bodyObj;
     } catch (error) {
-      return new APIError("Invalid form data", {
-        cause: "invalid-form-data",
+      throw new APIError("Invalid form data", {
+        cause: "invalid-form",
         statusCode: 400
       });
     }
@@ -36,7 +36,7 @@ const bodyParser = {
       const body = await request.text();
       return body;
     } catch (error) {
-      return new APIError("Invalid text", {
+      throw new APIError("Invalid text", {
         cause: "invalid-text",
         statusCode: 400
       });
@@ -85,7 +85,10 @@ export async function parseBody<
   const parsed = schema.safeParse(body);
 
   if (!parsed.success)
-    throw new APIError(parsed.error.message, { cause: "validation", statusCode: 400 });
+    throw new APIError(parsed.error.message, {
+      cause: "validation",
+      statusCode: 400
+    });
 
   return parsed.data;
 }
