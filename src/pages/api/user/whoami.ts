@@ -1,12 +1,20 @@
 import type { APIRoute } from "astro";
-import { getUser, responses } from "../../../server/api";
+import { responses } from "../../../server/api";
 import APIError from "../../../server/model/APIError";
+import { getAuth } from "../../../server/auth/cookies";
+import { getEmployee } from "../../../server/model/employee";
 
 export const get: APIRoute = async ({ cookies }) => {
-  const user = await getUser(cookies);
-  if (user instanceof APIError) return user.toResponse();
+  try {
+    const { username } = getAuth(cookies);
 
-  return responses.ok(
-    `Hello ${user.name}\n\nuser: ${user.username}\nemail: ${user.email}`
-  );
+    const user = await getEmployee({ username });
+
+    return responses.ok(
+      `Hello ${user.name}\n\nuser: ${user.username}\nemail: ${user.email}`
+    );
+  } catch (error) {
+    if (error instanceof APIError) return error.toResponse();
+    return responses.internalServerError();
+  }
 };

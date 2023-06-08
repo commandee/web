@@ -1,11 +1,13 @@
 import type { APIRoute } from "astro";
-import { responses } from "../../server/api";
+import { parseBody, responses } from "../../server/api";
+import APIError from "../../server/model/APIError";
 
 export const all: APIRoute = async ({ request }) => {
-  const body = (await request.formData()).entries();
-  const bodyObj: Record<string, unknown> = {};
-
-  for (const [key, value] of body) bodyObj[key] = value;
-
-  return responses.ok(bodyObj);
+  try {
+    const body = await parseBody(request);
+    return responses.ok(body as object);
+  } catch (error) {
+    if (error instanceof APIError) return error.toResponse();
+    return responses.internalServerError();
+  }
 };

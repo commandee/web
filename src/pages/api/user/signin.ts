@@ -1,21 +1,27 @@
 import type { APIRoute } from "astro";
-import { EmployeeDTO, createEmployee } from "../../../server/login";
-import { bodyParser, responses } from "../../../server/api";
+import { createEmployee } from "../../../server/model/employee";
+import { parseBody, responses } from "../../../server/api";
+import { setToken } from "../../../server/auth/cookies";
+import { z } from "zod";
 import APIError from "../../../server/model/APIError";
 
-export const post: APIRoute = async ({ request }) => {
+const schema = z.object({
+  name: z.string(),
+  username: z.string().regex(/^[a-zA-Z0-9_-]{4,15}$/),
+  email: z.string().email(),
+  password: z.string().min(8)
+});
+
+export const post: APIRoute = async ({ request, cookies }) => {
   try {
-    const employee = await bodyParser.any(request);
+    const employee = await parseBody(request, schema);
+    const [, token] = await createEmployee(employee);
 
-    const createdEmployee = await createEmployee(employee as EmployeeDTO);
-    if (createdEmployee instanceof APIError)
-      return createdEmployee.toResponse();
-
-    return responses.setTokenCreated(createdEmployee.token, createdEmployee);
+    setToken(cookies, token);
+    return responses.created(employee);
   } catch (error) {
-    return responses.internalServerError(
-      "Erro durante a criação do funcionário"
-    );
+    if (error instanceof APIError) return error.toResponse();
+    return responses.internalServerError();
   }
 };
 
