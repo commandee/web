@@ -20,7 +20,12 @@ const { title, backgroundColor, backgroundImage } = Astro.props;
   </div>
 </Layout>
 
-<style define:vars={{ backgroundColor: backgroundColor || "inherit", backgroundImage: backgroundImage || "" }}>
+<style
+  define:vars={{
+    backgroundColor: backgroundColor || "inherit",
+    backgroundImage: backgroundImage || ""
+  }}
+>
   :global(body) {
     display: flex;
     flex-direction: column;
@@ -44,5 +49,4 @@ const { title, backgroundColor, backgroundImage } = Astro.props;
     flex: 1;
     place-items: center;
   }
-
 </style>

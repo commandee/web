@@ -1,32 +1,36 @@
 ---
-export interface Props{
+export interface Props {
   img: string;
   title: string;
   reverse: boolean;
 }
 
-const {img, title, reverse = true} = Astro.props;
+const { img, title, reverse = true } = Astro.props;
 ---
 
 <section>
-  { reverse ?
-    <picture>
-      <img src={img} alt="ilustração garçom">
-    </picture>
-
-    <article>
-      <h2>{title}</h2>
-      <slot />
-    </article>
-  :
-    <article>
-      <h2>{title}</h2>
-      <slot />
-    </article>
-
-    <picture>
-      <img src={img} alt="ilustração garçom">
-    </picture>
+  {
+    reverse ? (
+      <>
+        <picture>
+          <img src={img} alt="ilustração garçom" />
+        </picture>
+        <article>
+          <h2>{title}</h2>
+          <slot />
+        </article>
+      </>
+    ) : (
+      <>
+        <article>
+          <h2>{title}</h2>
+          <slot />
+        </article>
+        <picture>
+          <img src={img} alt="ilustração garçom" />
+        </picture>
+      </>
+    )
   }
 </section>
 
@@ -62,31 +66,30 @@ const {img, title, reverse = true} = Astro.props;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
   }
 
-  article h2{
+  article h2 {
     font-size: var(--textoTitulo);
     font-weight: 700;
     text-align: center;
   }
 
-@media (max-width: 768px) {
-  section {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    margin-top: 2rem;
-    min-height: 75vh;
-  }
+  @media (max-width: 768px) {
+    section {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 2rem;
+      min-height: 75vh;
+    }
 
-  picture {
-    width: 85%;
-  }
+    picture {
+      width: 85%;
+    }
 
-  article {
-    width: 85%;
-    margin-top: 1rem;
+    article {
+      width: 85%;
+      margin-top: 1rem;
+    }
   }
-}
 </style>

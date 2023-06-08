@@ -1,33 +1,80 @@
 ---
-import LayoutFull from '../layouts/LayoutFull.astro'
-import MainSobre from '../components/Sobre.astro'
-import CardAjuda from '../components/CardAjuda.astro';
-import CardTime from '../components/CardTime.astro';
+import LayoutFull from "../layouts/LayoutFull.astro";
+import MainSobre from "../components/Sobre.astro";
+import CardAjuda from "../components/CardAjuda.astro";
+import CardTime from "../components/CardTime.astro";
 ---
 
 <LayoutFull title="Sobre nós!">
   <h1 class="tituloGradiente">Sobre o Commandee</h1>
 
-  <MainSobre img="/ilustracao-info-garcom.svg" title="O que é o Commandee?" reverse={false}>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores ad accusamus, vitae, autem iusto error odit cum dignissimos minima aut vel praesentium quas. Porro ab et doloribus quo molestiae sapiente fuga alias cumque tempora? Odio, ducimus consequatur. Vero vitae asperiores odit sapiente. Beatae, odio repellat. Itaque libero cumque ipsa aspernatur.</p>
+  <MainSobre
+    img="/ilustracao-info-garcom.svg"
+    title="O que é o Commandee?"
+    reverse={false}
+  >
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores ad
+      accusamus, vitae, autem iusto error odit cum dignissimos minima aut vel
+      praesentium quas. Porro ab et doloribus quo molestiae sapiente fuga alias
+      cumque tempora? Odio, ducimus consequatur. Vero vitae asperiores odit
+      sapiente. Beatae, odio repellat. Itaque libero cumque ipsa aspernatur.
+    </p>
   </MainSobre>
 
-  <MainSobre img="/ilustracao-info-relogio.svg" title="Otimização" reverse={true}>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. At est eveniet ab! Nam beatae commodi nobis itaque ex maiores tempora doloribus officia eveniet laborum! Labore commodi quo nostrum nam voluptatibus voluptates hic deserunt animi laborum illo amet ea at saepe necessitatibus, repellat distinctio nemo voluptatem ratione iusto quod temporibus nisi.</p>
+  <MainSobre
+    img="/ilustracao-info-relogio.svg"
+    title="Otimização"
+    reverse={true}
+  >
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. At est eveniet
+      ab! Nam beatae commodi nobis itaque ex maiores tempora doloribus officia
+      eveniet laborum! Labore commodi quo nostrum nam voluptatibus voluptates
+      hic deserunt animi laborum illo amet ea at saepe necessitatibus, repellat
+      distinctio nemo voluptatem ratione iusto quod temporibus nisi.
+    </p>
   </MainSobre>
 
-  <MainSobre img="/ilustracao-info-celular.svg" title="Portabilidade" reverse={false}>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae consectetur atque dignissimos et ipsam cum hic sed magni. Obcaecati enim quidem sit. Officiis tempore ducimus ratione praesentium dolor quis quibusdam incidunt voluptatum ab, ullam modi laboriosam nisi provident suscipit illum consequatur! Quibusdam officiis laudantium natus quidem perferendis. Recusandae, totam similique.</p>
+  <MainSobre
+    img="/ilustracao-info-celular.svg"
+    title="Portabilidade"
+    reverse={false}
+  >
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
+      consectetur atque dignissimos et ipsam cum hic sed magni. Obcaecati enim
+      quidem sit. Officiis tempore ducimus ratione praesentium dolor quis
+      quibusdam incidunt voluptatum ab, ullam modi laboriosam nisi provident
+      suscipit illum consequatur! Quibusdam officiis laudantium natus quidem
+      perferendis. Recusandae, totam similique.
+    </p>
   </MainSobre>
   <section>
     <h1 class="tituloGradiente">Nosso Time:</h1>
   </section>
 
   <section>
-    <CardTime imagem='https://avatars.githubusercontent.com/u/99834738?v=4' integrante='Silver' funcao='Front-end Developer' />
-    <CardTime imagem='https://avatars.githubusercontent.com/u/99834864?v=4' integrante='Meida' funcao=' Full-stack Developer' />
-    <CardTime imagem='https://avatars.githubusercontent.com/u/102124577?v=4' integrante='Nacrai' funcao='Full-stack Developer' />
-    <CardTime imagem='https://avatars.githubusercontent.com/u/102191135?v=4' integrante='Renato.' funcao='Front-end Developer'/>
+    <CardTime
+      imagem="https://avatars.githubusercontent.com/u/99834738?v=4"
+      integrante="Silver"
+      funcao="Front-end Developer"
+    />
+    <CardTime
+      imagem="https://avatars.githubusercontent.com/u/99834864?v=4"
+      integrante="Meida"
+      funcao=" Full-stack Developer"
+    />
+    <CardTime
+      imagem="https://avatars.githubusercontent.com/u/102124577?v=4"
+      integrante="Nacrai"
+      funcao="Full-stack Developer"
+    />
+    <CardTime
+      imagem="https://avatars.githubusercontent.com/u/102191135?v=4"
+      integrante="Renato."
+      funcao="Front-end Developer"
+    />
   </section>
   <CardAjuda />
 </LayoutFull>
@@ -41,14 +88,14 @@ import CardTime from '../components/CardTime.astro';
     row-gap: 5rem;
   }
 
-  header{
+  header {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 1rem;
   }
 
-  section{
+  section {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -56,9 +103,8 @@ import CardTime from '../components/CardTime.astro';
     gap: 2rem;
   }
 
-  @media only screen and (max-width: 768px){
-
-    section{
+  @media only screen and (max-width: 768px) {
+    section {
       flex-direction: column;
       gap: 1rem;
     }

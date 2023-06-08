@@ -15,10 +15,7 @@ export default defineConfig({
   vite: {
     css: {
       postcss: {
-        plugins: [
-          autoprefixer(),
-          cssnano()
-        ]
+        plugins: [autoprefixer(), cssnano()]
       }
     }
   }

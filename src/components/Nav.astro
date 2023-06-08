@@ -1,30 +1,31 @@
 ---
 import SideMenu from "./SideMenu.astro";
-
 ---
-
 
 <nav>
   <a href="/" class="logo-nav">Commandee</a>
-  <div class="bx bx-menu" id="icone-menu" />
+  <div class="bx bx-menu" id="icone-menu"></div>
   <SideMenu id="side-panel" />
   <ul>
     <!--<li><a href="/lista">Lista</a></li>-->
     <li><a href="/contato">Contato</a></li>
     <li><a href="/sobre">Sobre</a></li>
     <li><a href="/download">Download</a></li>
-    <li><a href="/profile">Perfil</a></li> <!-- lembrar de apagar depois -->
+    <li><a href="/profile">Perfil</a></li>
+    <!-- lembrar de apagar depois -->
     <li><a href="/login">Login</a></li>
-    <button class="bg-rose-500 hover:bg-rose-700 text-white font-medium py-2 px-3 rounded-full">Cadastre-se</button>
+    <button
+      class="bg-rose-500 hover:bg-rose-700 text-white font-medium py-2 px-3 rounded-full"
+      >Cadastre-se</button
+    >
   </ul>
-
 </nav>
 
 <script lang="ts">
-  const icone = document.getElementById('icone-menu');
-  const menu  = document.getElementById('side-panel');
+  const icone = document.getElementById("icone-menu");
+  const menu = document.getElementById("side-panel");
 
-  icone.addEventListener('click', () => {
+  icone.addEventListener("click", () => {
     menu.showModal();
   });
 </script>
@@ -46,7 +47,6 @@ import SideMenu from "./SideMenu.astro";
   nav a {
     text-decoration: none;
   }
-
 
   .logo-nav {
     color: var(--primary);
@@ -91,7 +91,6 @@ import SideMenu from "./SideMenu.astro";
     color: var(--accent) !important;
   }
 
-
   @media (max-width: 768px) {
     nav {
       position: relative;
@@ -117,6 +116,5 @@ import SideMenu from "./SideMenu.astro";
       display: block;
       margin: 1rem 0;
     }
-
   }
 </style>
