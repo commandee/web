@@ -17,4 +17,5 @@ export const post: APIRoute = async ({ request }) => {
   }
 };
 
-export const get: APIRoute = async () => responses.methodNotAllowed("Use POST to authenticate");
+export const get: APIRoute = async () =>
+  responses.methodNotAllowed("Use POST to authenticate");

@@ -2,5 +2,5 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "git.autofetch": "all",
-  "files.autoSave": "afterDelay",
+  "files.autoSave": "afterDelay"
 }
