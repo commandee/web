@@ -1,14 +1,14 @@
 ---
 export interface Props {
-  format: 'image' | 'text' | 'full';
+  format: "image" | "text" | "full";
 }
 
 const { format } = Astro.props;
 ---
 
 <figure>
-  {(format === 'full' || format === 'image') && <img src="/logo.svg" />}
-  {(format === 'full' || format === 'text') && <figcaption>LOGO</figcaption>}
+  {(format === "full" || format === "image") && <img src="/logo.svg" />}
+  {(format === "full" || format === "text") && <figcaption>LOGO</figcaption>}
 </figure>
 
 <style>

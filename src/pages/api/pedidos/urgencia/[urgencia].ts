@@ -6,11 +6,10 @@ import { responses } from "../../../../server/api";
 
 const schema = z.nativeEnum(Priority);
 
-export const get: APIRoute = async({ params }) => {
+export const get: APIRoute = async ({ params }) => {
   const urgencia = schema.safeParse(params.urgencia);
 
-  if (!urgencia.success)
-    return responses.badRequest(urgencia.error);
+  if (!urgencia.success) return responses.badRequest(urgencia.error);
 
   try {
     const pedidos = await prisma.order.findMany({
