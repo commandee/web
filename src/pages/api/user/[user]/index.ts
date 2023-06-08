@@ -4,7 +4,7 @@ import { getAuth } from "../../../../server/auth/cookies";
 import { getEmployee } from "../../../../server/model/employee";
 import APIError from "../../../../server/model/APIError";
 
-export const get: APIRoute = async({ cookies, params }) => {
+export const get: APIRoute = async ({ cookies, params }) => {
   try {
     assertParam(params, "user");
 

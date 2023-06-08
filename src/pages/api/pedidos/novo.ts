@@ -23,14 +23,13 @@ const schema = z.object({
   command: toConnect
 });
 
-export const post: APIRoute = async({ request }) => {
+export const post: APIRoute = async ({ request }) => {
   try {
     const order = await parseBody(request, schema);
     const resOrder = await prisma.order.create({ data: order });
     return responses.created(resOrder);
   } catch (error) {
-    if (error instanceof APIError)
-      return error.toResponse();
+    if (error instanceof APIError) return error.toResponse();
 
     return responses.internalServerError("Erro ao adicionar pedido");
   }

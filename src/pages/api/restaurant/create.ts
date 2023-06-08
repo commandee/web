@@ -10,7 +10,7 @@ const schema = z.object({
   address: z.string()
 });
 
-export const post: APIRoute = async({ request, cookies }) => {
+export const post: APIRoute = async ({ request, cookies }) => {
   try {
     const { username } = getAuth(cookies);
     const restaurant = await parseBody(request, schema);

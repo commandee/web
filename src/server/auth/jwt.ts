@@ -35,11 +35,19 @@ export function extractPayload(token: string): JWTPayload {
     return payload;
   } catch (error) {
     if (error instanceof jwt.TokenExpiredError)
-      throw new APIError("Token expired", { cause: "token-expired", statusCode: 403 });
+      throw new APIError("Token expired", {
+        cause: "token-expired",
+        statusCode: 403
+      });
 
-    throw new APIError("Invalid token", { cause: "token-invalid", statusCode: 401 });
+    throw new APIError("Invalid token", {
+      cause: "token-invalid",
+      statusCode: 401
+    });
   }
 }
 
 /** JWT expiration time in seconds. */
-export const expiresIn = Number(options.expiresIn?.toString().replace(/[^0-9]/g, "") || 10);
+export const expiresIn = Number(
+  options.expiresIn?.toString().replace(/[^0-9]/g, "") || 10
+);

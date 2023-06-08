@@ -12,19 +12,18 @@ const schema = z.object({
   password: z.string().min(8)
 });
 
-export const post: APIRoute = async({ request, cookies }) => {
+export const post: APIRoute = async ({ request, cookies }) => {
   try {
     const employee = await parseBody(request, schema);
-    const [ , token ] = await createEmployee(employee);
+    const [, token] = await createEmployee(employee);
 
     setToken(cookies, token);
     return responses.created(employee);
   } catch (error) {
-    if (error instanceof APIError)
-      return error.toResponse();
+    if (error instanceof APIError) return error.toResponse();
     return responses.internalServerError();
   }
 };
 
-export const get: APIRoute = async() =>
+export const get: APIRoute = async () =>
   responses.methodNotAllowed("Use POST to create a new employee");

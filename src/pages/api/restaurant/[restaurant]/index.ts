@@ -4,7 +4,7 @@ import { getAuth } from "../../../../server/auth/cookies";
 import { getRestaurant } from "../../../../server/model/restaurant";
 import APIError from "../../../../server/model/APIError";
 
-export const get: APIRoute = async({ params, cookies }) => {
+export const get: APIRoute = async ({ params, cookies }) => {
   try {
     assertParam(params, "restaurantName");
 
@@ -18,8 +18,7 @@ export const get: APIRoute = async({ params, cookies }) => {
 
     return responses.ok(restaurantName);
   } catch (error) {
-    if (error instanceof APIError)
-      return error.toResponse();
+    if (error instanceof APIError) return error.toResponse();
     return responses.internalServerError();
   }
 };

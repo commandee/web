@@ -3,7 +3,7 @@ import { delToken } from "../../../server/auth/cookies";
 import APIError from "../../../server/model/APIError";
 import { responses } from "../../../server/api";
 
-export const get: APIRoute = async({ cookies }) => {
+export const get: APIRoute = async ({ cookies }) => {
   try {
     delToken(cookies);
     return responses.ok("Logged out successfully");

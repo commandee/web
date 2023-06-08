@@ -13,11 +13,17 @@ import { genToken } from "./token";
  */
 function extractToken(cookies: AstroCookies): string {
   if (!cookies?.has("token"))
-    throw new APIError("Token not found", { cause: "token-not-found", statusCode: 401 });
+    throw new APIError("Token not found", {
+      cause: "token-not-found",
+      statusCode: 401
+    });
 
   const token = cookies.get("token");
   if (!token?.value)
-    throw new APIError("Token is empty", { cause: "token-empty", statusCode: 401 });
+    throw new APIError("Token is empty", {
+      cause: "token-empty",
+      statusCode: 401
+    });
 
   return token.value;
 }
@@ -74,7 +80,10 @@ export function delToken(cookies: AstroCookies) {
  * @param {AuthData} auth The user's credentials
  * @returns {Promise<void>} Nothing
  */
-export async function setAuth(cookies: AstroCookies, auth: AuthData): Promise<void> {
+export async function setAuth(
+  cookies: AstroCookies,
+  auth: AuthData
+): Promise<void> {
   const token = await genToken(auth);
   setToken(cookies, token);
 }

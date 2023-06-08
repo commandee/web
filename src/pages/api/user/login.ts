@@ -11,15 +11,21 @@ function parseAuthData(data: {
   password: string;
 }): AuthData {
   if (data.username && data.email)
-    return { username: data.username, email: data.email, password: data.password };
+    return {
+      username: data.username,
+      email: data.email,
+      password: data.password
+    };
 
   if (data.username)
     return { username: data.username, password: data.password };
 
-  if (data.email)
-    return { email: data.email, password: data.password };
+  if (data.email) return { email: data.email, password: data.password };
 
-  throw new APIError("Missing username or email", { cause: "validation", statusCode: 400 });
+  throw new APIError("Missing username or email", {
+    cause: "validation",
+    statusCode: 400
+  });
 }
 
 const schema = z
@@ -30,15 +36,14 @@ const schema = z
   })
   .transform(parseAuthData);
 
-export const post: APIRoute = async({ request, cookies }) => {
+export const post: APIRoute = async ({ request, cookies }) => {
   try {
     const login = await parseBody(request, schema);
     await setAuth(cookies, login);
 
     return responses.ok("You are logged in");
   } catch (error) {
-    if (error instanceof APIError)
-      return error.toResponse();
+    if (error instanceof APIError) return error.toResponse();
 
     return responses.internalServerError();
   }

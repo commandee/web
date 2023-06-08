@@ -18,10 +18,15 @@ const hashOptions = {
  * @returns {Promise<[Employee, string]>} Tuple containing the employee and the token
  * @async
  */
-export async function createEmployee(employee: EmployeeDTO): Promise<[Employee, string]> {
+export async function createEmployee(
+  employee: EmployeeDTO
+): Promise<[Employee, string]> {
   try {
     if (employee.username.match(/^[a-zA-Z0-9_-]{4,15}$/) === null)
-      throw new APIError("Invalid username", { cause: "username", statusCode: 400 });
+      throw new APIError("Invalid username", {
+        cause: "username",
+        statusCode: 400
+      });
 
     const dbEmployee = await prisma.employee.create({
       data: {
@@ -31,10 +36,13 @@ export async function createEmployee(employee: EmployeeDTO): Promise<[Employee, 
     });
 
     const token = sign({ username: dbEmployee.username });
-    return [ dbEmployee, token ];
+    return [dbEmployee, token];
   } catch (error) {
     if (error instanceof APIError) throw error;
-    throw new APIError("Error while creating new employee", { cause: "server", statusCode: 500 });
+    throw new APIError("Error while creating new employee", {
+      cause: "server",
+      statusCode: 500
+    });
   }
 }
 
@@ -47,16 +55,25 @@ export async function createEmployee(employee: EmployeeDTO): Promise<[Employee, 
  * @returns {Promise<Employee>} The employee
  * @async
  */
-export async function getEmployee(params: { username?: string, email?: string }): Promise<Employee> {
+export async function getEmployee(params: {
+  username?: string;
+  email?: string;
+}): Promise<Employee> {
   if (!params.username && !params.email)
-    throw new APIError("No username or email provided", { cause: "username", statusCode: 400 });
+    throw new APIError("No username or email provided", {
+      cause: "username",
+      statusCode: 400
+    });
 
   const employee = await prisma.employee.findUnique({
     where: params
   });
 
   if (!employee)
-    throw new APIError("Employee not found", { cause: "username", statusCode: 404 });
+    throw new APIError("Employee not found", {
+      cause: "username",
+      statusCode: 404
+    });
 
   return employee;
 }
