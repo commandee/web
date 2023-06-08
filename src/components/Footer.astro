@@ -1,63 +1,64 @@
----
----
-
+<div></div>
+<!-- Divider bonito -->
 <footer>
   <section>
-    <div>
-      <h3 class="font-bold text-3xl">Commandee</h3>
-      <ul>
-        <li><a href="">Cadastrar</a></li>
-        <li><a href="">Login</a></li>
-        <li><a href="">Download</a></li>
-        <li><a href="">Sobre</a></li>
-        <li><a href="/lista">Lista</a></li>
-      </ul>
-    </div>
-
-    <div>
-      <h3 class="font-bold text-3xl">Nossa Equipe</h3>
-      <ul>
-        <li><a>Contato</a></li>
-        <li><a>Sobre nós</a></li>
-      </ul>
-    </div>
-
-    <div>
-      <h3 class="font-bold text-3xl">Mídias Sociais</h3>
-      <span>icone twitter</span>
-      <span>icone instagram</span>
-      <span>icone linkedIn</span>
-      <span>icone github</span>
-    </div>
-    <div>
-      <img src="/imagemComidaFooter.png" alt="ilustração" width="400px" />
-    </div>
+    <a href="https://github.com/dancarinos"
+      ><img src="/icon-github.svg" alt="" /></a
+    >
+    <a href=""><img src="/icon-linkedin.svg" alt="" /></a>
+    <a href=""><img src="/icon-twitter.svg" alt="" /></a>
   </section>
-  <div>
-    <span>© 2023 COMMANDEE INC.</span>
-    <span>Termos e Condições</span>
-    <span>Política de Privacidade</span>
-  </div>
+
+  <ul>
+    <li><a href="/contato">Contato</a></li>
+    <li><a href="/sobre">Sobre</a></li>
+    <li><a href="/download">Download</a></li>
+    <li><a href="/login">Login</a></li>
+    <li><a href="/cadastro">Cadastro</a></li>
+    <li></li>
+  </ul>
+
+  <p>© 2023 Commandee Inc.</p>
 </footer>
-
 <style>
+  div {
+    aspect-ratio: 900/50;
+    width: 100%;
+    min-height: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url("./footer-divider.svg");
+  }
+
   footer {
-    position: relative;
-    background-color: var(--branco);
-    color: var(--roxo);
-    padding: 2rem;
-
-    display: grid;
-    grid-template-columns: 20% auto;
-    grid-template-rows: auto;
+    background-color: var(--primary);
+    color: var(--textolight);
+    padding: 20px;
+    text-align: center;
+    bottom: 0;
   }
 
-  container {
+  section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 1.2rem;
+    height: 100px;
   }
 
-  h3 {
+  ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
   }
 
-  footer div {
+  ul a:hover {
+    color: var(--textodark);
   }
 </style>

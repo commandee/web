@@ -1,0 +1,74 @@
+<div>
+  <article>
+    <h1>Precisando de Ajuda?</h1>
+    <p>Entre em contato clicando abaixo:</p>
+    <button
+      class="bg-neutral-100 hover:bg-neutral-400 text-blue-950 py-2 px-3 m-2 rounded-full"
+      >Entre em contato</button
+    >
+  </article>
+</div>
+<style>
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  div article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 30vw;
+    height: 25vh;
+    text-align: center;
+    background-color: var(--accent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 15px;
+    color: var(--textolight);
+  }
+
+  article h1 {
+    font-weight: bolder;
+    font-size: var(--textoTitulo);
+    padding: 0.8rem;
+  }
+
+  article p {
+    font-size: 1rem;
+  }
+
+  p a {
+    text-decoration: none;
+    font-weight: bolder;
+  }
+
+  p a:hover {
+    color: var(--textodark);
+  }
+
+  article button {
+    color: var(--textodark);
+  }
+
+  @media only screen and (max-width: 768px) {
+    article {
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    article h1 {
+      font-size: 1.5rem;
+    }
+    article p {
+      font-size: 0.8rem;
+    }
+
+    div article {
+      min-width: 80vw;
+      height: 25vh;
+    }
+  }
+</style>

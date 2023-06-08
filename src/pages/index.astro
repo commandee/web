@@ -1,74 +1,79 @@
 ---
 import LayoutNav from "../layouts/LayoutNav.astro";
+import MainHome from "../components/MainHome.astro";
+//import CardAjuda from "../components/CardAjuda.astro";
+//import CardInfo from "../components/CardInfo.astro";
+//import CardTime from "../components/CardTime.astro";
+//import Titulo from "../components/Titulo.astro";
 ---
 
 <LayoutNav title="Commandee">
-  <section>
-    <div class="title">
-      <h1 class="text-orange-500 text-5xl font-bold self-start">
-        <u>Comman</u>dee
-      </h1>
-      <p class="text-2xl">Sua comanda digital confiável, rápida e segura.</p>
-      <button
-        class="bg-purple-400 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-full"
-        >Conheça agora
-      </button>
-    </div>
-    <div class="img"><img src="/imagemComidaHome.png" alt="ilustração" /></div>
-  </section>
+  <MainHome />
+  <!-- <main>
+    <section>
+      <Titulo titulo="Sobre o Commandee" />
+      <div>
+        <CardInfo
+          title="Agilidade"
+          body="Algum texto muito legala qui que eu não sei o que colocar então vai ficar assim lalalalal"
+          alt="ilustracao"
+          imagem="/ilustracao-info-relogio.svg"
+        />
+        <CardInfo
+          title="Simplicidade"
+          body="Algum texto muito legala qui que eu não sei o que colocar então vai ficar assim lalalalal"
+          alt="ilustracao"
+          imagem="/ilustracao-info-garcom.svg"
+        />
+        <CardInfo
+          title="Dinamicidade"
+          body="Algum texto muito legala qui que eu não sei o que colocar então vai ficar assim lalalalal"
+          alt="ilustracao"
+          imagem="/ilustracao-info-celular.svg"
+        />
+      </div>
+    </section>
+
+    <section>
+      <Titulo titulo="Nossa Equipe" />
+      <div>
+        <CardTime imagem="https://avatars.githubusercontent.com/u/99834738?v=4" integrante="Silver" funcao="Frontend Developer" />
+        <CardTime imagem="https://avatars.githubusercontent.com/u/102191135?v=4" integrante="Renato" funcao="FrontEnd Developer" />
+        <CardTime imagem="https://avatars.githubusercontent.com/u/99834864?v=4" integrante="Memeida" funcao="Backend Developer" />
+        <CardTime imagem="https://avatars.githubusercontent.com/u/102124577?v=4" integrante="Anacrai" funcao="Backend Developer" />
+      </div>
+    </section>
+
+    <section>
+      <CardAjuda />
+    </section>
+  </main>-->
 </LayoutNav>
 
 <style>
-  :global(main) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  main {
+    background-color: var(--background);
   }
 
   section {
+    flex-wrap: wrap;
+    padding: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  section div {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    height: 100%;
   }
 
-  button {
-    margin-inline: 3rem !important;
-    padding-block: 1rem !important;
-    flex: 1;
-  }
-
-  .title {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1rem;
-    padding-inline: 1rem;
-  }
-
-  img {
-    max-height: 250px;
-    aspect-ratio: 1 / 1;
-  }
-
-  p {
-    font-size: 1.5rem;
-    line-height: 1.5;
-    text-align: center;
-  }
-
-  @media screen and (max-width: 1000px) {
+  @media only screen and (max-width: 768px) {
     section {
-      flex-direction: column;
-      align-items: center;
-      margin-top: 2rem;
+      margin-bottom: 1rem;
     }
 
-    .img {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex: 1;
+    section div {
+      flex-direction: column;
     }
   }
 </style>
