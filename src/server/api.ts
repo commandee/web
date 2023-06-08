@@ -9,7 +9,10 @@ export const bodyParser = {
       const body = await request.json();
       return body;
     } catch (error) {
-      return new APIError("Invalid JSON", { cause: "invalid-json", statusCode: 400 });
+      return new APIError("Invalid JSON", {
+        cause: "invalid-json",
+        statusCode: 400
+      });
     }
   },
 
@@ -18,12 +21,14 @@ export const bodyParser = {
       const body = (await request.formData()).entries();
       const bodyObj: Record<string, unknown> = {};
 
-      for (const [ key, value ] of body)
-        bodyObj[key] = value;
+      for (const [key, value] of body) bodyObj[key] = value;
 
       return bodyObj;
     } catch (error) {
-      return new APIError("Invalid form data", { cause: "invalid-form-data", statusCode: 400 });
+      return new APIError("Invalid form data", {
+        cause: "invalid-form-data",
+        statusCode: 400
+      });
     }
   },
 
@@ -32,7 +37,10 @@ export const bodyParser = {
       const body = await request.text();
       return body;
     } catch (error) {
-      return new APIError("Invalid text", { cause: "invalid-text", statusCode: 400 });
+      return new APIError("Invalid text", {
+        cause: "invalid-text",
+        statusCode: 400
+      });
     }
   },
 
@@ -48,23 +56,34 @@ export const bodyParser = {
         return bodyParser.text(request);
 
       default:
-        return new APIError("Invalid content-type", { cause: "invalid-content-type", statusCode: 400 });
+        return new APIError("Invalid content-type", {
+          cause: "invalid-content-type",
+          statusCode: 400
+        });
     }
   }
 };
 
 export function getToken(cookies: AstroCookies): AuthToken | APIError {
   if (!cookies.has("token"))
-    return new APIError("You are not logged in", { cause: "token-not-found", statusCode: 401 });
+    return new APIError("You are not logged in", {
+      cause: "token-not-found",
+      statusCode: 401
+    });
 
   const token = cookies.get("token");
   if (!token?.value)
-    return new APIError("Empty token", { cause: "token-empty", statusCode: 401 });
+    return new APIError("Empty token", {
+      cause: "token-empty",
+      statusCode: 401
+    });
 
   return token.value;
 }
 
-export async function hasAuth(cookies: AstroCookies): Promise<boolean | APIError> {
+export async function hasAuth(
+  cookies: AstroCookies
+): Promise<boolean | APIError> {
   const token = getToken(cookies);
   if (token instanceof APIError) return token;
 
@@ -74,7 +93,9 @@ export async function hasAuth(cookies: AstroCookies): Promise<boolean | APIError
   return true;
 }
 
-export async function getUser(cookies: AstroCookies): Promise<Employee | APIError> {
+export async function getUser(
+  cookies: AstroCookies
+): Promise<Employee | APIError> {
   const token = getToken(cookies);
   if (token instanceof APIError) return token;
 

@@ -24,8 +24,9 @@ function tokenGenerator(payload: string | object): AuthToken {
   return jwt.sign(payload, jwtEnv.secret, { expiresIn: jwtEnv.expiresIn });
 }
 
-export async function createEmployee(employee: EmployeeDTO):
-  Promise<Employee & { token: AuthToken } | APIError> {
+export async function createEmployee(
+  employee: EmployeeDTO
+): Promise<(Employee & { token: AuthToken }) | APIError> {
   const validatedEmployee = employeeSchema.safeParse(employee);
 
   if (!validatedEmployee.success)
@@ -35,9 +36,12 @@ export async function createEmployee(employee: EmployeeDTO):
     });
 
   try {
-    validatedEmployee.data.password = await bcrypt.hash(validatedEmployee.data.password, hashOptions.rounds);
+    validatedEmployee.data.password = await bcrypt.hash(
+      validatedEmployee.data.password,
+      hashOptions.rounds
+    );
     return {
-      ...await prisma.employee.create({ data: validatedEmployee.data }),
+      ...(await prisma.employee.create({ data: validatedEmployee.data })),
       token: tokenGenerator({ username: validatedEmployee.data.username })
     };
   } catch (error) {
@@ -62,10 +66,12 @@ const authSchema = z
   })
   .refine((data) => data.username || data.email, {
     message: "You must provide an username or an email",
-    path: [ "username", "email" ]
+    path: ["username", "email"]
   });
 
-function getAuthInfo(user: AuthData):
+function getAuthInfo(
+  user: AuthData
+):
   | [password: string, userInfo: { username: string } | { email: string }]
   | APIError {
   const parsedUser = authSchema.safeParse(user);
@@ -77,8 +83,8 @@ function getAuthInfo(user: AuthData):
 
   const { password, username, email } = parsedUser.data;
 
-  if (username) return [ password, { username }];
-  if (email) return [ password, { email }];
+  if (username) return [password, { username }];
+  if (email) return [password, { email }];
 
   return new APIError("You must provide an username or an email", {
     cause: "validation",
@@ -91,7 +97,7 @@ export const passwordLogin = {
     const parsed = getAuthInfo(auth);
     if (parsed instanceof APIError) return parsed;
 
-    const [ password, login ] = parsed;
+    const [password, login] = parsed;
 
     try {
       const user = await prisma.employee.findUnique({
@@ -162,7 +168,8 @@ export const tokenLogin = {
 
     try {
       const user = await prisma.employee.findUnique({
-        where: { username: decoded }, select: {}
+        where: { username: decoded },
+        select: {}
       });
       if (user === null)
         return new APIError("User not found", {

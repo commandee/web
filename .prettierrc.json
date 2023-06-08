@@ -1,13 +1,13 @@
 {
-  "arrowParens": "always",
+  "tabWidth": 2,
+  "endOfLine": "lf",
+  "semi": true,
+  "useTabs": false,
   "singleQuote": false,
   "trailingComma": "none",
-  "semi": true,
-  "endOfLine": "lf",
-  "printWidth": 100,
-  "tabWidth": 2,
-  "useTabs": false,
   "bracketSpacing": true,
+  "arrowParens": "always",
+  "printWidth": 80,
   "embeddedLanguageFormatting": "auto",
   "quoteProps": "as-needed"
 }

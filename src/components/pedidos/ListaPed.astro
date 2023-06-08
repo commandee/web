@@ -1,6 +1,6 @@
 ---
-import type { Item, Order } from '@prisma/client';
-import CardPed from './CardPed.astro';
+import type { Item, Order } from "@prisma/client";
+import CardPed from "./CardPed.astro";
 
 export interface Props {
   pedidos: Array<Order & { item: Item }>;

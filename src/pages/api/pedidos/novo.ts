@@ -22,7 +22,7 @@ const schema = z.object({
   command: toConnect
 });
 
-export const post: APIRoute = async({ request }) => {
+export const post: APIRoute = async ({ request }) => {
   const order = schema.safeParse(await bodyParser.any(request));
 
   if (!order.success) return responses.badRequest(order.error.message);

@@ -1,12 +1,12 @@
 ---
-import type { Item, Order } from '@prisma/client';
-import { priorityColors } from '../../server/model/pedido';
+import type { Item, Order } from "@prisma/client";
+import { priorityColors } from "../../server/model/pedido";
 
 export interface Props {
   pedido: Order & { item: Item };
 }
 
-const rt = new Intl.RelativeTimeFormat('pt-BR', { numeric: 'auto' });
+const rt = new Intl.RelativeTimeFormat("pt-BR", { numeric: "auto" });
 
 const { pedido } = Astro.props;
 
@@ -17,13 +17,13 @@ const timeSince = (pedido.createdAt.getTime() - Date.now()) / 1000;
 let horario: string;
 
 if (timeSince > -60) {
-  horario = 'agora';
+  horario = "agora";
 } else if (timeSince > -(60 * 60)) {
-  horario = rt.format(Math.floor(timeSince / 60), 'minute');
+  horario = rt.format(Math.floor(timeSince / 60), "minute");
 } else if (timeSince > -(60 * 60 * 24)) {
-  horario = rt.format(Math.floor(timeSince / 3600), 'hour');
+  horario = rt.format(Math.floor(timeSince / 3600), "hour");
 } else {
-  horario = rt.format(Math.floor(timeSince / 86400), 'day');
+  horario = rt.format(Math.floor(timeSince / 86400), "day");
 }
 ---
 
