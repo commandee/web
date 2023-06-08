@@ -1,21 +1,111 @@
 ---
-const { id } = Astro.props;
+interface Props {
+  id?: string;
+  class?: string;
+}
 ---
 
-<dialog id={id}>
-  <h2>Dialog</h2>
-  <p>Dialog content</p>
+<button data-side-menu-button {...Astro.props}>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+  </svg>
+</button>
 
-  <form method="dialog">
-    <button type="submit">Close</button>
-  </form>
-</dialog>
+<aside data-side-menu>
+  <h3 class="tituloGradiente">Commandee</h3>
+
+  <nav>
+    <ul>
+      <li>Contato</li>
+      <li>Sobre</li>
+      <li>Download</li>
+      <li>Perfil</li>
+    </ul>
+  </nav>
+
+  <span class="login">Login</span>
+</aside>
+
+<script>
+  const aside  = document.querySelector<HTMLElement>("[data-side-menu]")!;
+  const button = document.querySelector<HTMLElement>("[data-side-menu-button]")!;
+
+  function openMenu() {
+    aside.dataset.open = "";
+    document.body.addEventListener("keydown", escClose);
+    button.removeEventListener("click", openMenu);
+    button.addEventListener("click", closeMenu);
+
+    document.body.style.overflowY = "hidden";
+  }
+
+  function closeMenu() {
+    delete aside.dataset.open;
+    document.body.removeEventListener("keydown", escClose);
+    button.addEventListener("click", openMenu);
+    button.removeEventListener("click", closeMenu);
+
+    document.body.style.overflowY = "auto";
+  }
+
+  function escClose(event: KeyboardEvent) {
+    if (event.key === "Escape") closeMenu();
+  }
+
+  button.addEventListener("click", openMenu);
+</script>
 
 <style>
-  dialog {
+  aside {
     position: absolute;
     top: 0;
-    right: 0;
-    z-index: -1;
+    width: 50dvw;
+    height: 100dvh;
+    transition: all 1s;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside:not([data-open]) {
+    left: -50dvw;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  aside[data-open] {
+    left: 0;
+    visibility: visible;
+    opacity: 1;
+    background-color: white;
+  }
+
+  h3 {
+    margin: 1rem 0.5rem !important;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  li {
+    padding: 0.7rem 0.5rem;
+    border-bottom: 1px solid black;
+  }
+
+  li:first-of-type {
+    border-top: 1px solid black;
+  }
+
+  .login {
+    margin-top: auto;
+  }
+
+  button svg {
+    aspect-ratio: 1 / 1;
+    width: 1.5rem;
+    color: var(--textodark);
   }
 </style>

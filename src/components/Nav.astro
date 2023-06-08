@@ -4,8 +4,6 @@ import SideMenu from "./SideMenu.astro";
 
 <nav>
   <a href="/" class="logo-nav">Commandee</a>
-  <div class="bx bx-menu" id="icone-menu"></div>
-  <SideMenu id="side-panel" />
   <ul>
     <!--<li><a href="/lista">Lista</a></li>-->
     <li><a href="/contato">Contato</a></li>
@@ -14,21 +12,15 @@ import SideMenu from "./SideMenu.astro";
     <li><a href="/profile">Perfil</a></li>
     <!-- lembrar de apagar depois -->
     <li><a href="/login">Login</a></li>
-    <button
-      class="bg-rose-500 hover:bg-rose-700 text-white font-medium py-2 px-3 rounded-full"
-      >Cadastre-se</button
+
+    <a id="cadastro" role="button" href="/signin"
+    class="bg-rose-500 justify-self-end hover:bg-rose-700 text-white font-medium py-2 px-3 rounded-full"
     >
+      Cadastre-se
+    </a>
   </ul>
+  <SideMenu id="icone-menu" />
 </nav>
-
-<script lang="ts">
-  const icone = document.getElementById("icone-menu");
-  const menu = document.getElementById("side-panel");
-
-  icone.addEventListener("click", () => {
-    menu.showModal();
-  });
-</script>
 
 <style>
   nav {
@@ -39,7 +31,6 @@ import SideMenu from "./SideMenu.astro";
     align-items: center;
     padding: 1rem;
     background-color: transparent;
-    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     z-index: 1;
   }
@@ -58,6 +49,7 @@ import SideMenu from "./SideMenu.astro";
   #icone-menu {
     display: none;
     color: var(--textodark);
+    justify-self: flex-end;
   }
 
   nav ul {
@@ -94,10 +86,6 @@ import SideMenu from "./SideMenu.astro";
   @media (max-width: 768px) {
     nav {
       position: relative;
-    }
-
-    button {
-      display: none;
     }
 
     .logo-nav {
