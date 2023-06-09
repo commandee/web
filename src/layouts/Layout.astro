@@ -30,6 +30,14 @@ const { title } = Astro.props;
   body {
     min-height: 100vh;
   }
+
+  html {
+    font-family: system-ui, sans-serif;
+    background-color: var(--background);
+    scroll-behavior: smooth;
+  }
+
+
 </style>
 
 <style is:global>
@@ -55,17 +63,7 @@ const { title } = Astro.props;
     --textoTitulo: 1.75rem;
     --texto: 1.1rem;
 
-    --gradient: linear-gradient(left, var(--primary), var(--accent));
-  }
-
-  html {
-    font-family: system-ui, sans-serif;
-    background-color: var(--background);
-    scroll-behavior: smooth;
-  }
-
-  body {
-    height: 100vh;
+    --gradient: -webkit-linear-gradient(left, var(--primary), var(--accent));
   }
 
   code {
@@ -79,8 +77,7 @@ const { title } = Astro.props;
     font-size: var(--textoTitulo);
     font-weight: 700;
     background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: var(--gradient);
   }
 
   h1.tituloGradiente {
