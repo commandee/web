@@ -1,40 +1,39 @@
 ---
 import FormLogin from "../components/FormLogin.astro";
-import LayoutLateral from "../layouts/LayoutLateral.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<LayoutLateral title="Login" backgroundImage="https://picsum.photos/200">
+<Layout title="Login">
+  <aside></aside>
   <FormLogin />
-</LayoutLateral>
+</Layout>
 
 <style lang="scss">
-  @use "../style/utils.scss";
+  :global(body) {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    place-items: center;
+  }
 
   aside {
+    background-image: url("https://picsum.photos/1500");
     background-color: aliceblue;
     height: 100%;
     width: 100%;
+    background-size: cover;
+    background-position: center;
   }
 
-  @media (max-width: 750px) {
-    div.grid {
-      display: flex !important;
+  @media (max-width: 800px) {
+    :global(body) {
+      display: flex;
       align-items: center;
       justify-content: center;
       grid: none;
+    }
 
-      aside {
-        display: none;
-      }
-
-      h1 {
-        padding: 0 !important;
-      }
-
-      div {
-        align-items: center;
-        justify-content: center;
-      }
+    aside {
+      display: none;
     }
   }
 </style>
