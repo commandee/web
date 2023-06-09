@@ -9,9 +9,7 @@ const { imagem, integrante, funcao } = Astro.props;
 ---
 
 <article>
-  <picture>
     <img src={imagem} alt="integrante da equipe" />
-  </picture>
   <div>
     <h3>{integrante}</h3>
     <p>{funcao}</p>
@@ -23,7 +21,6 @@ const { imagem, integrante, funcao } = Astro.props;
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-height: 75vh;
     border-radius: 10px;
     color: var(--textodark);
     box-shadow: 0 0 10px var(--secondary);
@@ -36,8 +33,8 @@ const { imagem, integrante, funcao } = Astro.props;
   }
 
   article picture img {
-    width: auto;
-    height: 20%;
+   width: auto;
+    height: 200px;
   }
 
   article div {
