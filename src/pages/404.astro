@@ -1,25 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
 ---
 
 <Layout title="Opa!">
-
   <section>
     <article>
       <h1 class="tituloGradiente">Opaa!</h1>
-      <p>Essa página não foi encontrada! Volte ao menu principal para navegar para uma existente!</p>
-      <a role="button" class="bg-rose-500 hover:bg-rose-700 text-white py-2 px-5 rounded-full" href="/">Voltar a página principal</a>
+      <p>
+        Essa página não foi encontrada! Volte ao menu principal para navegar
+        para uma existente!
+      </p>
+      <a
+        role="button"
+        class="bg-rose-500 hover:bg-rose-700 text-white py-2 px-5 rounded-full"
+        href="/">Voltar a página principal</a
+      >
     </article>
     <aside>
-      <img src="/illustrations/404.svg" alt="404">
+      <img src="/illustrations/404.svg" alt="404" />
     </aside>
-
   </section>
-
-
 </Layout>
-
 
 <style>
   section {
@@ -63,10 +64,9 @@ import Layout from "../layouts/Layout.astro";
     width: 80%;
   }
 
-  @media (max-width: 768px){
+  @media (max-width: 768px) {
     section {
       flex-direction: column;
-
     }
 
     article {
@@ -74,11 +74,11 @@ import Layout from "../layouts/Layout.astro";
       padding: 0 2rem;
     }
 
-    article p{
+    article p {
       font-size: 1.5rem;
     }
 
-    article h1{
+    article h1 {
       font-size: 3rem !important;
     }
 
@@ -95,4 +95,3 @@ import Layout from "../layouts/Layout.astro";
     }
   }
 </style>
-
