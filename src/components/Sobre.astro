@@ -16,14 +16,14 @@ const { img, title, reverse = false } = Astro.props;
           <img src={img} alt="ilustração garçom" />
         </picture>
         <article>
-          <h2>{title}</h2>
+          <h1>{title}</h1>
           <slot />
         </article>
       </>
     ) : (
       <>
         <article>
-          <h2>{title}</h2>
+          <h1>{title}</h1>
           <slot />
         </article>
         <picture>
@@ -68,7 +68,7 @@ const { img, title, reverse = false } = Astro.props;
     flex-direction: column;
   }
 
-  article h2 {
+  article h1 {
     font-size: var(--textoTitulo);
     font-weight: 700;
     text-align: center;
