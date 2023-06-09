@@ -24,15 +24,15 @@
 
   <a href="." class="login-google">
     <img src="/logos/google.svg" alt="Logo do Google" />
-    Login com o Google
+    <span>Login com o Google</span>
   </a>
   <a href="." class="login-github">
     <img src="/logos/github.svg" alt="Logo do GitHub" />
-    Login com o GitHub
+    <span>Login com o GitHub</span>
   </a>
   <a href="." class="login-facebook">
     <img src="/logos/facebook.svg" alt="Logo do Facebook" />
-    Login com o Facebook
+    <span>Login com o Facebook</span>
   </a>
 </form>
 
@@ -152,10 +152,24 @@
         @extend %button;
         margin-bottom: 0.5rem;
 
+        padding-inline: 1rem;
+        display: grid;
+        align-items: center;
+
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+
         img {
           height: 3ch;
           width: auto;
+          place-self: auto;
         }
+
+        & > * {
+          grid-area: 1 / 1 / 1 / 1;
+          place-self: center;
+        }
+
       }
     }
 

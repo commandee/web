@@ -2,10 +2,10 @@
 export interface Props {
   img: string;
   title: string;
-  reverse: boolean;
+  reverse?: boolean;
 }
 
-const { img, title, reverse = true } = Astro.props;
+const { img, title, reverse = false } = Astro.props;
 ---
 
 <section>

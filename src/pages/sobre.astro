@@ -8,11 +8,7 @@ import CardTime from "../components/cards/CardTime.astro";
 <LayoutFull title="Sobre nós!">
   <h1 class="tituloGradiente">Sobre o Commandee</h1>
 
-  <MainSobre
-    img="/ilustracao-info-garcom.svg"
-    title="O que é o Commandee?"
-    reverse={false}
-  >
+  <MainSobre img="/ilustracao-info-garcom.svg" title="O que é o Commandee?">
     <p>
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores ad
       accusamus, vitae, autem iusto error odit cum dignissimos minima aut vel
@@ -22,11 +18,7 @@ import CardTime from "../components/cards/CardTime.astro";
     </p>
   </MainSobre>
 
-  <MainSobre
-    img="/ilustracao-info-relogio.svg"
-    title="Otimização"
-    reverse={true}
-  >
+  <MainSobre img="/ilustracao-info-relogio.svg" title="Otimização" reverse>
     <p>
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. At est eveniet
       ab! Nam beatae commodi nobis itaque ex maiores tempora doloribus officia
@@ -36,11 +28,7 @@ import CardTime from "../components/cards/CardTime.astro";
     </p>
   </MainSobre>
 
-  <MainSobre
-    img="/ilustracao-info-celular.svg"
-    title="Portabilidade"
-    reverse={false}
-  >
+  <MainSobre img="/ilustracao-info-celular.svg" title="Portabilidade">
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
       consectetur atque dignissimos et ipsam cum hic sed magni. Obcaecati enim
@@ -50,6 +38,7 @@ import CardTime from "../components/cards/CardTime.astro";
       perferendis. Recusandae, totam similique.
     </p>
   </MainSobre>
+  
   <section>
     <h1 class="tituloGradiente">Nosso Time:</h1>
   </section>
@@ -76,7 +65,6 @@ import CardTime from "../components/cards/CardTime.astro";
       integrante="Renato Oliveira"
       funcao="Front-end Developer"
     />
-
   </section>
   <CardAjuda />
 </LayoutFull>
@@ -113,7 +101,6 @@ import CardTime from "../components/cards/CardTime.astro";
     gap: 3rem;
     flex-wrap: wrap;
   }
-
 
   @media only screen and (max-width: 768px) {
     section {
