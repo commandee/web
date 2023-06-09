@@ -46,9 +46,8 @@ import SideMenu from "./SideMenu.astro";
     text-decoration: none;
   }
 
-  #icone-menu {
+  :global(#icone-menu) {
     display: none;
-    color: var(--textodark);
     justify-self: flex-end;
   }
 
@@ -100,10 +99,8 @@ import SideMenu from "./SideMenu.astro";
       font-size: 1.2rem;
     }
 
-    #icone-menu {
+    :global(#icone-menu) {
       display: block;
-      font-size: 1.5rem;
-      cursor: pointer;
     }
     nav ul {
       display: none;

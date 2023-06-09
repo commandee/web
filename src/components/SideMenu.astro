@@ -5,7 +5,7 @@ interface Props {
 }
 ---
 
-<button data-side-menu-button {...Astro.props}>
+<button class="side-menu" {...Astro.props}>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="currentColor"
@@ -19,7 +19,7 @@ interface Props {
   </svg>
 </button>
 
-<aside data-side-menu>
+<aside class="side-menu">
   <h3 class="tituloGradiente"><a href="/">Commandee</a></h3>
   <hr />
 
@@ -32,6 +32,14 @@ interface Props {
           <img src="file-arrow-down.svg" alt="" /> Download</a>
       </li>
       <li><a href="/profile"> <img src="person.svg" alt="" /> Perfil</a></li>
+      <li><a href="/contato"><img src="envelope.svg" alt="" />Contato</a></li>
+      <li><a href="/sobre"><img src="info-circle.svg" alt="" /> Sobre</a></li>
+      <li>
+        <a href="/download">
+          <img src="file-arrow-down.svg" alt="" /> Download</a
+        >
+      </li>
+      <li><a href="/profile"> <img src="person.svg" alt="" /> Perfil</a></li>
     </ul>
   </nav>
 
@@ -42,47 +50,20 @@ interface Props {
 
 <style>
   aside {
-    position: absolute;
-    top: 0;
     width: 50dvw;
     height: 100dvh;
-    transition: all 1s;
-    z-index: 100;
-
     display: flex;
     flex-direction: column;
-  }
+    background-color: var(--background);
 
-  aside:not([data-open]) {
-    left: -50dvw;
-    visibility: hidden;
-    opacity: 0;
+    transition: all 1s ease-in-out;
   }
 
   .backdrop {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100dvw;
     height: 100dvh;
     background-color: transparent;
     backdrop-filter: blur(2.5px);
-    z-index: 99;
-  }
-
-  aside:not([data-open]) ~ .backdrop {
-    visibility: hidden;
-  }
-
-  aside[data-open] ~ .backdrop {
-    visibility: visible;
-  }
-
-  aside[data-open] {
-    left: 0;
-    visibility: visible;
-    opacity: 1;
-    background-color: var(--background);
   }
 
   h3 {
@@ -145,29 +126,82 @@ interface Props {
   }
 
   span {
+    text-align: center;
+    height: 4rem;
+    color: var(--textodark);
+    background-color: var(--accent);
+  }
+</style>
+
+{/* Style OBRIGATÓRIA da SideBar. Sem isso aqui não funciona.
+  * Para alterar a estilização, use a outra tag <style>
+  */}
+<style>
+  aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  aside:not(.open) {
+    transform: translateX(-100%);
+    visibility: hidden;
+  }
+
+  aside.open {
+    transform: translateX(0);
+    visibility: visible;
+    z-index: 2;
+  }
+
+  .backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  aside:not(.open) ~ .backdrop {
+    visibility: hidden;
+  }
+
+  aside.open ~ .backdrop {
+    visibility: visible;
+    z-index: 1;
+  }
+
+  @supports selector(:has) {
+    :global(body:has(aside.open)) {
+      overflow-y: hidden;
+    }
   }
 </style>
 
 <script>
-  const aside = document.querySelector<HTMLElement>("[data-side-menu]")!;
-  const button = document.querySelector<HTMLElement>(
-    "[data-side-menu-button]"
-  )!;
-  const backdrop = document.querySelector<HTMLElement>(".backdrop")!;
+  const aside = document.querySelector<HTMLElement>("aside.side-menu")!;
+  const button = document.querySelector<HTMLElement>("button.side-menu")!;
+  const backdrop = document.querySelector<HTMLElement>("div.backdrop")!;
 
-  function openMenu() {
-    aside.dataset.open = "";
-    document.body.addEventListener("keydown", escClose);
+  const openMenu = CSS.supports("selector(:has(*))")
+    ? function () {
+        aside.classList.add("open");
+        document.body.addEventListener("keydown", escClose);
+      }
+    : function () {
+        aside.classList.add("open");
+        document.body.addEventListener("keydown", escClose);
+        document.body.style.overflowY = "hidden";
+      };
 
-    document.body.style.overflowY = "hidden";
-  }
-
-  function closeMenu() {
-    delete aside.dataset.open;
-    document.body.removeEventListener("keydown", escClose);
-
-    document.body.style.overflowY = "auto";
-  }
+  const closeMenu = CSS.supports("selector(:has(*))")
+    ? function () {
+        aside.classList.remove("open");
+        document.body.removeEventListener("keydown", escClose);
+      }
+    : function () {
+        aside.classList.remove("open");
+        document.body.removeEventListener("keydown", escClose);
+        document.body.style.overflowY = "";
+      };
 
   function escClose(event: KeyboardEvent) {
     if (event.key === "Escape") closeMenu();
