@@ -6,29 +6,121 @@ interface Props {
 ---
 
 <button data-side-menu-button {...Astro.props}>
-  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="currentColor"
+    class="bi bi-list"
+    viewBox="0 0 16 16"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+    ></path>
   </svg>
 </button>
 
 <aside data-side-menu>
-  <h3 class="tituloGradiente">Commandee</h3>
+  <h3 class="tituloGradiente"><a href="/">Commandee</a></h3>
+  <hr>
 
   <nav>
     <ul>
-      <li>Contato</li>
-      <li>Sobre</li>
-      <li>Download</li>
-      <li>Perfil</li>
+      <li><a href="/contato"><img src="envelope.svg" alt="">Contato</a></li>
+      <li><a href="/sobre"><img src="info-circle.svg" alt=""> Sobre</a></li>
+      <li><a href="/download"> <img src="file-arrow-down.svg" alt=""> Download</a></li>
+      <li><a href="/profile"> <img src="person.svg" alt=""> Perfil</a></li>
     </ul>
   </nav>
 
-  <span class="login">Login</span>
+  <span class="login"><a href="/login">Login</a></span>
 </aside>
 
+<style>
+  aside {
+    position: absolute;
+    top: 0;
+    width: 50dvw;
+    height: 100dvh;
+    transition: all 1s;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside:not([data-open]) {
+    left: -50dvw;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  aside[data-open] {
+    left: 0;
+    visibility: visible;
+    opacity: 1;
+    background-color: var(--background);
+  }
+
+  h3 {
+    margin: 0.8rem 0.5rem !important;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  li {
+    color: var(--textodark);
+    font-weight: 500;
+    padding: 0.7rem 0.5rem;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: var(--secondary);
+  }
+
+  li:first-of-type{
+    margin-top: 15px;
+  }
+
+  li:hover{
+    color: var(--accent);
+  }
+
+  li a {
+    display: flex;
+    align-items: center;
+  }
+
+  li img{
+    width: 1.2rem;
+    margin-right: 0.5rem;
+    color: var(--textodark);
+
+  }
+  .login {
+    margin-top: auto;
+  }
+
+  button svg {
+    aspect-ratio: 1 / 1;
+    width: 1.5rem;
+    color: var(--textodark);
+  }
+
+  span{
+    text-align: center;
+    height: 4rem;
+    color: var(--textodark);
+    background-color: var(--accent);
+  }
+</style>
+
 <script>
-  const aside  = document.querySelector<HTMLElement>("[data-side-menu]")!;
-  const button = document.querySelector<HTMLElement>("[data-side-menu-button]")!;
+  const aside = document.querySelector<HTMLElement>("[data-side-menu]")!;
+  const button = document.querySelector<HTMLElement>(
+    "[data-side-menu-button]"
+  )!;
 
   function openMenu() {
     aside.dataset.open = "";
@@ -54,58 +146,3 @@ interface Props {
 
   button.addEventListener("click", openMenu);
 </script>
-
-<style>
-  aside {
-    position: absolute;
-    top: 0;
-    width: 50dvw;
-    height: 100dvh;
-    transition: all 1s;
-
-    display: flex;
-    flex-direction: column;
-  }
-
-  aside:not([data-open]) {
-    left: -50dvw;
-    visibility: hidden;
-    opacity: 0;
-  }
-
-  aside[data-open] {
-    left: 0;
-    visibility: visible;
-    opacity: 1;
-    background-color: white;
-  }
-
-  h3 {
-    margin: 1rem 0.5rem !important;
-  }
-
-  ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  li {
-    padding: 0.7rem 0.5rem;
-    border-bottom: 1px solid black;
-  }
-
-  li:first-of-type {
-    border-top: 1px solid black;
-  }
-
-  .login {
-    margin-top: auto;
-  }
-
-  button svg {
-    aspect-ratio: 1 / 1;
-    width: 1.5rem;
-    color: var(--textodark);
-  }
-</style>
