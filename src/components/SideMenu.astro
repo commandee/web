@@ -26,34 +26,7 @@ interface Props {
   <span class="login">Login</span>
 </aside>
 
-<script>
-  const aside  = document.querySelector<HTMLElement>("[data-side-menu]")!;
-  const button = document.querySelector<HTMLElement>("[data-side-menu-button]")!;
-
-  function openMenu() {
-    aside.dataset.open = "";
-    document.body.addEventListener("keydown", escClose);
-    button.removeEventListener("click", openMenu);
-    button.addEventListener("click", closeMenu);
-
-    document.body.style.overflowY = "hidden";
-  }
-
-  function closeMenu() {
-    delete aside.dataset.open;
-    document.body.removeEventListener("keydown", escClose);
-    button.addEventListener("click", openMenu);
-    button.removeEventListener("click", closeMenu);
-
-    document.body.style.overflowY = "auto";
-  }
-
-  function escClose(event: KeyboardEvent) {
-    if (event.key === "Escape") closeMenu();
-  }
-
-  button.addEventListener("click", openMenu);
-</script>
+<div class="backdrop"></div>
 
 <style>
   aside {
@@ -62,6 +35,7 @@ interface Props {
     width: 50dvw;
     height: 100dvh;
     transition: all 1s;
+    z-index: 2;
 
     display: flex;
     flex-direction: column;
@@ -71,6 +45,25 @@ interface Props {
     left: -50dvw;
     visibility: hidden;
     opacity: 0;
+  }
+
+  .backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    background-color: transparent;
+    backdrop-filter: blur(2.5px);
+  }
+
+  aside:not([data-open]) ~ .backdrop {
+    visibility: hidden;
+  }
+
+  aside[data-open] ~ .backdrop {
+    visibility: visible;
+    z-index: 1;
   }
 
   aside[data-open] {
@@ -83,6 +76,8 @@ interface Props {
   h3 {
     margin: 1rem 0.5rem !important;
   }
+
+
 
   ul {
     display: flex;
@@ -109,3 +104,30 @@ interface Props {
     color: var(--textodark);
   }
 </style>
+
+<script>
+  const aside  = document.querySelector<HTMLElement>("[data-side-menu]")!;
+  const button = document.querySelector<HTMLElement>("[data-side-menu-button]")!;
+  const backdrop = document.querySelector<HTMLElement>(".backdrop")!;
+
+  function openMenu() {
+    aside.dataset.open = "";
+    document.body.addEventListener("keydown", escClose);
+
+    document.body.style.overflowY = "hidden";
+  }
+
+  function closeMenu() {
+    delete aside.dataset.open;
+    document.body.removeEventListener("keydown", escClose);
+
+    document.body.style.overflowY = "auto";
+  }
+
+  function escClose(event: KeyboardEvent) {
+    if (event.key === "Escape") closeMenu();
+  }
+
+  button.addEventListener("click", openMenu);
+  backdrop.addEventListener("click", closeMenu);
+</script>
