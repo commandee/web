@@ -1,0 +1,64 @@
+---
+interface Props extends Omit<astroHTML.JSX.ButtonHTMLAttributes, "id"> {}
+---
+
+<button id="side-menu" {...Astro.props}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="currentColor"
+    class="bi bi-list"
+    viewBox="0 0 16 16"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+    ></path>
+  </svg>
+</button>
+
+<style>
+  button svg {
+    aspect-ratio: 1 / 1;
+    width: 1.5rem;
+    color: var(--textodark);
+  }
+</style>
+
+<script>
+  const aside = document.querySelector<HTMLElement>("body>aside#side-menu")!;
+  const button = document.querySelector<HTMLElement>("button#side-menu")!;
+  const backdrop = document.querySelector<HTMLElement>("body>#backdrop")!;
+
+  const openMenu = CSS.supports("selector(:has(*))")
+    ? function () {
+        aside.classList.add("open");
+        backdrop.classList.add("open");
+        document.body.addEventListener("keydown", escClose);
+      }
+    : function () {
+        aside.classList.add("open");
+        backdrop.classList.add("open");
+        document.body.addEventListener("keydown", escClose);
+        document.body.style.overflowY = "hidden";
+      };
+
+  const closeMenu = CSS.supports("selector(:has(*))")
+    ? function () {
+        aside.classList.remove("open");
+        backdrop.classList.remove("open");
+        document.body.removeEventListener("keydown", escClose);
+      }
+    : function () {
+        aside.classList.remove("open");
+        backdrop.classList.remove("open");
+        document.body.removeEventListener("keydown", escClose);
+        document.body.style.overflowY = "";
+      };
+
+  function escClose(event: KeyboardEvent) {
+    if (event.key === "Escape") closeMenu();
+  }
+
+  button.addEventListener("click", openMenu);
+  backdrop.addEventListener("click", closeMenu);
+</script>

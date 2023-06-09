@@ -1,0 +1,109 @@
+---
+interface Props {
+  class?: string;
+  id?: string;
+}
+---
+
+<aside {...Astro.props}>
+  <h3 class="tituloGradiente"><a href="/">Commandee</a></h3>
+
+  <hr />
+
+  <nav>
+    <a href="/contato"><img src="envelope.svg" alt="" />Contato</a>
+    <a href="/sobre"><img src="info-circle.svg" alt="" /> Sobre</a>
+    <a href="/download"> <img src="file-arrow-down.svg" alt="" /> Download</a>
+    <a href="/profile"> <img src="person.svg" alt="" /> Perfil</a>
+  </nav>
+
+  <a href="/login" class="login">Login</a>
+</aside>
+
+<style>
+  aside {
+    width: 50dvw;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background);
+
+
+    transition: all 1s ease-in-out;
+  }
+
+  aside.open {
+    box-shadow: 0px 0px 20px hsla(0, 0%, 60%, 0.4);
+  }
+
+  h3 {
+    margin: 0.8rem 0.5rem !important;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 0.5rem;
+  }
+
+  nav a {
+    position: relative;
+    color: var(--textodark);
+    font-weight: 500;
+    padding-block: 1rem;
+    padding-inline: 1rem;
+    border-radius: 0 10px 10px 0;
+    transition: all 0.5s;
+  }
+
+  nav a::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 0;
+    transition: inherit;
+  }
+
+  nav a:hover::before {
+    top: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--primary), var(--accent));
+  }
+
+  nav a:first-of-type {
+    margin-top: 15px;
+  }
+
+  nav a:hover {
+    color: var(--primary);
+    background-color: var(--secondary);
+  }
+
+  nav a {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+  }
+
+  a img {
+    width: 1.2rem;
+    color: var(--textodark);
+  }
+
+  .login {
+    margin-top: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    text-transform: uppercase;
+    text-align: center;
+    height: 4rem;
+    color: var(--textolight);
+    background: var(--gradient);
+  }
+</style>

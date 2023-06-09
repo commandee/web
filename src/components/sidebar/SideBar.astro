@@ -1,0 +1,68 @@
+---
+import SideBarContent from "./Aside.astro";
+---
+
+<div id="backdrop"></div>
+<SideBarContent id="side-menu" />
+
+<style>
+  #backdrop {
+    width: 100dvw;
+    height: 100dvh;
+    background-color: transparent;
+    backdrop-filter: blur(2.5px);
+
+    transition: all 1s ease-in-out;
+  }
+
+  #backdrop:not(.open) {
+    backdrop-filter: blur(0);
+  }
+</style>
+
+{
+  /* mandatory styles, do not remove
+    for styling, edit files above.
+ */
+}
+<style is:global>
+  body > #backdrop.open {
+    visibility: visible;
+    z-index: 1;
+  }
+
+  @supports selector(:has) {
+    body:has(> aside#side-menu.open) {
+      overflow-y: hidden;
+    }
+  }
+
+  body > aside#side-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  body > aside#side-menu:not(.open) {
+    transform: translateX(-100%);
+    visibility: hidden;
+    z-index: -1;
+  }
+
+  body > aside#side-menu.open {
+    transform: translateX(0);
+    visibility: visible;
+    z-index: 2;
+  }
+
+  body > #backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  body > #backdrop:not(.open) {
+    visibility: hidden;
+    z-index: -2;
+  }
+</style>
