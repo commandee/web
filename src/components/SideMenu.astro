@@ -21,14 +21,17 @@ interface Props {
 
 <aside data-side-menu>
   <h3 class="tituloGradiente"><a href="/">Commandee</a></h3>
-  <hr>
+  <hr />
 
   <nav>
     <ul>
-      <li><a href="/contato"><img src="envelope.svg" alt="">Contato</a></li>
-      <li><a href="/sobre"><img src="info-circle.svg" alt=""> Sobre</a></li>
-      <li><a href="/download"> <img src="file-arrow-down.svg" alt=""> Download</a></li>
-      <li><a href="/profile"> <img src="person.svg" alt=""> Perfil</a></li>
+      <li><a href="/contato"><img src="envelope.svg" alt="" />Contato</a></li>
+      <li><a href="/sobre"><img src="info-circle.svg" alt="" /> Sobre</a></li>
+      <li>
+        <a href="/download">
+          <img src="file-arrow-down.svg" alt="" /> Download</a>
+      </li>
+      <li><a href="/profile"> <img src="person.svg" alt="" /> Perfil</a></li>
     </ul>
   </nav>
 
@@ -44,7 +47,7 @@ interface Props {
     width: 50dvw;
     height: 100dvh;
     transition: all 1s;
-    z-index: 2;
+    z-index: 100;
 
     display: flex;
     flex-direction: column;
@@ -64,6 +67,7 @@ interface Props {
     height: 100dvh;
     background-color: transparent;
     backdrop-filter: blur(2.5px);
+    z-index: 99;
   }
 
   aside:not([data-open]) ~ .backdrop {
@@ -72,7 +76,6 @@ interface Props {
 
   aside[data-open] ~ .backdrop {
     visibility: visible;
-    z-index: 1;
   }
 
   aside[data-open] {
@@ -86,8 +89,6 @@ interface Props {
     margin: 0.8rem 0.5rem !important;
   }
 
-
-
   ul {
     display: flex;
     flex-direction: column;
@@ -100,15 +101,16 @@ interface Props {
     padding: 0.7rem 0.5rem;
     margin: 5px;
     border-radius: 10px;
-    background-color: var(--secondary);
+    transition: all 0.2s;
   }
 
-  li:first-of-type{
+  li:first-of-type {
     margin-top: 15px;
   }
 
-  li:hover{
-    color: var(--accent);
+  li:hover {
+    color: var(--primary);
+    background-color: var(--secondary);
   }
 
   li a {
@@ -116,14 +118,24 @@ interface Props {
     align-items: center;
   }
 
-  li img{
+  li img {
     width: 1.2rem;
     margin-right: 0.5rem;
     color: var(--textodark);
-
   }
+
   .login {
     margin-top: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    text-transform: uppercase;
+    text-align: center;
+    height: 4rem;
+    color: var(--textolight);
+    background: var(--gradient);
   }
 
   button svg {
@@ -132,17 +144,15 @@ interface Props {
     color: var(--textodark);
   }
 
-  span{
-    text-align: center;
-    height: 4rem;
-    color: var(--textodark);
-    background-color: var(--accent);
+  span {
   }
 </style>
 
 <script>
-  const aside  = document.querySelector<HTMLElement>("[data-side-menu]")!;
-  const button = document.querySelector<HTMLElement>("[data-side-menu-button]")!;
+  const aside = document.querySelector<HTMLElement>("[data-side-menu]")!;
+  const button = document.querySelector<HTMLElement>(
+    "[data-side-menu-button]"
+  )!;
   const backdrop = document.querySelector<HTMLElement>(".backdrop")!;
 
   function openMenu() {
