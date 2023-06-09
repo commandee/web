@@ -1,23 +1,24 @@
 <footer>
-  <div class="divider" />
+  <div class="divider"></div>
 
   <div class="content">
-    <section>
-      <a href="https://github.com/dancarinos"
-        ><img src="/icon-github.svg" alt="" />
-      </a>
-      <a href=""><img src="/icon-linkedin.svg" alt="" /></a>
-      <a href=""><img src="/icon-twitter.svg" alt="" /></a>
-    </section>
-
-    <ul>
-      <li><a href="/contato">Contato</a></li>
-      <li><a href="/sobre">Sobre</a></li>
-      <li><a href="/download">Download</a></li>
-      <li><a href="/login">Login</a></li>
-      <li><a href="/cadastro">Cadastro</a></li>
-      <li></li>
+    <ul class="social-media">
+      <li>
+        <a href="https://github.com/dancarinos"
+          ><img src="/icon-github.svg" alt="" /></a
+        >
+      </li>
+      <li><a href=""><img src="/icon-linkedin.svg" alt="" /></a></li>
+      <li><a href=""><img src="/icon-twitter.svg" alt="" /></a></li>
     </ul>
+
+    <nav>
+      <a href="/contato">Contato</a>
+      <a href="/sobre">Sobre</a>
+      <a href="/download">Download</a>
+      <a href="/login">Login</a>
+      <a href="/cadastro">Cadastro</a>
+    </nav>
 
     <p>© 2023 Commandee Inc.</p>
   </div>
@@ -32,25 +33,23 @@
     background-image: url("./footer-divider.svg");
   }
 
-  footer {
-    text-align: center;
-    color: white;
-  }
-
   .content {
+    color: white;
+    text-align: center;
     background-color: #7149c6;
     padding: 1rem 2rem;
   }
 
-  section {
+  .social-media {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 20px;
-    height: 100px;
+    margin-bottom: 2rem;
   }
 
-  ul {
+  nav {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
@@ -59,7 +58,7 @@
     gap: 0.5rem;
   }
 
-  ul a:hover {
+  nav a:hover {
     color: lightgrey;
   }
 </style>
