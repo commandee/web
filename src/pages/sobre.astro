@@ -1,8 +1,8 @@
 ---
 import LayoutFull from "../layouts/LayoutFull.astro";
 import MainSobre from "../components/Sobre.astro";
-import CardAjuda from "../components/CardAjuda.astro";
-import CardTime from "../components/CardTime.astro";
+import CardAjuda from "../components/cards/CardAjuda.astro";
+import CardTime from "../components/cards/CardTime.astro";
 ---
 
 <LayoutFull title="Sobre nós!">
@@ -54,15 +54,16 @@ import CardTime from "../components/CardTime.astro";
     <h1 class="tituloGradiente">Nosso Time:</h1>
   </section>
 
-  <section>
+  <section class="time">
     <CardTime
       imagem="https://avatars.githubusercontent.com/u/99834738?v=4"
       integrante="Silver"
       funcao="Front-end Developer"
     />
+
     <CardTime
       imagem="https://avatars.githubusercontent.com/u/99834864?v=4"
-      integrante="Meida"
+      integrante="Lara"
       funcao=" Full-stack Developer"
     />
     <CardTime
@@ -72,9 +73,10 @@ import CardTime from "../components/CardTime.astro";
     />
     <CardTime
       imagem="https://avatars.githubusercontent.com/u/102191135?v=4"
-      integrante="Renato."
+      integrante="Renato Oliveira"
       funcao="Front-end Developer"
     />
+
   </section>
   <CardAjuda />
 </LayoutFull>
@@ -102,6 +104,16 @@ import CardTime from "../components/CardTime.astro";
     margin-top: 1rem;
     gap: 2rem;
   }
+
+  .time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
 
   @media only screen and (max-width: 768px) {
     section {

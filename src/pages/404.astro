@@ -9,7 +9,7 @@ import Layout from "../layouts/Layout.astro";
     <article>
       <h1 class="tituloGradiente">Opaa!</h1>
       <p>Essa página não foi encontrada! Volte ao menu principal para navegar para uma existente!</p>
-      <a href="/">Volte à página principal</a>
+      <a role="button" class="bg-rose-500 hover:bg-rose-700 text-white py-2 px-5 rounded-full" href="/">Voltar a página principal</a>
     </article>
     <aside>
       <img src="/illustrations/404.svg" alt="404">
@@ -30,25 +30,25 @@ import Layout from "../layouts/Layout.astro";
   }
 
   article {
+    margin: 0 2rem;
     width: 50%;
     text-align: center;
-  }
-
-  article h1 {
-    font-size: 10rem;
-    margin: 0;
+    color: var(--textodark);
   }
 
   article p {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    margin: 0;
+  }
+
+  article h1 {
+    font-size: 4rem !important;
     margin: 0;
   }
 
   article a {
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-decoration: none;
-    color: #000;
-    border: 1px solid #000;
     padding: 1rem 2rem;
     border-radius: 5px;
     display: inline-block;
@@ -61,6 +61,38 @@ import Layout from "../layouts/Layout.astro";
 
   img {
     width: 80%;
+  }
+
+  @media (max-width: 768px){
+    section {
+      flex-direction: column;
+
+    }
+
+    article {
+      width: 100%;
+      padding: 0 2rem;
+    }
+
+    article p{
+      font-size: 1.5rem;
+    }
+
+    article h1{
+      font-size: 3rem !important;
+    }
+
+    article a {
+      font-size: 1rem;
+    }
+
+    aside {
+      margin: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+    }
   }
 </style>
 
