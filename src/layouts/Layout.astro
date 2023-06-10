@@ -75,11 +75,52 @@ const { title } = Astro.props;
     background: var(--gradient);
     font-weight: 700;
     background-clip: text;
-    
+
   }
 
   h1.tituloGradiente {
     font-size: var(--textoGrande);
     margin: 1rem;
   }
+
+
+/*peguei no uiverse.io preguiça de fazer um botão do 0*/
+.button {
+  position: relative;
+  overflow: hidden;
+  height: 3rem;
+  padding: 0 2rem;
+  border-radius: 1.5rem;
+  background: var(--accent);
+  background-size: 400%;
+  color: #fff;
+  border: none;
+   display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.button:hover::before {
+  transform: scaleX(1);
+}
+
+.button-content {
+  z-index: 1;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  width: 100%;
+  height: inherit;
+  border-radius: inherit;
+  background: var(--gradient);
+  transition: all 0.475s;
+}
+
 </style>

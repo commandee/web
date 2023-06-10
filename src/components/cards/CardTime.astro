@@ -3,9 +3,13 @@ export interface Props {
   imagem: string;
   integrante: string;
   funcao: string;
+  twitter: string;
+  instagram: string;
+  github: string;
+
 }
 
-const { imagem, integrante, funcao } = Astro.props;
+const { imagem, integrante, funcao, twitter, instagram ,github } = Astro.props;
 ---
 
 <article>
@@ -17,10 +21,10 @@ const { imagem, integrante, funcao } = Astro.props;
     <span>{funcao}</span>
   </p>
   <div>
-    <a href=""> <img src="/logos/google.svg" /></a>
-    <a href=""> <img src="/logos/github.svg" /></a>
-    <a href=""> <img src="/logos/github.svg" /></a>
-    <a href=""> <img src="/logos/google.svg" /></a>
+    <a href={twitter} target="_blank"> <img src="/logos/twittercolorido.svg" /></a>
+    <a href={instagram} target="_blank"> <img src="/logos/instagram.svg" /></a>
+    <a href={github} target="_blank"> <img src="/logos/githubcolorido.svg" /></a>
+    <a href="" target="_blank"> <img src="/logos/google.svg" /></a>
   </div>
 </article>
 
@@ -39,10 +43,12 @@ const { imagem, integrante, funcao } = Astro.props;
     color: var(--primary);
     font-family: "Poppins", sans-serif;
     transition: all 0.3s ease;
+
   }
 
   article:hover {
     transform: translateY(-10px);
+
   }
 
   picture {
@@ -99,7 +105,6 @@ const { imagem, integrante, funcao } = Astro.props;
   }
 
   div a img {
-    width: 1.1rem;
-    fill: currentColor;
+    width: 1.5rem;
   }
 </style>
