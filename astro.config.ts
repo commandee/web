@@ -9,6 +9,7 @@ import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://commandee.com",
   integrations: [tailwind(), sitemap(), image()],
   output: "server",
   adapter: node({
