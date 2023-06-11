@@ -1,73 +1,56 @@
-<div>
-  <article>
-    <h1>Precisando de Ajuda?</h1>
+<div class="card">
+  <div>
+    <h3>Precisando de Ajuda?</h3>
     <p>Entre em contato clicando abaixo:</p>
-    <a
-      role="button"
-      href="/contato"
-      class="bg-neutral-100 hover:bg-neutral-400 text-blue-950 py-2 px-3 m-2 rounded-full"
-      >Entre em contato</a
-    >
-  </article>
+  </div>
+  <a
+    role="button"
+    href="/contato"
+    class="bg-neutral-100 hover:bg-neutral-400 text-blue-950 py-2 px-3 rounded-full"
+    >Entre em contato</a
+  >
 </div>
-<style>
-  div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-  }
 
-  div article {
+<style>
+  .card {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    min-width: 30vw;
-    height: 25vh;
+    border-radius: 15px;
+
+    padding: 2rem;
+    gap: 1.5rem;
+
     text-align: center;
     background-color: var(--accent);
-    border-radius: 15px;
     color: var(--textolight);
   }
 
-  article h1 {
-    font-weight: bolder;
-    font-size: var(--textoTitulo);
-    padding: 0.8rem;
+  .card h3 {
+    font-weight: bold;
+    font-size: 1.5em;
   }
 
-  article p {
-    font-size: 1rem;
-  }
-
-  p a {
+  a {
     text-decoration: none;
-    font-weight: bolder;
-  }
-
-  p a:hover {
     color: var(--textodark);
+    margin-top: auto;
   }
 
-  article button {
+  a:hover {
     color: var(--textodark);
   }
 
   @media only screen and (max-width: 768px) {
-    article {
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-    article h1 {
-      font-size: 1.5rem;
-    }
-    article p {
-      font-size: 0.8rem;
+    .card {
+      width: 100%;
+      border-radius: unset;
+      padding: 2rem 0;
     }
 
-    div article {
-      min-width: 50vw;
+    .card > * {
+      width: max-content;
     }
   }
 </style>
