@@ -10,7 +10,9 @@ import image from "@astrojs/image";
 // https://astro.build/config
 export default defineConfig({
   site: "https://commandee.com",
-  integrations: [tailwind(), sitemap(), image()],
+  integrations: [tailwind(), sitemap(), image({
+    serviceEntryPoint: "@astrojs/image/sharp"
+  })],
   output: "server",
   adapter: node({
     mode: "standalone"
