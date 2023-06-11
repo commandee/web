@@ -1,4 +1,6 @@
 ---
+import { Image } from "@astrojs/image/components";
+
 export interface Props {
   imagem: string;
   integrante: string;
@@ -6,106 +8,131 @@ export interface Props {
   twitter: string;
   instagram: string;
   github: string;
-
 }
 
-const { imagem, integrante, funcao, twitter, instagram ,github } = Astro.props;
+const { imagem, integrante, funcao, twitter, instagram, github } = Astro.props;
 ---
 
 <article>
   <picture>
-    <img src={imagem} alt="integrante da equipe" />
+    <Image
+      src={imagem}
+      alt={`Foto de perfil de ${integrante}`}
+      width={160}
+      height={160}
+      format="webp"
+    />
   </picture>
   <p>
     {integrante}
     <span>{funcao}</span>
   </p>
-  <div>
-    <a href={twitter} target="_blank"> <img src="/logos/twittercolorido.svg" /></a>
-    <a href={instagram} target="_blank"> <img src="/logos/instagram.svg" /></a>
-    <a href={github} target="_blank"> <img src="/logos/githubcolorido.svg" /></a>
-    <a href="" target="_blank"> <img src="/logos/google.svg" /></a>
-  </div>
+  <hr>
+  <ul>
+    <li>
+      <a href={twitter} target="_blank">
+        <Image
+          src="/logos/twittercolorido.svg"
+          alt="Twitter logo"
+          format="svg"
+          width={20}
+          height={20}
+        />
+      </a>
+    </li>
+    <li>
+      <a href={instagram} target="_blank">
+        <Image
+          src="/logos/instagram.svg"
+          alt="Instagram logo"
+          format="svg"
+          width={20}
+          height={20}
+        />
+      </a>
+    </li>
+    <li>
+      <a href={github} target="_blank">
+        <Image
+          src="/logos/githubcolorido.svg"
+          alt="GitHub logo"
+          format="svg"
+          width={20}
+          height={20}
+        />
+      </a>
+    </li>
+    <li>
+      <a href="" target="_blank">
+        <Image
+          src="/logos/google.svg"
+          alt="Google logo"
+          format="svg"
+          width={20}
+          height={20}
+        />
+      </a>
+    </li>
+  </ul>
 </article>
 
 <style>
   article {
     background: var(--secondary);
     width: 15rem;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    padding-left: 20px;
-    padding-right: 20px;
+    min-height: 300px;
+    padding-block: 1rem;
     border: 4px solid var(--primary);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     text-align: center;
     color: var(--primary);
-    font-family: "Poppins", sans-serif;
     transition: all 0.3s ease;
 
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    row-gap: 20px;
   }
 
   article:hover {
     transform: translateY(-10px);
-
   }
 
   picture {
     overflow: hidden;
+    border-radius: 100%;
     object-fit: cover;
-    width: 10rem;
-    height: auto;
     border: 1px solid var(--primary);
-    border-radius: 999px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    margin-bottom: 10px;
   }
 
   picture img {
+    object-fit: cover;
+    object-position: center;
     width: 100%;
     fill: currentColor;
   }
 
   p {
-    margin: 0;
-    margin-top: 20px;
     font-weight: 600;
     font-size: 18px;
   }
 
   p span {
     display: block;
-    font-weight: 500;
+    font-weight: normal;
     font-size: 16px;
   }
 
-  div:before {
-    content: " ";
-    display: block;
-    width: 100%;
-    height: 2px;
-    margin: 20px 0;
-    background: var(--primary);
+  ul {
+    display: flex;
+    justify-content: center;
+    column-gap: 2ch;
   }
 
-  div a {
-    display: inline-block;
-    position: relative;
-    margin-right: 15px;
-    text-decoration: none;
-    color: inherit;
-  }
-
-  div a:last-child {
-    margin-right: 0;
-  }
-
-  div a img {
-    width: 1.5rem;
+  hr {
+    width: 80%;
+    border-color: var(--primary);
   }
 </style>

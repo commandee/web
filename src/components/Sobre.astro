@@ -1,4 +1,5 @@
 ---
+import { Image } from "@astrojs/image/components";
 export interface Props {
   img: string;
   title: string;
@@ -13,7 +14,13 @@ const { img, title, reverse = false } = Astro.props;
     reverse ? (
       <>
         <picture>
-          <img src={img} alt="ilustração garçom" />
+          <Image
+            src={img}
+            alt="Ilustração"
+            width={500}
+            height={500}
+            format="svg"
+          />
         </picture>
         <article>
           <h1>{title}</h1>
@@ -27,7 +34,13 @@ const { img, title, reverse = false } = Astro.props;
           <slot />
         </article>
         <picture>
-          <img src={img} alt="ilustração garçom" />
+          <Image
+            src={img}
+            alt="Ilustração"
+            width={500}
+            height={500}
+            format="svg"
+          />
         </picture>
       </>
     )
@@ -55,9 +68,6 @@ const { img, title, reverse = false } = Astro.props;
   }
 
   picture img {
-    max-width: 100%;
-    width: 500px;
-    height: auto;
   }
 
   article {
@@ -92,4 +102,3 @@ const { img, title, reverse = false } = Astro.props;
     }
   }
 </style>
-
