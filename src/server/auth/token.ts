@@ -10,8 +10,8 @@ export type JWTPayload = { username: string };
  * @returns {Promise<string>} The token
  */
 export async function genToken(authData: AuthData): Promise<string> {
-  const username = await userLogin(authData);
-  return sign(username);
+  const payload = await userLogin(authData);
+  return sign(payload);
 }
 
 /**

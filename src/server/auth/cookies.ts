@@ -40,6 +40,20 @@ export function getAuth(cookies: AstroCookies): JWTPayload {
 }
 
 /**
+ * Returns a payload or nothing. Never throws.
+ * Can be used to check if a user has authentication.
+ * @param {AstroCookies} cookies
+ * @returns {JWTPayload | undefined} Auth payload or nothing
+ */
+export function getAuthSafe(cookies: AstroCookies): JWTPayload | undefined {
+  try {
+    return getAuth(cookies);
+  } catch {
+    return undefined;
+  }
+}
+
+/**
  * Sets a JWT token in the cookies.
  * @param {AstroCookies} cookies The cookies
  * @param {string} token The token
