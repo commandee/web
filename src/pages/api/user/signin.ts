@@ -3,7 +3,6 @@ import { createEmployee } from "../../../server/model/employee";
 import { parseBody, responses } from "../../../server/api";
 import { setToken } from "../../../server/auth/cookies";
 import { z } from "zod";
-import APIError from "../../../server/model/APIError";
 
 const schema = z.object({
   name: z.string(),
@@ -13,16 +12,11 @@ const schema = z.object({
 });
 
 export const post: APIRoute = async ({ request, cookies }) => {
-  try {
-    const employee = await parseBody(request, schema);
-    const [, token] = await createEmployee(employee);
+  const employee = await parseBody(request, schema);
+  const [, token] = await createEmployee(employee);
 
-    setToken(cookies, token);
-    return responses.created(employee);
-  } catch (error) {
-    if (error instanceof APIError) return error.toResponse();
-    return responses.internalServerError();
-  }
+  setToken(cookies, token);
+  return responses.created(employee);
 };
 
 export const get: APIRoute = async () =>

@@ -37,16 +37,10 @@ const schema = z
   .transform(parseAuthData);
 
 export const post: APIRoute = async ({ request, cookies }) => {
-  try {
-    const login = await parseBody(request, schema);
-    await setAuth(cookies, login);
+  const login = await parseBody(request, schema);
+  await setAuth(cookies, login);
 
-    return responses.ok("You are logged in");
-  } catch (error) {
-    if (error instanceof APIError) return error.toResponse();
-
-    return responses.internalServerError();
-  }
+  return responses.ok("You are logged in");
 };
 
 export const get: APIRoute = async () =>
