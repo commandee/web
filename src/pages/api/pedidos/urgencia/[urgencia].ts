@@ -11,16 +11,12 @@ export const get: APIRoute = async ({ params }) => {
 
   if (!urgencia.success) return responses.badRequest(urgencia.error);
 
-  try {
-    const pedidos = await prisma.order.findMany({
-      where: { priority: urgencia.data },
-      include: {
-        item: true
-      }
-    });
+  const pedidos = await prisma.order.findMany({
+    where: { priority: urgencia.data },
+    include: {
+      item: true
+    }
+  });
 
-    return responses.ok(pedidos);
-  } catch {
-    return responses.internalServerError("Erro ao buscar pedidos");
-  }
+  return responses.ok(pedidos);
 };

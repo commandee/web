@@ -3,7 +3,6 @@ import { Priority } from "@prisma/client";
 import { z } from "zod";
 import prisma from "../../../server/client";
 import { parseBody, responses } from "../../../server/api";
-import APIError from "../../../server/model/APIError";
 
 const toConnect = z
   .number()
@@ -24,13 +23,8 @@ const schema = z.object({
 });
 
 export const post: APIRoute = async ({ request }) => {
-  try {
-    const order = await parseBody(request, schema);
-    const resOrder = await prisma.order.create({ data: order });
-    return responses.created(resOrder);
-  } catch (error) {
-    if (error instanceof APIError) return error.toResponse();
+  const order = await parseBody(request, schema);
+  const resOrder = await prisma.order.create({ data: order });
 
-    return responses.internalServerError("Erro ao adicionar pedido");
-  }
+  return responses.created(resOrder);
 };

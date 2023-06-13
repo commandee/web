@@ -16,11 +16,11 @@ type Cause =
 
 export default class APIError extends Error {
   statusCode: number;
-  override cause: Cause;
+  override cause?: Cause | undefined;
 
   constructor(
     message: string,
-    { cause, statusCode }: { cause: Cause; statusCode: number }
+    { cause, statusCode }: { cause?: Cause; statusCode: number }
   ) {
     super(message);
     this.statusCode = statusCode;
