@@ -1,8 +1,11 @@
 ---
+import { getAuthSafe } from "../../server/auth/cookies";
 interface Props {
   class?: string;
   id?: string;
 }
+
+const auth = getAuthSafe(Astro.cookies);
 ---
 
 <aside {...Astro.props}>
@@ -12,12 +15,20 @@ interface Props {
 
   <nav>
     <a href="/contato"><img src="envelope.svg" alt="" />Contato</a>
-    <a href="/sobre"><img src="info-circle.svg" alt="" /> Sobre</a>
-    <a href="/download"> <img src="file-arrow-down.svg" alt="" /> Download</a>
-    <a href="/perfil"> <img src="person.svg" alt="" /> Perfil</a>
+    <a href="/sobre"><img src="info-circle.svg" alt="" />Sobre</a>
+    <a href="/download"> <img src="file-arrow-down.svg" alt="" />Download</a>
+    <a href="/perfil"> <img src="person.svg" alt="" />Perfil</a>
   </nav>
 
-  <a href="/login" class="login">Login</a>
+  {
+    auth ? (
+      <div class="profile">Welcome, {auth.username}</div>
+    ) : (
+      <a href="/login" class="login">
+        Login
+      </a>
+    )
+  }
 </aside>
 
 <style>

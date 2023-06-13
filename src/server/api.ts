@@ -24,6 +24,7 @@ const bodyParser = {
 
       return bodyObj;
     } catch (error) {
+      console.error(error);
       throw new APIError("Invalid form data", {
         cause: "invalid-form",
         statusCode: 400

@@ -1,0 +1,37 @@
+---
+interface Props extends astroHTML.JSX.FormHTMLAttributes {
+  method: "get" | "post";
+  action: string;
+  referrer: string;
+}
+
+const { referrer, ...rest } = Astro.props;
+---
+
+<form {...rest} data-form data-referrer={referrer}>
+  <slot />
+</form>
+
+<script>
+  const formulario = document.querySelector<HTMLFormElement>(`form[data-form]`)!;
+
+  formulario.addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+
+    const form = ev.target as HTMLFormElement;
+
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+    });
+
+    if (response.ok) {
+      window.location.href = form.dataset.referrer!;
+    } else {
+      const body = await response.text();
+
+      console.error(body);
+      alert(body);
+    }
+  })
+</script>

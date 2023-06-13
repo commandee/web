@@ -64,7 +64,8 @@ export function setToken(cookies: AstroCookies, token: string): void {
     httpOnly: true,
     secure: true,
     sameSite: "strict",
-    maxAge: expiresIn
+    maxAge: expiresIn,
+    path: import.meta.env.BASE_URL
   });
 }
 

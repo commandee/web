@@ -51,3 +51,5 @@ export function extractPayload(token: string): JWTPayload {
 export const expiresIn = Number(
   options.expiresIn?.toString().replace(/[^0-9]/g, "") || 10
 );
+
+console.log(expiresIn)

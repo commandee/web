@@ -1,5 +1,11 @@
 ---
+import { getAuthSafe } from "../server/auth/cookies";
 import SideBarButton from "./sidebar/SideBarButton.astro";
+import { Image } from "@astrojs/image/components";
+
+const auth = getAuthSafe(Astro.cookies);
+
+console.log(Astro.request.headers.get("cookie"));
 ---
 
 <nav>
@@ -13,12 +19,24 @@ import SideBarButton from "./sidebar/SideBarButton.astro";
     <!-- lembrar de apagar depois -->
     <li><a href="/login">Login</a></li>
 
-    <a
-      role="button"
-      href="/signup"
-      class="button">
-      <span class="button-content">Cadastre-se</span>
-    </a>
+    {
+      auth ? (
+        <div class="profile">
+          <a href="/profile">
+            <Image
+              src="https://picsum.photos/100"
+              alt="Foto de perfil do usuário"
+              width={50}
+              height={50}
+            />
+          </a>
+        </div>
+      ) : (
+        <a role="button" href="/signup" class="button">
+          <span class="button-content">Cadastre-se</span>
+        </a>
+      )
+    }
   </ul>
   <SideBarButton class="icone-menu" />
 </nav>

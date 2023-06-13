@@ -1,4 +1,8 @@
-<form>
+---
+import Form from "./Form.astro";
+---
+
+<Form action="/api/user/login" method="post" referrer="/" id="login">
   <div class="email">
     <label for="email">Email</label>
     <input type="email" name="email" required />
@@ -17,7 +21,9 @@
       <input type="checkbox" name="remember-me" />
       <label for="remember-me">Manter-me conectado</label>
     </div>
-    <button class="button" type="submit"><span class="button-content">Entrar</span></button>
+    <button class="button" type="submit"
+      ><span class="button-content">Entrar</span></button
+    >
   </div>
 
   <span class="middash">ou</span>
@@ -35,8 +41,10 @@
     <span>Login com o Facebook</span>
   </a>
 
-  <span>Não tem uma conta? faça a sua <a href="/signin">cadastrando-se!</a> </span>
-</form>
+  <span
+    >Não tem uma conta? faça a sua <a href="/signin">cadastrando-se!</a>
+  </span>
+</Form>
 
 <style lang="scss">
   @use "../style/utils";
