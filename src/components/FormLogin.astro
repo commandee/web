@@ -8,11 +8,9 @@ import Form from "./Form.astro";
     <input type="email" name="email" required />
   </div>
 
-  <div>
-    <div class="password">
-      <label for="password">Senha</label>
-      <a href="." class="password-reset">Esqueceu a senha?</a>
-    </div>
+  <div class="password">
+    <label for="password">Senha</label>
+    <a href="." class="password-reset">Esqueceu a senha?</a>
     <input type="password" name="password" required />
   </div>
 
@@ -28,193 +26,178 @@ import Form from "./Form.astro";
 
   <span class="middash">ou</span>
 
-  <a href="." class="login-google">
+  <a href="." class="login login-google">
     <img src="/logos/google.svg" alt="Logo do Google" />
     <span>Login com o Google</span>
   </a>
-  <a href="." class="login-github">
+  <a href="." class="login login-github">
     <img src="/logos/github.svg" alt="Logo do GitHub" />
     <span>Login com o GitHub</span>
   </a>
-  <a href="." class="login-facebook">
+  <a href="." class="login login-facebook">
     <img src="/logos/facebook.svg" alt="Logo do Facebook" />
     <span>Login com o Facebook</span>
   </a>
 
-  <span
-    >Não tem uma conta? faça a sua <a href="/signin">cadastrando-se!</a>
+  <span class="cadastro">
+    Não tem uma conta? faça a sua <a href="/signin">cadastrando-se!</a>
   </span>
 </Form>
 
 <style lang="scss">
   @use "../style/utils";
 
-  $input-types: "email", "password";
-  $login-types: "google", "github", "facebook";
-
-  * {
-    box-sizing: border-box;
+  .middash {
+    @extend %middash;
   }
 
   form {
-    @extend %center-div;
-    width: clamp(40ch, 50%, 75ch);
+    width: clamp(20rem, 100%, 30rem);
+    display: flex;
     flex-direction: column;
 
-    span.middash {
-      @extend %middash;
-    }
+    gap: 1rem;
 
-    & > div {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      &:not(:first-of-type) {
-        margin-top: 1rem;
-      }
-
-      &.submit {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      &.submit {
-        width: 95%;
-      }
-    }
-
-    label {
-      font-weight: bold;
-      text-align: left;
-
-      margin: {
-        left: 0.5rem;
-        bottom: 0.2rem;
-      }
-    }
-
-    a.password-reset {
-      $password-reset-color: hsl(0, 0%, 75%);
-      $password-reset-hover: darken($password-reset-color, 30%);
-
-      @include utils.underline-hover($password-reset-color, 1px, 0.2s);
-      color: $password-reset-color;
-      text-decoration: none;
-      font-size: 0.7rem;
-
-      &:hover {
-        color: $password-reset-hover;
-        text-emphasis: bold;
-      }
-
-      &:visited {
-        all: inherit;
-      }
-    }
-
-    input[type="checkbox"] {
-      cursor: pointer;
-      + label {
-        font-size: 0.8rem;
-        margin: 0 {
-          left: 1ch;
-        }
-
-        font-weight: lighter;
-      }
-    }
-
-    %button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      column-gap: 1ch;
-      width: 100%;
-      height: 5ch;
-      text-decoration: none;
-      border-radius: 0.5em;
-      cursor: pointer;
-    }
-
-    button {
-      @extend %button;
-
-      &[type="submit"] {
-        width: 30%;
-        height: 3.5ch;
-        border-radius: 1rem;
-        background: var(--accent);
-        color: var(--textolight);
-        font-weight: bold;
-      }
-    }
-
-    div {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    @each $login-type in $login-types {
-      a.login-#{$login-type} {
-        @extend %button;
-        margin-bottom: 0.5rem;
-
-        padding-inline: 1rem;
-        display: grid;
-        align-items: center;
-
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr;
-
-        img {
-          height: 3ch;
-          width: auto;
-          place-self: auto;
-        }
-
-        & > * {
-          grid-area: 1 / 1 / 1 / 1;
-          place-self: center;
-        }
-      }
-    }
-
-    a.login-google {
-      border: 1px solid lightgray;
-      background-color: var(--background);
-      color: var(--textodark);
-    }
-
-    a.login-github {
-      background-color: var(--textodark);
-      color: var(--textolight);
-    }
-
-    a.login-facebook {
-      background-color: var(--primary);
-      color: var(--textolight);
-    }
-
-    @each $input-type in $input-types {
-      input[type="#{$input-type}"] {
-        width: 100%;
-        height: 4ch;
-        padding-inline: 1.5ch;
-        background-color: utils.$input-background;
-        border: {
-          // style: solid;
-          // color: black;
-          // width: 1px;
-          radius: 3ch;
-        }
-      }
-    }
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
   }
 
-  span a:hover {
-    color: var(--accent);
+  .button {
+    background-color: var(--accent) !important;
+  }
+
+  label, input {
+    display: block;
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input[type="text"], input[type="password"], input[type="email"] {
+    width: 100%;
+  }
+
+  .password {
+    display: grid;
+    grid-template-areas:
+      "label label forgot"
+      "input input input"
+    ;
+  }
+
+  .password label {
+    grid-area: label;
+  }
+
+  .password input {
+    grid-area: input;
+  }
+
+  .password .password-reset {
+    grid-area: forgot;
+    justify-self: end;
+  }
+
+  a.password-reset {
+    font-size: 0.7em;
+    color: grey;
+  }
+
+  a.password-reset:hover {
+    text-decoration: underline;
+    color: deeppink;
+  }
+
+  .submit {
+    display: grid;
+    grid-template-areas:
+      "keep-con"
+      "input"
+    ;
+  }
+
+  .submit button {
+    grid-area: input;
+  }
+
+  .submit div {
+    display: flex;
+    align-items: center;
+    column-gap: 1ch;
+    grid-area: keep-con;
+    padding-left: 0.5rem;
+    margin-bottom: 0.5ch;
+  }
+
+  .submit div > * {
+    display: inline-block;
+  }
+
+  .submit div > label {
+    font-size: 0.8em;
+    font-weight: normal;
+  }
+
+  input {
+    background-color: var(--secondary);
+    padding: 0.5rem 1rem !important;
+    border-radius: 1rem;
+  }
+
+  a.login {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+    padding: 0.8rem;
+    align-items: center;
+    border-radius: 1rem;
+  }
+
+  .login-google {
+    color: black;
+    background-color: var(--secondary);
+  }
+
+  .login-github {
+    color: white;
+    background-color: var(--textodark);
+  }
+
+  .login-facebook {
+    color: white;
+    background-color: blueviolet;
+  }
+
+  a > img {
+    place-self: auto;
+  }
+
+  a > * {
+    grid-area: 1 / 1 / 1 / 1;
+    place-self: center;
+  }
+
+  img {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .cadastro {
+    text-align: center;
+  }
+
+  .cadastro a {
+    font-weight: bold;
+    color: var(--accent)
+  }
+
+  .cadastro a:hover {
+    text-decoration: underline;
+    color: darken(#fc2947, 10%);
   }
 </style>

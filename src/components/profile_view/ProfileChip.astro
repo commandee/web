@@ -6,7 +6,7 @@ import ProfileCard from "./ProfileCard.astro";
 const { username } = getAuth(Astro.cookies);
 ---
 
-<profile-chip>
+<button is="profile-chip">
   <span>{username}</span>
   <Image
     src="https://picsum.photos/50"
@@ -14,7 +14,7 @@ const { username } = getAuth(Astro.cookies);
     width={40}
     height={40}
   />
-</profile-chip>
+</button>
 
 <div class="card">
   <ProfileCard />
@@ -25,9 +25,7 @@ const { username } = getAuth(Astro.cookies);
     constructor() {
       super();
 
-      this.id = "profile-chip";
-      const card = document.querySelector("profile-chip#profile-chip + .card")!;
-      this.id = "";
+      const card = document.querySelector('button[is="profile-chip"] + .card')!;
 
       this.addEventListener("click", () => {
         card.classList.toggle("open");
@@ -39,7 +37,7 @@ const { username } = getAuth(Astro.cookies);
 </script>
 
 <style>
-  profile-chip {
+  button {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -54,11 +52,11 @@ const { username } = getAuth(Astro.cookies);
     cursor: pointer;
   }
 
-  profile-chip span {
+  button span {
     font-weight: bold;
   }
 
-  profile-chip img {
+  button img {
     border-radius: 100%;
   }
 

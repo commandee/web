@@ -56,10 +56,10 @@ import Form from "./Form.astro";
 
   <div class="imagem">
     <Image
-      src="person.svg"
+      src="illustration-register.svg"
       alt="Imagem de uma pessoa autenticando-se"
-      width={300}
-      height={300}
+      width={500}
+      height={500}
       format="svg"
     />
   </div>
@@ -94,8 +94,8 @@ import Form from "./Form.astro";
       "form   imagem"
       "form   imagem";
 
-    width: clamp(300px, 100%, 800px);
-    background-color: var(--branco);
+    width: clamp(200px, 100%, 1000px);
+    background-color: var(--branco, white);
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
     border-radius: 1rem;
     padding: 2rem 2rem;
@@ -116,6 +116,20 @@ import Form from "./Form.astro";
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+
+    .cadastro {
+      grid-template-areas:
+        "titulo"
+        "form"
+        "imagem";
+
+      row-gap: 2rem;
+      border-radius: 0;
+      width: 100%;
+    }
   }
 
   h1 {

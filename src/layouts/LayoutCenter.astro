@@ -1,0 +1,30 @@
+---
+import Layout from "./Layout.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+
+
+<Layout title={title}>
+  <main>
+    <slot />
+  </main>
+</Layout>
+
+<style>
+  :global(body) {
+    display: flex;
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
