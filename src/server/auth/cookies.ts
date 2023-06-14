@@ -82,7 +82,13 @@ export function delToken(cookies: AstroCookies) {
   } catch (error) {
     exception = error;
   } finally {
-    cookies.delete("token");
+    cookies.set("token", "", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "strict",
+      maxAge: 0,
+      path: import.meta.env.BASE_URL
+    });
   }
 
   if (exception) throw exception;

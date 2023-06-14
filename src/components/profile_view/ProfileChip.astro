@@ -1,0 +1,79 @@
+---
+import { Image } from "@astrojs/image/components";
+import { getAuth } from "../../server/auth/cookies";
+import ProfileCard from "./ProfileCard.astro";
+
+const { username } = getAuth(Astro.cookies);
+---
+
+<profile-chip>
+  <span>{username}</span>
+  <Image
+    src="https://picsum.photos/50"
+    alt="A random image"
+    width={40}
+    height={40}
+  />
+</profile-chip>
+
+<div class="card">
+  <ProfileCard />
+</div>
+
+<script>
+  class ProfileChip extends HTMLButtonElement {
+    constructor() {
+      super();
+
+      this.id = "profile-chip";
+      const card = document.querySelector("profile-chip#profile-chip + .card")!;
+      this.id = "";
+
+      this.addEventListener("click", () => {
+        card.classList.toggle("open");
+      });
+    }
+  }
+
+  customElements.define("profile-chip", ProfileChip, { extends: "button" });
+</script>
+
+<style>
+  profile-chip {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 1rem;
+    border: 1px solid hsl(0, 0%, 80%);
+    background-color: hsl(0, 0%, 95%);
+    border-radius: 0.5rem;
+
+    padding-inline: 0.5rem;
+
+    cursor: pointer;
+  }
+
+  profile-chip span {
+    font-weight: bold;
+  }
+
+  profile-chip img {
+    border-radius: 100%;
+  }
+
+  .card {
+    position: absolute;
+    width: fit-content;
+    visibility: hidden;
+    top: 110%;
+    left: auto;
+    right: 0;
+
+    transform: translateX(-10px);
+  }
+
+  .card.open {
+    visibility: visible;
+  }
+</style>
