@@ -9,7 +9,7 @@ import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://commandee.com",
+  site: "https://commandee-web-production.up.railway.app",
   integrations: [tailwind(), sitemap(), image({
     serviceEntryPoint: "@astrojs/image/sharp"
   })],
