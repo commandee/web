@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import type { AstroUserConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import autoprefixer from "autoprefixer";
 import cssnano from "cssnano";
@@ -8,7 +8,7 @@ import sitemap from "@astrojs/sitemap";
 import image from "@astrojs/image";
 
 // https://astro.build/config
-export default defineConfig({
+export default {
   site: "https://commandee.com",
   integrations: [tailwind(), sitemap(), image()],
   output: "server",
@@ -18,6 +18,10 @@ export default defineConfig({
   build: {
     inlineStylesheets: "auto"
   },
+  experimental: {
+    assets: true,
+    redirects: true
+  },
   vite: {
     css: {
       postcss: {
@@ -25,4 +29,4 @@ export default defineConfig({
       }
     }
   }
-});
+} satisfies AstroUserConfig;
