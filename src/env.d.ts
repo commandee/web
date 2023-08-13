@@ -1,4 +1,4 @@
-/// <reference types="@astrojs/image/client" />
+/// <reference types="astro/client-image" />
 
 import type { JWTPayload } from "./server/auth/jwt";
 
