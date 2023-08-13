@@ -1,45 +1,47 @@
 ---
-import SideMenu from "./SideMenu.astro";
+import { getAuthSafe } from "../server/auth/cookies";
+import SideBarButton from "./sidebar/SideBarButton.astro";
+import ProfileChip from "./profile_view/ProfileChip.astro";
+
+const auth = getAuthSafe(Astro.cookies);
+
+console.log(Astro.cookies);
 ---
 
 <nav>
   <a href="/" class="logo-nav">Commandee</a>
-  <div class="bx bx-menu" id="icone-menu"></div>
-  <SideMenu id="side-panel" />
   <ul>
     <!--<li><a href="/lista">Lista</a></li>-->
-    <li><a href="/contato">Contato</a></li>
+    <li><a href="/">Home</a></li>
     <li><a href="/sobre">Sobre</a></li>
+    <li><a href="/contato">Contato</a></li>
     <li><a href="/download">Download</a></li>
-    <li><a href="/profile">Perfil</a></li>
     <!-- lembrar de apagar depois -->
-    <li><a href="/login">Login</a></li>
-    <button
-      class="bg-rose-500 hover:bg-rose-700 text-white font-medium py-2 px-3 rounded-full"
-      >Cadastre-se</button
-    >
+
+    {
+      auth ? (
+        <ProfileChip />
+        ) : (
+          <>
+          <li><a href="/login">Login</a></li>
+          <a role="button" href="/cadastro" class="button">
+            <span class="button-content">Cadastre-se</span>
+          </a>
+        </>
+      )
+    }
   </ul>
+  <SideBarButton class="icone-menu" />
 </nav>
-
-<script lang="ts">
-  const icone = document.getElementById("icone-menu");
-  const menu = document.getElementById("side-panel");
-
-  icone.addEventListener("click", () => {
-    menu.showModal();
-  });
-</script>
 
 <style>
   nav {
-    position: sticky;
     height: 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
     background-color: transparent;
-    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     z-index: 1;
   }
@@ -55,9 +57,22 @@ import SideMenu from "./SideMenu.astro";
     text-decoration: none;
   }
 
-  #icone-menu {
+  .icone-menu {
     display: none;
-    color: var(--textodark);
+    justify-self: flex-end;
+  }
+
+  .cadastro {
+    transition: all 2s;
+  }
+
+  .cadastro:hover {
+    background-color: var(--primary);
+  }
+
+  .button {
+    height: 2.5rem !important;
+    padding: 0 1rem !important;
   }
 
   nav ul {
@@ -96,18 +111,12 @@ import SideMenu from "./SideMenu.astro";
       position: relative;
     }
 
-    button {
-      display: none;
-    }
-
     .logo-nav {
       font-size: 1.2rem;
     }
 
-    #icone-menu {
+    .icone-menu {
       display: block;
-      font-size: 1.5rem;
-      cursor: pointer;
     }
     nav ul {
       display: none;

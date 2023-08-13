@@ -1,11 +1,12 @@
 ---
+import { Image } from "@astrojs/image/components";
 export interface Props {
   img: string;
   title: string;
-  reverse: boolean;
+  reverse?: boolean;
 }
 
-const { img, title, reverse = true } = Astro.props;
+const { img, title, reverse = false } = Astro.props;
 ---
 
 <section>
@@ -13,21 +14,33 @@ const { img, title, reverse = true } = Astro.props;
     reverse ? (
       <>
         <picture>
-          <img src={img} alt="ilustração garçom" />
+          <Image
+            src={img}
+            alt="Ilustração"
+            width={500}
+            height={500}
+            format="svg"
+          />
         </picture>
         <article>
-          <h2>{title}</h2>
+          <h1>{title}</h1>
           <slot />
         </article>
       </>
     ) : (
       <>
         <article>
-          <h2>{title}</h2>
+          <h1>{title}</h1>
           <slot />
         </article>
         <picture>
-          <img src={img} alt="ilustração garçom" />
+          <Image
+            src={img}
+            alt="Ilustração"
+            width={500}
+            height={500}
+            format="svg"
+          />
         </picture>
       </>
     )
@@ -55,9 +68,6 @@ const { img, title, reverse = true } = Astro.props;
   }
 
   picture img {
-    max-width: 100%;
-    width: 500px;
-    height: auto;
   }
 
   article {
@@ -68,7 +78,7 @@ const { img, title, reverse = true } = Astro.props;
     flex-direction: column;
   }
 
-  article h2 {
+  article h1 {
     font-size: var(--textoTitulo);
     font-weight: 700;
     text-align: center;
@@ -79,8 +89,7 @@ const { img, title, reverse = true } = Astro.props;
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
-      margin-top: 2rem;
-      min-height: 75vh;
+      min-height: 60vh;
     }
 
     picture {

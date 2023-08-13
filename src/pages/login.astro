@@ -1,40 +1,45 @@
 ---
 import FormLogin from "../components/FormLogin.astro";
-import LayoutLateral from "../layouts/LayoutLateral.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<LayoutLateral title="Login" backgroundImage="https://picsum.photos/200">
+<Layout title="Login">
+  <aside></aside>
   <FormLogin />
-</LayoutLateral>
+</Layout>
 
 <style lang="scss">
-  @use "../style/utils.scss";
+  :global(body) {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    place-items: center;
+  }
+
+  body{
+    background: #fff url("data:image/svg+xml,%3Csvg width='1280' height='233' xmlns='http://www.w3.org/2000/svg'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath d='M1280 0c-167.463 0-449.312 114.933-639.815 114.933C449.68 114.933 173.4 0 0 0v233h1280V0z' fill='%23DACFF2'/%3E %3Cpath d='M1280 140.13C1112.537 140.13 830.503 42 640 42S173.4 140.13 0 140.13v93h1280v-93z' fill='%23C0AFE9'/%3E %3C/g%3E %3C/svg%3E ") bottom/100% no-repeat fixed;
+  }
 
   aside {
+    background-image: url("https://picsum.photos/1500");
     background-color: aliceblue;
     height: 100%;
     width: 100%;
+    background-size: cover;
+    background-position: center;
+
+    box-shadow: 0 0 1rem hsla(0, 0%, 0%, 20%);
   }
 
-  @media (max-width: 750px) {
-    div.grid {
-      display: flex !important;
+  @media (max-width: 800px) {
+    :global(body) {
+      display: flex;
       align-items: center;
       justify-content: center;
       grid: none;
+    }
 
-      aside {
-        display: none;
-      }
-
-      h1 {
-        padding: 0 !important;
-      }
-
-      div {
-        align-items: center;
-        justify-content: center;
-      }
+    aside {
+      display: none;
     }
   }
 </style>

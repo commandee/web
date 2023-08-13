@@ -1,6 +1,167 @@
-<form action="">
-  <fieldset>
-    <label for="email"></label>
-    <input type="email" />
-  </fieldset>
-</form>
+---
+import { Image } from "@astrojs/image/components";
+import Form from "./Form.astro";
+---
+
+<div class="cadastro">
+  <h1 class="tituloGradiente">Faça seu cadastro!</h1>
+
+  <Form method="post" action="/api/user/signin" referrer="/">
+    <div>
+      <label for="name">Nome</label>
+      <input required placeholder="Joaquim" type="text" name="name" id="name" />
+    </div>
+
+    <div>
+      <label for="username">Nome de usuário</label>
+      <input
+        required
+        placeholder="joaquim123"
+        type="text"
+        name="username"
+        id="username"
+        pattern="[a-zA-Z0-9_-]+"
+        min="4"
+        max="15"
+      />
+    </div>
+
+    <div>
+      <label for="email">Email</label>
+      <input
+        required
+        placeholder="joaquim@email.com"
+        type="email"
+        name="email"
+        id="email"
+      />
+    </div>
+
+    <div>
+      <label for="password">Senha</label>
+      <input
+        required
+        placeholder="********"
+        type="password"
+        name="password"
+        id="password"
+        min="8"
+      />
+    </div>
+
+    <button class="button" type="submit">
+      <span class="button-content">Cadastrar</span>
+    </button>
+  </Form>
+
+  <div class="imagem">
+    <Image
+      src="illustration-register.svg"
+      alt="Imagem de uma pessoa autenticando-se"
+      width={500}
+      height={500}
+      format="svg"
+    />
+  </div>
+</div>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("div.control>form")!;
+
+  form.addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: new FormData(form)
+    });
+
+    if (response.ok) {
+      window.location.href = "/";
+    } else {
+      const error = await response.json();
+      alert(error.message);
+    }
+  });
+</script>
+
+<style>
+  .cadastro {
+    display: grid;
+    place-items: center;
+    grid-template-areas:
+      "titulo imagem"
+      "form   imagem"
+      "form   imagem";
+
+    width: clamp(200px, 100%, 1000px);
+    background-color: var(--branco, white);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+    padding: 2rem 2rem;
+  }
+
+  form {
+    width: clamp(150px, 100%, 350px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    grid-area: form;
+  }
+
+  form > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+
+    .cadastro {
+      grid-template-areas:
+        "titulo"
+        "form"
+        "imagem";
+
+      row-gap: 2rem;
+      border-radius: 0;
+      width: 100%;
+    }
+  }
+
+  h1 {
+    grid-area: titulo;
+  }
+
+  .imagem {
+    grid-area: imagem;
+  }
+
+  label,
+  input {
+    width: 100%;
+    display: block;
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  form input {
+    padding: 0.5rem;
+    background-color: var(--secondary);
+    border-radius: 5px;
+  }
+
+  form input::placeholder {
+    opacity: 1;
+    color: #9ca3af;
+  }
+
+  button[type="submit"] {
+    background-color: var(--accent) !important;
+  }
+</style>

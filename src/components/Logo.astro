@@ -1,9 +1,9 @@
 ---
 export interface Props {
-  format: "image" | "text" | "full";
+  format?: "image" | "text" | "full";
 }
 
-const { format } = Astro.props;
+const { format = "image" } = Astro.props;
 ---
 
 <figure>

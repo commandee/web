@@ -1,0 +1,39 @@
+---
+interface Props extends astroHTML.JSX.FormHTMLAttributes {
+  method: "get" | "post";
+  action: string;
+  referrer: string;
+}
+---
+
+<form is="form-intercept" {...Astro.props} data-intercept>
+  <slot />
+</form>
+
+<script>
+  class FormIntercept extends HTMLFormElement {
+    constructor() {
+      super();
+
+      this.addEventListener("submit", async (ev) => {
+        ev.preventDefault();
+
+        const response = await fetch(this.action, {
+          method: this.method,
+          body: new FormData(this)
+        });
+
+        if (response.ok) {
+          window.location.href = this.getAttribute("referrer") || "/";
+        } else {
+          const body = await response.text();
+
+          console.error(body);  
+          alert(body);
+        }
+      });
+    }
+  }
+
+  customElements.define("form-intercept", FormIntercept, { extends: "form" });
+</script>

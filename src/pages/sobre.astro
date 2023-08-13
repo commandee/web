@@ -1,79 +1,80 @@
 ---
 import LayoutFull from "../layouts/LayoutFull.astro";
 import MainSobre from "../components/Sobre.astro";
-import CardAjuda from "../components/CardAjuda.astro";
-import CardTime from "../components/CardTime.astro";
+import CardAjuda from "../components/cards/CardAjuda.astro";
+import CardTime from "../components/cards/CardTime.astro";
 ---
 
 <LayoutFull title="Sobre nós!">
   <h1 class="tituloGradiente">Sobre o Commandee</h1>
 
-  <MainSobre
-    img="/ilustracao-info-garcom.svg"
-    title="O que é o Commandee?"
-    reverse={false}
-  >
+  <MainSobre img="/illustrations/ilustracao-info-garcom.svg" title="O que é o Commandee?">
     <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores ad
-      accusamus, vitae, autem iusto error odit cum dignissimos minima aut vel
-      praesentium quas. Porro ab et doloribus quo molestiae sapiente fuga alias
-      cumque tempora? Odio, ducimus consequatur. Vero vitae asperiores odit
-      sapiente. Beatae, odio repellat. Itaque libero cumque ipsa aspernatur.
+      O commandee é uma ferramenta que tem como objetivo facilitar o processo de
+      atendimento em restaurantes, bares e lanchonetes. Com ele, o estabelecimento
+      terá seu próprio cardápio digital, onde o garçom poderá realizar o pedido
+      do cliente através de um dispositivo móvel, que será enviado diretamente
+      para a cozinha, sem a necessidade de um intermediário.
     </p>
   </MainSobre>
 
-  <MainSobre
-    img="/ilustracao-info-relogio.svg"
-    title="Otimização"
-    reverse={true}
-  >
+  <MainSobre img="/illustrations/ilustracao-info-relogio.svg" title="Otimização" reverse>
     <p>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. At est eveniet
-      ab! Nam beatae commodi nobis itaque ex maiores tempora doloribus officia
-      eveniet laborum! Labore commodi quo nostrum nam voluptatibus voluptates
-      hic deserunt animi laborum illo amet ea at saepe necessitatibus, repellat
-      distinctio nemo voluptatem ratione iusto quod temporibus nisi.
+      O aplciativo tem como objetivo otimizar o tempo de atendimento, tanto do
+      garçom quanto do cliente, além de evitar erros de comunicação entre o
+      garçom e a cozinha. Com o Commandee, o garçom não precisará mais anotar o
+      pedido do cliente em um papel, para depois levar até a cozinha. O pedido
+      será feito diretamente pelo aplicativo, e será enviado para a cozinha
+      instantaneamente.
     </p>
   </MainSobre>
 
-  <MainSobre
-    img="/ilustracao-info-celular.svg"
-    title="Portabilidade"
-    reverse={false}
-  >
+  <MainSobre img="/illustrations/ilustracao-info-celular.svg" title="Portabilidade">
     <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-      consectetur atque dignissimos et ipsam cum hic sed magni. Obcaecati enim
-      quidem sit. Officiis tempore ducimus ratione praesentium dolor quis
-      quibusdam incidunt voluptatum ab, ullam modi laboriosam nisi provident
-      suscipit illum consequatur! Quibusdam officiis laudantium natus quidem
-      perferendis. Recusandae, totam similique.
+      O Commandee visa também a portabilidade, ou seja, o garçom poderá realizar
+      o pedido do cliente de qualquer lugar do estabelecimento, sem a necessidade
+      de ir até a cozinha. Isso acelera e organiza o processo de atendimento,
+      além de evitar erros de comunicação entre o garçom e a cozinha.
     </p>
   </MainSobre>
+
   <section>
-    <h1 class="tituloGradiente">Nosso Time:</h1>
+    <h1 class="tituloGradiente">Nosso Time</h1>
   </section>
 
-  <section>
+  <section class="time">
     <CardTime
       imagem="https://avatars.githubusercontent.com/u/99834738?v=4"
       integrante="Silver"
       funcao="Front-end Developer"
+      twitter="https://twitter.com/itxsilverhere"
+      instagram="https://www.instagram.com/i.silverxx/"
+      github="https://github.com/Gs1lver"
     />
+
     <CardTime
       imagem="https://avatars.githubusercontent.com/u/99834864?v=4"
-      integrante="Meida"
+      integrante="Lara"
       funcao=" Full-stack Developer"
+      twitter=""
+      instagram=""
+      github="https://github.com/AmeMeida"
     />
     <CardTime
       imagem="https://avatars.githubusercontent.com/u/102124577?v=4"
       integrante="Nacrai"
       funcao="Full-stack Developer"
+      twitter="https://twitter.com/metamorf0ses"
+      instagram=""
+      github="https://github.com/DavMac606"
     />
     <CardTime
       imagem="https://avatars.githubusercontent.com/u/102191135?v=4"
-      integrante="Renato."
+      integrante="Renato Oliveira"
       funcao="Front-end Developer"
+      twitter=""
+      instagram=""
+      github="https://github.com/RenatoOliveiraSantos"
     />
   </section>
   <CardAjuda />
@@ -86,6 +87,10 @@ import CardTime from "../components/CardTime.astro";
     flex-direction: column;
     align-items: center;
     row-gap: 5rem;
+  }
+
+  body{
+
   }
 
   header {
@@ -101,6 +106,19 @@ import CardTime from "../components/CardTime.astro";
     justify-content: center;
     margin-top: 1rem;
     gap: 2rem;
+  }
+
+  .time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  h1{
+    margin: 1rem 0;
   }
 
   @media only screen and (max-width: 768px) {

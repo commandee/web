@@ -9,5 +9,6 @@
   "arrowParens": "always",
   "printWidth": 80,
   "embeddedLanguageFormatting": "auto",
-  "quoteProps": "as-needed"
+  "quoteProps": "as-needed",
+  "bracketSameLine": true
 }

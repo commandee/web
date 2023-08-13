@@ -13,7 +13,7 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <!--Biblioteca de icones -->
+
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ViewTransitions />
@@ -25,9 +25,13 @@ const { title } = Astro.props;
 </html>
 
 <style>
-  html,
   body {
     min-height: 100vh;
+  }
+
+  html {
+    background-color: var(--background);
+    scroll-behavior: smooth;
   }
 </style>
 
@@ -50,21 +54,11 @@ const { title } = Astro.props;
     --secondary: #e3dbf5;
     --accent: #fc2947;
 
-    --textoGrande: 2.5rem;
+    --textoGrande: 2.3rem;
     --textoTitulo: 1.75rem;
     --texto: 1.1rem;
 
     --gradient: -webkit-linear-gradient(left, var(--primary), var(--accent));
-  }
-
-  html {
-    font-family: system-ui, sans-serif;
-    background-color: var(--background);
-    scroll-behavior: smooth;
-  }
-
-  body {
-    height: 100vh;
   }
 
   code {
@@ -73,16 +67,57 @@ const { title } = Astro.props;
   }
 
   .tituloGradiente {
-    font-size: var(--textoTitulo);
-    font-weight: 700;
-    width: fit-content;
+    text-align: center;
+    color: transparent;
     background: var(--gradient);
+    font-weight: 700;
     background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+
   }
 
   h1.tituloGradiente {
     font-size: var(--textoGrande);
+    margin: 1rem;
   }
+
+
+/*peguei no uiverse.io preguiça de fazer um botão do 0*/
+.button {
+  position: relative;
+  overflow: hidden;
+  height: 3rem;
+  padding: 0 2rem;
+  border-radius: 1.5rem;
+  background: var(--accent);
+  background-size: 400%;
+  color: #fff;
+  border: none;
+   display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.button:hover::before {
+  transform: scaleX(1);
+}
+
+.button-content {
+  z-index: 1;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  width: 100%;
+  height: inherit;
+  border-radius: inherit;
+  background: var(--gradient);
+  transition: all 0.475s;
+}
+
 </style>

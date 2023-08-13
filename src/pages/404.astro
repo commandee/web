@@ -1,0 +1,114 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Opa!">
+  <section>
+    <article>
+      <h1 class="tituloGradiente">Opaa!</h1>
+      <div>
+        <p>
+          Essa página não foi encontrada! Volte ao menu principal para navegar
+          para uma existente!
+        </p>
+        <a
+          role="button"
+          class="button"
+          href="/"><span class="button-content">Voltar a página principal</span></a
+        >
+      </div>
+    </article>
+    <aside>
+      <img src="/illustrations/404.svg" alt="404" />
+    </aside>
+  </section>
+</Layout>
+
+<style>
+  section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+  }
+
+  article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 2rem;
+    width: 50%;
+    text-align: center;
+    color: var(--textodark);
+  }
+
+  article p {
+    font-size: 1.8rem;
+    margin: 0;
+  }
+
+  article h1 {
+
+    font-size: 4rem !important;
+    margin: 0;
+    text-align: center;
+    width: fit-content;
+  }
+
+  article a {
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 2rem;
+  }
+
+  article div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  aside {
+    width: 50%;
+  }
+
+  img {
+    width: 80%;
+  }
+
+  @media (max-width: 768px) {
+    section {
+      flex-direction: column;
+    }
+
+    article {
+      width: 100%;
+      padding: 0 2rem;
+    }
+
+    article p {
+      font-size: 1.5rem;
+    }
+
+    article h1 {
+      font-size: 3rem !important;
+    }
+
+    article a {
+      font-size: 1rem;
+      width: auto;
+    }
+
+    aside {
+      margin: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+  }
+</style>

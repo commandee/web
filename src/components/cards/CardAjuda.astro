@@ -1,0 +1,56 @@
+<div class="card">
+  <div>
+    <h3>Precisando de Ajuda?</h3>
+    <p>Entre em contato clicando abaixo:</p>
+  </div>
+  <a
+    role="button"
+    href="/contato"
+    class="bg-neutral-100 hover:bg-neutral-400 text-blue-950 py-2 px-3 rounded-full"
+    >Entre em contato</a
+  >
+</div>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 15px;
+
+    padding: 2rem;
+    gap: 1.5rem;
+
+    text-align: center;
+    background-color: var(--accent);
+    color: var(--textolight);
+  }
+
+  .card h3 {
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--textodark);
+    margin-top: auto;
+  }
+
+  a:hover {
+    color: var(--textodark);
+  }
+
+  @media only screen and (max-width: 768px) {
+    .card {
+      width: 100%;
+      border-radius: unset;
+      padding: 2rem 0;
+    }
+
+    .card > * {
+      width: max-content;
+    }
+  }
+</style>
