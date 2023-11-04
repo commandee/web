@@ -9,28 +9,14 @@ import Form from "./Form.astro";
   <Form method="post" action="/api/user/signin" referrer="/">
     <div>
       <label for="name">Nome</label>
-      <input required placeholder="Joaquim" type="text" name="name" id="name" />
-    </div>
-
-    <div>
-      <label for="username">Nome de usuário</label>
-      <input
-        required
-        placeholder="joaquim123"
-        type="text"
-        name="username"
-        id="username"
-        pattern="[a-zA-Z0-9_-]+"
-        min="4"
-        max="15"
-      />
+      <input required placeholder="Digite seu nome" type="text" name="name" id="name" />
     </div>
 
     <div>
       <label for="email">Email</label>
       <input
         required
-        placeholder="joaquim@email.com"
+        placeholder="Digite seu email"
         type="email"
         name="email"
         id="email"
@@ -41,7 +27,7 @@ import Form from "./Form.astro";
       <label for="password">Senha</label>
       <input
         required
-        placeholder="********"
+        placeholder="Digite sua senha"
         type="password"
         name="password"
         id="password"
@@ -118,6 +104,18 @@ import Form from "./Form.astro";
     gap: 0.5rem;
   }
 
+  input {
+    border: none;
+    background-color: var(--secondary);
+    padding: 0.5rem 1rem !important;
+    border-radius: 1rem;
+  }
+
+  input:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px var(--primary);
+  }
+
   @media (max-width: 768px) {
 
     .cadastro {
@@ -148,17 +146,6 @@ import Form from "./Form.astro";
 
   label {
     font-weight: bold;
-  }
-
-  form input {
-    padding: 0.5rem;
-    background-color: var(--secondary);
-    border-radius: 5px;
-  }
-
-  form input::placeholder {
-    opacity: 1;
-    color: #9ca3af;
   }
 
   button[type="submit"] {

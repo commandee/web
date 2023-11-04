@@ -1,5 +1,4 @@
 import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
 import autoprefixer from "autoprefixer";
 import cssnano from "cssnano";
 import node from "@astrojs/node";
@@ -10,7 +9,7 @@ import image from "@astrojs/image";
 // https://astro.build/config
 export default defineConfig({
   site: "https://commandee-web-production.up.railway.app",
-  integrations: [tailwind(), sitemap(), image({
+  integrations: [sitemap(), image({
     serviceEntryPoint: "@astrojs/image/sharp"
   })],
   output: "server",

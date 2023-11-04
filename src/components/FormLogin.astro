@@ -5,13 +5,13 @@ import Form from "./Form.astro";
 <Form action="/api/user/login" method="post" referrer="/">
   <div class="email">
     <label for="email">Email</label>
-    <input type="email" name="email" required />
+    <input type="email" name="email" placeholder="Digite seu email" required />
   </div>
 
   <div class="password">
     <label for="password">Senha</label>
     <a href="." class="password-reset">Esqueceu a senha?</a>
-    <input type="password" name="password" required />
+    <input type="password" name="password" placeholder="Digite sua senha" required />
   </div>
 
   <div class="submit">
@@ -66,7 +66,14 @@ import Form from "./Form.astro";
 
   .button {
     background-color: var(--accent) !important;
+    height: 2.5rem !important;
+    border-radius: 1rem !important;
   }
+
+  .button:hover{
+    cursor: pointer;
+  }
+
 
   label, input {
     display: block;
@@ -108,7 +115,7 @@ import Form from "./Form.astro";
 
   a.password-reset:hover {
     text-decoration: underline;
-    color: deeppink;
+    color: var(--accent);
   }
 
   .submit {
@@ -142,9 +149,15 @@ import Form from "./Form.astro";
   }
 
   input {
+    border: transparent;
     background-color: var(--secondary);
     padding: 0.5rem 1rem !important;
     border-radius: 1rem;
+  }
+
+  input:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px var(--primary);
   }
 
   a.login {

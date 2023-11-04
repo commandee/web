@@ -9,13 +9,15 @@ console.log(Astro.cookies);
 ---
 
 <nav>
-  <a href="/" class="logo-nav">Commandee</a>
+  <a href="/" class="logo-nav">
+    <img src="logos/commandee_logo.png" alt="logo commandee">
+    Commandee
+  </a>
   <ul>
     <!--<li><a href="/lista">Lista</a></li>-->
-    <li><a href="/">Home</a></li>
+    <li><a href="/download">Download</a></li>
     <li><a href="/sobre">Sobre</a></li>
     <li><a href="/contato">Contato</a></li>
-    <li><a href="/download">Download</a></li>
     <!-- lembrar de apagar depois -->
 
     {
@@ -48,6 +50,14 @@ console.log(Astro.cookies);
 
   nav a {
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--textodark);
+  }
+
+  nav a img {
+    height: 2.5rem;
   }
 
   .logo-nav {

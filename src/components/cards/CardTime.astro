@@ -6,11 +6,10 @@ export interface Props {
   integrante: string;
   funcao: string;
   twitter: string;
-  instagram: string;
   github: string;
 }
 
-const { imagem, integrante, funcao, twitter, instagram, github } = Astro.props;
+const { imagem, integrante, funcao, twitter, github } = Astro.props;
 ---
 
 <article>
@@ -40,18 +39,7 @@ const { imagem, integrante, funcao, twitter, instagram, github } = Astro.props;
         />
       </a>
     </li>
-    <li>
-      <a href={instagram} target="_blank">
-        <Image
-          src="/logos/instagram.svg"
-          alt="Instagram logo"
-          format="svg"
-          width={20}
-          height={20}
-        />
-      </a>
-    </li>
-    <li>
+       <li>
       <a href={github} target="_blank">
         <Image
           src="/logos/githubcolorido.svg"
@@ -62,17 +50,7 @@ const { imagem, integrante, funcao, twitter, instagram, github } = Astro.props;
         />
       </a>
     </li>
-    <li>
-      <a href="" target="_blank">
-        <Image
-          src="/logos/google.svg"
-          alt="Google logo"
-          format="svg"
-          width={20}
-          height={20}
-        />
-      </a>
-    </li>
+
   </ul>
 </article>
 

@@ -2,36 +2,40 @@
   <h1 class="tituloGradiente">Entre em Contato!</h1>
   <span>Como podemos ajudar?</span>
   <fieldset>
+    <label for="name">Nome:</label>
     <input
       type="text"
       name="name"
       id="name"
       autocomplete="name"
-      placeholder="Nome completo"
+      placeholder="Digite seu nome completo"
       required
     />
   </fieldset>
   <fieldset>
+    <label for="email">Email: </label>
     <input
       type="email"
       name="email"
       id="email"
       autocomplete="email"
-      placeholder="Seu email"
+      placeholder="Digite seu email"
       required
     />
   </fieldset>
   <fieldset>
+    <label for="description">Assunto: </label>
     <textarea
       name="description"
       id="description"
       cols="50"
       rows="10"
-      placeholder="Spill the tea"></textarea>
+      placeholder="Descreva o problema para nós:"></textarea>
   </fieldset>
   <button
-    class="bg-rose-500 hover:bg-rose-700 text-white font-bold py-3 px-1 rounded"
-    >Envie</button
+  class="button"
+  type="submit"
+    ><span class="button-content">Envie</span></button
   >
 </form>
 
@@ -46,9 +50,9 @@
     padding: 1rem;
   }
 
-  form span {
+  span+fieldset {
+    margin-top: 1.5rem ;
     font-size: 1rem;
-    margin-bottom: 1rem;
   }
 
   fieldset {
@@ -63,21 +67,41 @@
   fieldset textarea {
     width: 100%;
     font-size: 1rem;
-    margin: 1rem 0;
-    padding: 0.5rem;
-    border-radius: 5px;
+    margin: 0.3rem 0;
+    padding: 0.5rem 1rem !important;    border-radius: 1rem;
     border: none;
     margin-bottom: 1rem;
     background-color: var(--secondary);
     resize: none;
   }
 
-  button {
+  fieldset input:focus, fieldset textarea:focus{
+    outline: none;
+    box-shadow: 0 0 0 1px var(--primary);
+  }
+
+  .button {
+    background-color: var(--accent) !important;
+    border-radius: 1rem !important;
     width: 100%;
+  }
+
+  .button:hover{
+    cursor: pointer;
+  }
+
+  button{
+    display: flex;
+    justify-content: center;
+    align-items: center !important;
   }
 
   span {
     font-weight: 500;
+  }
+
+  label {
+    font-weight: bold;
   }
 
   @media only screen and (max-width: 768px) {

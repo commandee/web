@@ -8,16 +8,15 @@
           ><img src="/icon-github.svg" alt="" /></a
         >
       </li>
-      <li><a href=""><img src="/icon-linkedin.svg" alt="" /></a></li>
       <li><a href=""><img src="/icon-twitter.svg" alt="" /></a></li>
     </ul>
 
     <nav>
-      <a href="/contato">Contato</a>
-      <a href="/sobre">Sobre</a>
       <a href="/download">Download</a>
       <a href="/login">Login</a>
       <a href="/signup">Cadastro</a>
+      <a href="/sobre">Sobre</a>
+      <a href="/contato">Contato</a>
     </nav>
 
     <p>© 2023 Commandee Inc.</p>
@@ -56,9 +55,18 @@
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
+
+  }
+
+  nav a{
+    color: var(--textolight);
   }
 
   nav a:hover {
     color: lightgrey;
+  }
+
+  li>a>img:hover {
+    transform: scale(1.1);
   }
 </style>
