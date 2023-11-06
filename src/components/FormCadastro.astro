@@ -38,6 +38,8 @@ import Form from "./Form.astro";
     <button class="button" type="submit">
       <span class="button-content">Cadastrar</span>
     </button>
+    <span>Já tem uma conta? <a href="/login">Faça login aqui!</a></span>
+
   </Form>
 
   <div class="imagem">
@@ -92,7 +94,6 @@ import Form from "./Form.astro";
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
 
     grid-area: form;
   }
@@ -109,6 +110,7 @@ import Form from "./Form.astro";
     background-color: var(--secondary);
     padding: 0.5rem 1rem !important;
     border-radius: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   input:focus {
@@ -116,6 +118,25 @@ import Form from "./Form.astro";
     box-shadow: 0 0 0 1px var(--primary);
   }
 
+  button{
+    margin: 1rem 0 0.5rem 0;
+    width: 100%;
+    height: 2.5rem !important;
+  }
+
+  span{
+    font-size: 0.8rem;
+    margin-top: 0.rem;
+  }
+
+  span a {
+    color: var(--accent);
+  }
+
+  span a:hover{
+    text-decoration: underline;
+    font-weight: bold;
+  }
   @media (max-width: 768px) {
 
     .cadastro {

@@ -40,7 +40,7 @@ import Form from "./Form.astro";
   </a>
 
   <span class="cadastro">
-    Não tem uma conta? faça a sua <a href="/signin">cadastrando-se!</a>
+    Não tem uma conta? faça a sua <a href="/cadastro">cadastrando-se!</a>
   </span>
 </Form>
 
@@ -170,6 +170,11 @@ import Form from "./Form.astro";
     border-radius: 1rem;
   }
 
+  a.login:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+
   .login-google {
     color: black;
     background-color: var(--secondary);
@@ -201,16 +206,16 @@ import Form from "./Form.astro";
   }
 
   .cadastro {
+    font-size: 0.8rem;
     text-align: center;
   }
 
   .cadastro a {
-    font-weight: bold;
     color: var(--accent)
   }
 
   .cadastro a:hover {
     text-decoration: underline;
-    color: darken(#fc2947, 10%);
+    font-weight: bold;
   }
 </style>
